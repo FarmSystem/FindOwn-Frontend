@@ -14,7 +14,7 @@ const NavBarContainer = styled.div`
 
 const NavBarInner = styled.div`
   display: flex;
-  max-width: 1440px;
+  max-width: 1920px;
   margin: 0 auto;
   height: 100%;
   align-items: center;
