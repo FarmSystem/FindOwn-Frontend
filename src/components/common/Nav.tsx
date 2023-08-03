@@ -5,18 +5,22 @@ import styled from '@emotion/styled';
 const NavBarContainer = styled.div`
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 10;
   height: 50px;
   width: 100%;
   padding: 0 20px;
   background-color: white;
+
+  @media (max-width: 1500px) {
+    padding: 0px;
+  }
 `
 
 const NavBarInner = styled.div`
   display: flex;
-  max-width: 1920px;
   margin: 0 auto;
   height: 100%;
+  max-width: 1920px;
   align-items: center;
   justify-content: right;
   background-color: transparent;
