@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from '@emotion/styled';
+import { MainLogo } from "./MainLogo";
 
 const NavBarContainer = styled.div`
   position: fixed;
@@ -22,7 +23,7 @@ const NavBarInner = styled.div`
   height: 100%;
   max-width: 1920px;
   align-items: center;
-  justify-content: right;
+  justify-content: space-between;
   background-color: transparent;
 `
 
@@ -40,18 +41,21 @@ const StyledLink = styled(Link)`
     color: #52C07E;
   }
 
-`;
+`
 
 function Nav() {
   return (
     <NavBarContainer>
       <NavBarInner>
-        <StyledLink to="/">Home</StyledLink>
-        <StyledLink to="/">About</StyledLink>
-        <StyledLink to="/">상표권</StyledLink>
-        <StyledLink to="/">디자인</StyledLink>
-        <StyledLink to="/">CONTECT</StyledLink>
-        <StyledLink to="/">LOGIN</StyledLink>
+        <MainLogo />
+        <div>
+          <StyledLink to="/">Home</StyledLink>
+          <StyledLink to="/">About</StyledLink>
+          <StyledLink to="/">상표권</StyledLink>
+          <StyledLink to="/">디자인</StyledLink>
+          <StyledLink to="/">CONTECT</StyledLink>
+          <StyledLink to="/">LOGIN</StyledLink>
+        </div>
       </NavBarInner>
     </NavBarContainer>
   );
