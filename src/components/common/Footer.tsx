@@ -1,5 +1,4 @@
-import styled from "@emotion/styled"
-
+import styled from "@emotion/styled";
 
 const FooterContainer = styled.div`
   position: fixed;
@@ -7,13 +6,12 @@ const FooterContainer = styled.div`
   z-index: 10;
   height: 50px;
   width: 100%;
-  background-color: #EEFFED;
+  background-color: #eeffed;
 
   @media (max-width: 1500px) {
     height: 40px;
   }
-
-`
+`;
 
 const FooterInner = styled.div`
   display: flex;
@@ -24,28 +22,32 @@ const FooterInner = styled.div`
   justify-content: center;
   flex-direction: column;
   background-color: transparent;
-`
+`;
 
 const Text = styled.div`
-    font-size: 15px;
-    color : black;
+  font-size: 15px;
+  color: black;
 
-    @media (max-width: 1500px) {
-        font-size: 12px;
-    }
-`
+  @media (max-width: 1500px) {
+    font-size: 12px;
+  }
+`;
 
 export const Footer = () => {
-    const thisYear = () => {
-        const year = new Date().getFullYear();
-        return year;
-    }
-    return (
-        <FooterContainer>
-            <FooterInner>
-                <Text>동국대학교 Farm Team4 | 박서영 유희재 이지민 임정우 오현석 정영준 최재원</Text>
-                <Text>Copyright &copy; <span>{thisYear()}</span> FarmTeam4. All Rights Reserved</Text>
-            </FooterInner>
-        </FooterContainer>
-    );
-}
+  const thisYear = () => {
+    const year = new Date().getFullYear();
+    return year;
+  };
+  return (
+    <FooterContainer>
+      <FooterInner>
+        <Text>
+          동국대학교 Farm Team4 | 박서영 유희재 이지민 임정우 오현석 정영준 최재원
+        </Text>
+        <Text>
+          Copyright &copy; <span>{thisYear()}</span> Farm Team4. All Rights Reserved
+        </Text>
+      </FooterInner>
+    </FooterContainer>
+  );
+};
