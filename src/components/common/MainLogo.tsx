@@ -5,10 +5,9 @@ const MainLogoContainer = styled.div`
     height: 100px;
     width: 100px;
     cursor: pointer;
-    paddingLeft: 20px;
+    paddingLeft: 30px;
     display: flex;
     align-items: center;
-    padding: 0px;
 `
 
 const MainLogoImg = styled.img`
