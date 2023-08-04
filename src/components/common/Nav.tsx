@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 import { MainLogo } from "./MainLogo";
 
 const NavBarContainer = styled.div`
@@ -15,7 +15,7 @@ const NavBarContainer = styled.div`
   @media (max-width: 1500px) {
     padding: 0px;
   }
-`
+`;
 
 const NavBarInner = styled.div`
   display: flex;
@@ -25,23 +25,22 @@ const NavBarInner = styled.div`
   align-items: center;
   justify-content: space-between;
   background-color: transparent;
-`
+`;
 
 const StyledLink = styled(Link)`
   color: black;
   font-size: 15px;
   text-decoration: none;
   padding: 0 10px;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   &:hover {
     text-decoration: underline;
-    text-decoration-color: #52C07E;
+    text-decoration-color: #52c07e;
     text-decoration-thickness: 2px;
     font-weight: bold;
-    color: #52C07E;
+    color: #52c07e;
   }
-
-`
+`;
 
 function Nav() {
   return (
