@@ -53,7 +53,7 @@ function Nav() {
           <StyledLink to="/">상표권</StyledLink>
           <StyledLink to="/">디자인</StyledLink>
           <StyledLink to="/">CONTECT</StyledLink>
-          <StyledLink to="/">LOGIN</StyledLink>
+          <StyledLink to="/login">LOGIN</StyledLink>
         </div>
       </NavBarInner>
     </NavBarContainer>

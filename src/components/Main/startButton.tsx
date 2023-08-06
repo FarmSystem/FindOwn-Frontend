@@ -42,7 +42,7 @@ export const StartButton = () => {
   return (
     <SectionContainer container>
       <TextContainer>
-        <StyledButton onClick={() => navigate("/search")}>
+        <StyledButton onClick={() => navigate("/login")}>
           시작하기 →{" "}
         </StyledButton>
       </TextContainer>
