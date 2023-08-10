@@ -70,7 +70,7 @@ export const Register = () => {
 
     const passwordValue = password.trim();
     if (!passwordValue) {
-      alert("Passwod 칸이 누락되어 있습니다. 다시 입력해주세요.");
+      alert("Password 칸이 누락되어 있습니다. 다시 입력해주세요.");
       return;
     }
 
