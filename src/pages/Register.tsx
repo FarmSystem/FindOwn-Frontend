@@ -30,6 +30,30 @@ export const Register = () => {
   const navigate = useNavigate();
 
   const [password, setPassword] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [verificationCode, setVerificationCode] = useState<string>("");
+  const [isCodeSent, setIsCodeSent] = useState<boolean>(false);
+
+  const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const handleVerificationCodeChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setVerificationCode(e.target.value);
+  };
+
+  const handleSendVerificationCode = async () => {
+    try {
+      await apiClient.get(`/api/mail/send/code`, {
+        params: {
+          email: email,
+        },
+      });
+      setIsCodeSent(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -50,13 +74,19 @@ export const Register = () => {
       return;
     }
 
+    if (!isCodeSent || verificationCode.trim() === "") {
+      alert("인증번호를 입력해주세요.");
+      return;
+    }
+
     try {
       const response = await apiClient.post(`/api/member/save`, {
         id: data.get("id"),
         name: data.get("name"),
-        email: data.get("email"),
+        email: email,
         password: password,
         phoneNumber: data.get("phoneNumber"),
+        verificationCode: verificationCode,
       });
       console.log(response);
       alert("회원가입이 완료되었습니다.");
@@ -125,7 +155,31 @@ export const Register = () => {
                     id="email"
                     label="Email"
                     name="email"
+                    value={email}
+                    onChange={handleEmailChange}
                   />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    name="verificationCode"
+                    label="인증번호"
+                    id="verificationCode"
+                    value={verificationCode}
+                    onChange={handleVerificationCodeChange}
+                    style={{ opacity: isCodeSent ? 1 : 0 }}
+                    disabled={!isCodeSent}
+                  />
+                  {!isCodeSent && (
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={handleSendVerificationCode}
+                    >
+                      인증번호 전송
+                    </Button>
+                  )}
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
