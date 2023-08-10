@@ -70,7 +70,7 @@ export const Register = () => {
 
     const passwordValue = password.trim();
     if (!passwordValue) {
-      alert("Passwod 칸이 누락되어 있습니다. 다시 입력해주세요.");
+      alert("Password 칸이 누락되어 있습니다. 다시 입력해주세요.");
       return;
     }
 
@@ -98,6 +98,20 @@ export const Register = () => {
 
   const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
+  };
+
+  const handleVerifyCode = async () => {
+    try {
+      await apiClient.post(`/api/mail/verify/code`, {
+        email: email,
+        code: verificationCode,
+      });
+      alert("인증이 완료되었습니다. 이제 회원가입을 진행할 수 있습니다.");
+      setIsCodeSent(true);
+    } catch (error) {
+      console.log(error);
+      alert("인증번호가 유효하지 않습니다. 다시 확인해주세요.");
+    }
   };
 
   return (
@@ -171,6 +185,19 @@ export const Register = () => {
                     style={{ opacity: isCodeSent ? 1 : 0 }}
                     disabled={!isCodeSent}
                   />
+                  {isCodeSent && (
+                    <>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={handleVerifyCode}
+                        style={{ marginTop: "10px" }}
+                      >
+                        인증번호 확인
+                      </Button>
+                      <p>인증번호를 확인하고 회원가입을 진행하세요.</p>
+                    </>
+                  )}
                   {!isCodeSent && (
                     <Button
                       variant="contained"
