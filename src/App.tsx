@@ -1,8 +1,9 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from "./pages/main";
-import { Login } from "./pages/LoginPage";
+import LoginPage from "./pages/LoginPage";
 import Nav from "./components/common/Nav";
+import { Register } from "./pages/Register";
 import React from "react";
 
 function App() {
@@ -12,7 +13,8 @@ function App() {
         <Nav />
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -1,29 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, FormEvent } from "react";
 import { useDispatch } from "react-redux";
-import styled from "@emotion/styled";
-import { Grid } from "@mui/material";
-import { loginUser } from "../actions/user_action";
+import { apiClient } from "../apis/apiClient";
 
-interface LoginProps {}
+interface ApiResponse {
+  code: number;
+}
 
-const Container = styled(Grid)`
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  background-color: #eeffed;
-  z-index: -1;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  max-width: 1920px;
-  padding: 50px 0;
-`;
+function LoginPage() {
+const dispatch = useDispatch();
 
-export const Login: React.FC<LoginProps> = () => {
-  const dispatch = useDispatch();
+  const [Email, setEmail] = useState<string>("");
+  const [Password, setPassword] = useState<string>("");
 
-  const [Email, setEmail] = useState("");
-  const [Password, setPassword] = useState("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [msg, setMsg] = useState<string>("");
 
   const onEmailHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.currentTarget.value);
@@ -31,48 +21,67 @@ export const Login: React.FC<LoginProps> = () => {
   const onPasswordHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.currentTarget.value);
   };
-  const onSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
-    // 버튼만 누르면 리로드 되는 것을 막아줌
+  const onSubmitHandler = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    console.log("Email", Email);
-    console.log("Password", Password);
+    if (!Email) {
+      return alert("아이디를 입력해주세요");
+    } else if (!Password) {
+      return alert("비밀번호를 입력해주세요");
+    } else {
+      let body = {
+        email: Email,
+        password: Password,
+      };
 
-    let body = {
-      email: Email,
-      password: Password,
-    };
+      console.log("Email", Email);
+      console.log("Password", Password);
 
-    dispatch(loginUser(body) as any);
+      apiClient.post<ApiResponse>("/api/members", body).then((res) => {
+        console.log(res.data);
+        if (res.data.code === 200) {
+          dispatch({
+            type: "LOGIN",
+            payload: res.data,
+          });
+          // if (res.data.code === 400) {
+          //   setMsg("Email, Password가 비었습니다.");
+          // }
+          // if (res.data.code === 401) {
+          //   setMsg("Email가 틀립니다");
+          // }
+          // if (res.data.code === 402) {
+          //   setMsg("Password가 틀립니다");
+          // }
+        }
+      });
+    }
+    setLoading(true);
   };
 
   return (
-    <Container container xs>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "100%",
-          height: "100vh",
-        }}
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100%",
+        height: "100vh",
+      }}
+    >
+      <form
+        style={{ display: "flex", flexDirection: "column" }}
+        onSubmit={onSubmitHandler}
       >
-        <form
-          style={{ display: "flex", flexDirection: "column" }}
-          onSubmit={onSubmitHandler}
-        >
-          <label>Email</label>
-          <input type="email" value={Email} onChange={onEmailHandler} />
-          <label>Password</label>
-          <input
-            type="password"
-            value={Password}
-            onChange={onPasswordHandler}
-          />
-          <br />
-          <button type="submit">Login</button>
-        </form>
-      </div>
-    </Container>
+        <label>Email</label>
+        <input type="email" value={Email} onChange={onEmailHandler} />
+        <label>Password</label>
+        <input type="password" value={Password} onChange={onPasswordHandler} />
+        <br />
+        <button type="submit">Login</button>
+      </form>
+    </div>
   );
-};
+}
+
+export default LoginPage;
