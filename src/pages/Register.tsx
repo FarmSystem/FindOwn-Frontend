@@ -22,7 +22,6 @@ const ContainerWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 1920px;
   padding: 50px 0;
 `;
 
@@ -86,7 +85,6 @@ export const Register = () => {
         email: email,
         password: password,
         phoneNumber: data.get("phoneNumber"),
-        verificationCode: verificationCode,
       });
       console.log(response);
       alert("회원가입이 완료되었습니다.");
@@ -106,7 +104,7 @@ export const Register = () => {
         email: email,
         code: verificationCode,
       });
-      alert("인증이 완료되었습니다. 이제 회원가입을 진행할 수 있습니다.");
+      alert("인증이 완료되었습니다.");
       setIsCodeSent(true);
     } catch (error) {
       console.log(error);
@@ -189,7 +187,7 @@ export const Register = () => {
                     <>
                       <Button
                         variant="contained"
-                        color="primary"
+                        color="success"
                         onClick={handleVerifyCode}
                         style={{ marginTop: "10px" }}
                       >
@@ -201,7 +199,7 @@ export const Register = () => {
                   {!isCodeSent && (
                     <Button
                       variant="contained"
-                      color="primary"
+                      color="info"
                       onClick={handleSendVerificationCode}
                     >
                       인증번호 전송
