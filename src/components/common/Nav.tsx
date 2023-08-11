@@ -25,6 +25,11 @@ const NavBarInner = styled.div`
   align-items: center;
   justify-content: space-between;
   background-color: transparent;
+  
+
+  @media (max-width: 1500px) {
+    padding-right: 20px;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -32,7 +37,15 @@ const StyledLink = styled(Link)`
   font-size: 15px;
   text-decoration: none;
   padding: 0 10px;
-  font-family: "Inter", sans-serif;
+
+  @font-face {
+    font-family: "AppleBold";
+    src: url("https://cdn.jsdelivr.net/gh/cho1n/Apollo-Frontend@latest/src/assets/fonts/AppleSDGothicNeoB.ttf")
+      format("truetype");
+  }
+
+  font-family: "AppleBold";
+    
   &:hover {
     text-decoration: underline;
     text-decoration-color: #52c07e;
@@ -51,7 +64,7 @@ function Nav() {
           <StyledLink to="/">Home</StyledLink>
           <StyledLink to="/">About</StyledLink>
           <StyledLink to="/">상표권</StyledLink>
-          <StyledLink to="/">디자인</StyledLink>
+          <StyledLink to="/design">디자인</StyledLink>
           <StyledLink to="/">CONTECT</StyledLink>
           <StyledLink to="/login">LOGIN</StyledLink>
         </div>
