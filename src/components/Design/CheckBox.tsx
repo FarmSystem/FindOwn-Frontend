@@ -23,7 +23,7 @@ const CheckboxGroup: React.FC = () => {
   };
 
   return (
-    <Container >
+    <Container>
       <h1>분류정보</h1>
       <Typography variant="h5" gutterBottom>
         행정상태
@@ -71,10 +71,13 @@ const CheckboxGroup: React.FC = () => {
         />
       </FormGroup>
 
-      <Typography variant="h5" gutterBottom
-          sx={{
-            marginTop: 3,
-        }}>
+      <Typography
+        variant="h5"
+        gutterBottom
+        sx={{
+          marginTop: 3,
+        }}
+      >
         유형
       </Typography>
       <FormGroup>
