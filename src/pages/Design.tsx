@@ -13,6 +13,14 @@ const Container = styled(Grid)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  
+  @font-face {
+    font-family: "AppleBold";
+    src: url("https://cdn.jsdelivr.net/gh/cho1n/Apollo-Frontend@latest/src/assets/fonts/AppleSDGothicNeoB.ttf")
+      format("truetype");
+  }
+
+  font-family: "AppleBold";
   `;
 
 

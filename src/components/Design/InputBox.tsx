@@ -11,13 +11,13 @@ const Container = styled(Grid)`
 `;
 
 const Text = styled.h1`
-  font-size: 80px;
+  font-size: 60px;
   color: #0ac153;
   opacity: 0.6;
 `;
 
 const Input = styled.input`
-  width: 800px;
+  width: 600px;
   height: 150px;
   border: 2px solid #e0e0e0;
   border-radius: 10px;
@@ -31,8 +31,8 @@ const Input = styled.input`
 `;
 
 const DropArea = styled.div`
-  width: 800px;
-  height: 200px;
+  width: 700px;
+  height: 150px;
   color: gray;
   border: 2px dashed #e0e0e0;
   border-radius: 10px;

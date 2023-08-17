@@ -5,19 +5,19 @@ import { Grid } from "@mui/material";
 const Container = styled(Grid)`
   width: 100vw;
   height: 50%;
-  max-width: 1440px;
   display: flex;
   flex-direction: column;
-  align-items: left;
+  max-width: 1440px;
 `;
 
 const Box = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  align-items: left;
-  justify-content: center;
-`;
+  align-items: center;
+  justify-content: left;
+  padding-left: 330px;
+  `;
 
 const TextBox = styled.div`
   display: flex;
@@ -26,15 +26,15 @@ const TextBox = styled.div`
   justify-content: center;
 `;
 
-const ColorBox = styled(Grid)`
-  width: 200px;
-  height: 200px;
+const ColorBox = styled.div`
+  width: 130px;
+  height: 130px;
   background-color: #c5f3a1;
   border-radius: 10px;
-  margin: 40px;
+  margin: 30px;
 `;
 
-const Text = styled.h1`
+const Text = styled.div`
   font-size: 20px;
   color: black;
   letter-spacing: 0.5px;
@@ -43,6 +43,7 @@ const Text = styled.h1`
     font-size: 30px;
     color: #52c07e;
     opacity: 0.75;
+    font-weight: bold;
   }
 `;
 
@@ -70,7 +71,9 @@ export const Section2 = () => {
         <ColorBox />
         <TextBox>
           <Text>
-            <span className="highlight">AI가 이미지 파일을 검색 ∙ 비교</span>
+            <span className="highlight">
+              AI가 이미지 파일을 검색 ∙ 비교합니다.
+            </span>
           </Text>
           <Text>이미지 업로드 후 AI가 상표권을 비교 ∙ 분석합니다.</Text>
           <Text>결과물은 유사한 상표권이 있는지,</Text>
