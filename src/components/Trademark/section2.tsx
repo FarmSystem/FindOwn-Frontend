@@ -17,7 +17,7 @@ const Box = styled.div`
   align-items: center;
   justify-content: left;
   padding-left: 330px;
-  `;
+`;
 
 const TextBox = styled.div`
   display: flex;
@@ -75,8 +75,8 @@ export const Section2 = () => {
               AI가 이미지 파일을 검색∙비교합니다.
             </span>
           </Text>
-          <Text>이미지 업로드 후 AI가 디자인을 비교∙분석합니다.</Text>
-          <Text>결과물은 유사한 디자인이 있는지,</Text>
+          <Text>이미지 업로드 후 AI가 상표권을 비교∙분석합니다.</Text>
+          <Text>결과물은 유사한 상표권이 있는지,</Text>
           <Text>그 정도가 어느 정도인지에 대해 나타내줍니다.</Text>
         </TextBox>
       </Box>

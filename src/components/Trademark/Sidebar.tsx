@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import CheckboxGroup from "../Design/CheckBox";
+import CheckboxGroup from "../Trademark/CheckBox";
 
 const Side = styled.div`
   display: flex;

@@ -63,7 +63,7 @@ function Nav() {
         <div>
           <StyledLink to="/">Home</StyledLink>
           <StyledLink to="/">About</StyledLink>
-          <StyledLink to="/">상표권</StyledLink>
+          <StyledLink to="/trademark">상표권</StyledLink>
           <StyledLink to="/design">디자인</StyledLink>
           <StyledLink to="/">CONTECT</StyledLink>
           <StyledLink to="/login">LOGIN</StyledLink>
