@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { Grid } from "@mui/material";
 import { InputBox } from "./InputBox";
 
-const Container = styled.div`
+const Container = styled(Grid)`
     width: 100vw;
     height: 50%;
     display: flex;
