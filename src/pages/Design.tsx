@@ -2,7 +2,8 @@ import React from "react";
 import styled from "@emotion/styled";
 import { Grid } from "@mui/material";
 import { Sidebar } from "../components/Design/Sidebar";
-import { InputBox } from "../components/Design/InputBox";
+import { Section1 } from "../components/Design/section1";
+import { Section2 } from "../components/Design/section2";
 
 const Container = styled(Grid)`
   width: 100%;
@@ -12,15 +13,15 @@ const Container = styled(Grid)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 50px 0;
-`;
+  `;
 
 
 export const Design = () => {
   return (
-  <Container>
+  <Container xs={12}>
     <Sidebar />
-    <InputBox />
+    <Section1 />
+    <Section2 />
   </Container>
   );
 };
