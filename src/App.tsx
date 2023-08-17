@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage";
 import Nav from "./components/common/Nav";
 import { Register } from "./pages/Register";
 import { Design } from "./pages/Design";
+import { TradeMark } from "./pages/TradeMark";
 import React from "react";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/design" element={<Design />} />
+          <Route path="/trademark" element={<TradeMark />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -5,8 +5,6 @@ import FormGroup from "@mui/material/FormGroup";
 import Typography from "@mui/material/Typography";
 import { Container } from "@mui/material";
 
-
-
 const CheckboxGroup: React.FC = () => {
   const [checkedItems, setCheckedItems] = useState<{
     [key: string]: boolean;
@@ -17,7 +15,6 @@ const CheckboxGroup: React.FC = () => {
     option4: false,
     option5: false,
     option6: false,
-    option7: false,
   });
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -94,7 +91,7 @@ const CheckboxGroup: React.FC = () => {
               name="option5"
             />
           }
-          label="부분디자인"
+          label="도형복합"
         />
         <FormControlLabel
           control={
@@ -104,17 +101,7 @@ const CheckboxGroup: React.FC = () => {
               name="option6"
             />
           }
-          label="관련디자인"
-        />
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={checkedItems.option7}
-              onChange={handleCheckboxChange}
-              name="option7"
-            />
-          }
-          label="기타"
+          label="도형상표"
         />
       </FormGroup>
       {/* <Typography variant="subtitle1" gutterBottom>

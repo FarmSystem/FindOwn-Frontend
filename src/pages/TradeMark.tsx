@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { Grid } from "@mui/material";
-import { Sidebar } from "../components/Design/Sidebar";
-import { Section1 } from "../components/Design/section1";
-import { Section2 } from "../components/Design/section2";
+import { Sidebar } from "../components/Trademark/Sidebar";
+import { Section1 } from "../components/Trademark/section1";
+import { Section2 } from "../components/Trademark/section2";
 
 const Container = styled(Grid)`
   width: 100%;
@@ -23,7 +23,7 @@ const Container = styled(Grid)`
   font-family: "AppleBold";
 `;
 
-export const Design = () => {
+export const TradeMark = () => {
   return (
     <Container xs={12}>
       <Sidebar />
