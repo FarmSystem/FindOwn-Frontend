@@ -2,24 +2,37 @@ import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { Grid } from "@mui/material";
 
+const Container = styled(Grid)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 50px 0;
+`;
+
 const Text = styled.h1`
-  font-size: 40px;
+  font-size: 80px;
   color: #0ac153;
   opacity: 0.6;
 `;
 
 const Input = styled.input`
-  width: 600px;
-  height: 50px;
+  width: 800px;
+  height: 150px;
   border: 2px solid #e0e0e0;
   border-radius: 10px;
   cursor: pointer;
-  display: none; /* Hide the input element */
+  display: none;
+
+  @media (max-width: 1400px) {
+    width: 600px;
+    height: 100px;
+  }
 `;
 
 const DropArea = styled.div`
-  width: 600px;
-  height: 150px;
+  width: 800px;
+  height: 200px;
   color: gray;
   border: 2px dashed #e0e0e0;
   border-radius: 10px;
@@ -28,12 +41,11 @@ const DropArea = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-`;
 
-const Container = styled(Grid)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @media (max-width: 1400px) {
+    width: 600px;
+    height: 150px;
+  }
 `;
 
 export const InputBox: React.FC = () => {
@@ -63,7 +75,7 @@ export const InputBox: React.FC = () => {
   };
 
   return (
-    <Container xs>
+    <Container xs={12}>
       <Text>AI 디자인 침해 판단</Text>
       <DropArea
         onDrop={handleDrop}
