@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { Grid } from "@mui/material";
 
+interface InputBoxProps {
+  onImageSelect: (file: File | null) => void;
+}
+
 const Container = styled(Grid)`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 50px 0;
+  padding: 20px 0;
 `;
 
 const Text = styled.h1`
@@ -48,7 +52,7 @@ const DropArea = styled.div`
   }
 `;
 
-export const InputBox: React.FC = () => {
+export const InputBox: React.FC<InputBoxProps> = ({ onImageSelect }) => {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
 
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
@@ -69,6 +73,8 @@ export const InputBox: React.FC = () => {
   const handleImageSelection = (file: File | null) => {
     if (file && (file.type === "image/jpeg" || file.type === "image/png")) {
       setSelectedImage(file);
+      onImageSelect(file); // 이미지 선택 시, 상위 컴포넌트로 전달
+      console.log(file);
     } else {
       alert("JPG 혹은 PNG 형식의 파일만 가능합니다.");
     }
