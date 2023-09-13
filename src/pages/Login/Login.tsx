@@ -1,9 +1,10 @@
 import React from 'react';
 import {
-  pageStyle,
-  innerPageStyle,
-  headingStyle,
-} from '../../components/SignUp/signUpPage';
+  PageStyle,
+  InnerPageStyle,
+  HeadingStyle,
+  grayTextStyle,
+} from './style';
 import { DefaultSignInForm } from '../../components/SignIn/DefaultSignInForm';
 import { SocialLoginButtons, ForSignUp } from '../../components/SignUp';
 import styled from '@emotion/styled';
@@ -16,13 +17,7 @@ const OptionWrapper = styled.div`
   width: 600px;
   padding: 15px;
   `;
-
-const grayTextStyle = css`
-  color: #545454;
-  font-size: 14px;
-  font-weight: 400;
-`;
-
+  
 const Options = styled.div`
   display: flex;
   gap: 15px;
@@ -34,17 +29,17 @@ const Label = styled.label`
 
 export const Login = () => {
   return (
-    <div css={pageStyle}>
-      <div css={innerPageStyle}>
-        <h2 css={headingStyle}>로그인</h2>
+    <PageStyle>
+      <InnerPageStyle>
+        <PageStyle>로그인</PageStyle>
         <DefaultSignInForm />
         <OptionWrapper>
           <Options>
             <div>
               <input type="checkbox" id="saveId" />
-              <Label htmlFor="saveId" css={grayTextStyle}>
+              <grayTextStyle htmlFor="saveId">
                 아이디 저장
-              </Label>
+              </grayTextStyle>
             </div>
             <div>
               <input type="checkbox" id="savePassword" />
@@ -64,7 +59,7 @@ export const Login = () => {
         </OptionWrapper>
         <SocialLoginButtons />
         <ForSignUp/>
-      </div>
-    </div>
+      </InnerPageStyle>
+    </PageStyle>
   );
 }
