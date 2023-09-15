@@ -55,7 +55,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-function Nav() {
+export const Nav = () => {
   return (
     <NavBarContainer>
       <NavBarInner>
@@ -72,5 +72,3 @@ function Nav() {
     </NavBarContainer>
   );
 }
-
-export default Nav;
