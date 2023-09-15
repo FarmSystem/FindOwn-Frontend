@@ -10,7 +10,7 @@ const NavBarContainer = styled.div`
   height: 63px;
   width: 100%;
   padding: 0 20px;
-  background-color: rgba(238, 255, 237, 0.70);
+  background-color: white;
 
   @media (max-width: 1500px) {
     padding: 0px;
@@ -56,7 +56,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-export const Nav = () => {
+export const MainNav = () => {
   return (
     <NavBarContainer>
       <NavBarInner>
