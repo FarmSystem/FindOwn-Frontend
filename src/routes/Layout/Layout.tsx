@@ -1,14 +1,18 @@
-import { Outlet} from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import {
   Root, 
   Container
 } from './style';
-import { Nav } from '../../components/common';
+import { Nav, MainNav } from '../../components/common';
 
 export const Layout = () => {
+  const location = useLocation();
+
+  const showMain = location.pathname === '/';
+
   return(
     <Root>
-      <Nav/>
+      {showMain ? <MainNav /> : <Nav />}
       <Container>
         <Outlet />
       </Container>

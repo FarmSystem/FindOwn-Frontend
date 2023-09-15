@@ -8,9 +8,10 @@ export const Root = styled.div`
 `;
 
 export const Container = styled.div`
-  // max-width: 1300px;
   width: 100%;
+  height: 90vh;
   display: flex;
   justify-content : center;
   margin-top: 50px;
-`;
+  border: 1px solid black;
+  `;
