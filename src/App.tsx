@@ -19,9 +19,8 @@ function App() {
     <div className="App">
       <Global styles={GlobalStyle} />
       <BrowserRouter>
-        <Nav />
         <Routes>
-          <Route path="/" element={<Layout/>} >
+          <Route path="/" element={<Layout/>} >            
             <Route path="/" element={<Main />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
