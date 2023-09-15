@@ -28,9 +28,7 @@ export const Login = () => {
   const onPasswordHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.currentTarget.value);
   };
-  const onSubmitHandler = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
+  const onSubmitHandler = () => {
     if (!Email) {
       return alert("아이디를 입력해주세요");
     } else if (!Password) {
@@ -53,7 +51,7 @@ export const Login = () => {
           <Text>로그인</Text>
           <IdInputForm onChange={onEmailHandler} placeholder='아이디'/>
           <PwdInputForm onChange={onPasswordHandler} placeholder='비밀번호'/>
-          <SubmitButton onClick={()=>onSubmitHandler}>로그인</SubmitButton>
+          <SubmitButton onClick={onSubmitHandler}>로그인</SubmitButton>
           <Additional>
             <SignUp>회원가입</SignUp>
           </Additional>
