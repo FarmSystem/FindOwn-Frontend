@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 
 export const Origin = styled.div`
   display: flex;
-  width: 100vw;
   margin-top: 50px;
   height: 800px;
   flex-direction: row; 
@@ -23,7 +22,7 @@ export const Text = styled.div`
 `;
 
 export const IdInputForm = styled.input`
-  width: 540px;
+  width: 600px;
   height: 50px;
   margin-top: 43px;
   border: 1px solid #545454;
@@ -63,7 +62,6 @@ export const Additional = styled.div`
   width: 100%;
   height: 20px;
   margin-top: 15px;
-  // border: 1px solid black;
 `;
 
 export const SignUp = styled.div`
