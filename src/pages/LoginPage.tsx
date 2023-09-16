@@ -6,7 +6,7 @@ interface ApiResponse {
   code: number;
 }
 
-function LoginPage() {
+export const LoginPage = () => {
 const dispatch = useDispatch();
 
   const [Email, setEmail] = useState<string>("");
@@ -84,4 +84,4 @@ const dispatch = useDispatch();
   );
 }
 
-export default LoginPage;
+// export default LoginPage;
