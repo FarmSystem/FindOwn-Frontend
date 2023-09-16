@@ -8,7 +8,6 @@ const Container = styled(Grid)`
   height: 100vh;
   display: flex;
   background-color: #eeffed;
-  z-index: -1;
   flex-direction: column;
   align-items: center;
   justify-content: center;

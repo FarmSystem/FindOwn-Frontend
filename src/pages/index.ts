@@ -4,3 +4,4 @@ export { Design } from './Design';
 export { LoginPage } from './LoginPage';
 export { Register } from './Register';
 export { TradeMark } from './TradeMark';
+// export { main } from './main';
