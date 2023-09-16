@@ -66,7 +66,7 @@ export const MainNav = () => {
           <StyledLink to="/">About</StyledLink>
           <StyledLink to="/trademark">상표권</StyledLink>
           <StyledLink to="/design">디자인</StyledLink>
-          <StyledLink to="/">CONTECT</StyledLink>
+          <StyledLink to="/">CONTACT</StyledLink>
           <StyledLink to="/login">LOGIN</StyledLink>
         </div>
       </NavBarInner>
