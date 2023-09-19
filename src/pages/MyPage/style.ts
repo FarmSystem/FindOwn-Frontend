@@ -6,7 +6,7 @@ export const Origin = styled.div`
   flex-direction: column;
   width: 1280px;
   height: 100%;
-  border: 1px solid black;
+  // border: 1px solid black;
 `;
 
 export const Text = styled.div`
