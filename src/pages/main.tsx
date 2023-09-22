@@ -5,7 +5,7 @@ import Section1 from "../components/Main/section1";
 
 const Container = styled(Grid)`
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   display: flex;
   background-color: #eeffed;
   flex-direction: column;

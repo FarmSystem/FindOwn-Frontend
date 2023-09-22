@@ -7,7 +7,8 @@ const NavBarContainer = styled.div`
   position: fixed;
   top: 0;
   z-index: 10;
-  height: 50px;
+  // height: 50px;
+  height: 5vh;
   width: 100%;
   padding: 0 20px;
   background-color: white;

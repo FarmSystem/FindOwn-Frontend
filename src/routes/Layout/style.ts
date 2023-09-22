@@ -9,7 +9,7 @@ export const Root = styled.div`
 
 export const Container = styled.div`
   width: 100%;
-  height: 90vh;
+  height: 95vh;
   display: flex;
   justify-content : center;
   margin-top: 50px;
