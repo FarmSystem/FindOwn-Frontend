@@ -21,12 +21,14 @@ const buttonStyle = css`
 `;
 const StyledButton = styled(Button)`
   ${buttonStyle}
+  margin-left: 20px;
 `;
 
 const SectionContainer = styled(Grid)`
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
+  padding-left: 20px;
 `;
 
 const TextContainer = styled(Grid)`
@@ -44,6 +46,9 @@ export const StartButton = () => {
       <TextContainer>
         <StyledButton onClick={() => navigate("/login")}>
           시작하기 →{" "}
+        </StyledButton>
+        <StyledButton onClick={() => navigate("/about")}>
+          침해사례 →{" "}
         </StyledButton>
       </TextContainer>
     </SectionContainer>

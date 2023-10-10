@@ -4,15 +4,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from "./pages/main";
 import { Nav } from "./components/common";
 import { Layout } from "./routes/Layout";
-import { Global, css } from '@emotion/react';
+import { Global, css } from "@emotion/react";
 import { GlobalStyle } from "./GlobalStyle";
-import { 
-  Login,
-  Register,
-  Design,
-  TradeMark,
-  MyPage
-} from './pages';
+import { Login, Register, Design, TradeMark, MyPage, About } from "./pages";
 
 function App() {
   return (
@@ -20,13 +14,14 @@ function App() {
       <Global styles={GlobalStyle} />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout/>} >            
+          <Route path="/" element={<Layout />}>
             <Route path="/" element={<Main />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/design" element={<Design />} />
             <Route path="/trademark" element={<TradeMark />} />
-            <Route path="/mypage" element={<MyPage/>} />
+            <Route path="/mypage" element={<MyPage />} />
+            <Route path="/about" element={<About />} />
           </Route>
         </Routes>
       </BrowserRouter>
