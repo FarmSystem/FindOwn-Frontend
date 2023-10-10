@@ -21,11 +21,10 @@ const NavBarInner = styled.div`
   display: flex;
   margin: 0 auto;
   height: 100%;
-  max-width: 1920px;
+  max-width: 1440px;
   align-items: center;
   justify-content: space-between;
   background-color: transparent;
-  
 
   @media (max-width: 1500px) {
     padding-right: 20px;
@@ -45,7 +44,7 @@ const StyledLink = styled(Link)`
   }
 
   font-family: "AppleBold";
-    
+
   &:hover {
     text-decoration: underline;
     text-decoration-color: #52c07e;
@@ -70,4 +69,4 @@ export const MainNav = () => {
       </NavBarInner>
     </NavBarContainer>
   );
-}
+};
