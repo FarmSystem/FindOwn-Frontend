@@ -1,5 +1,5 @@
 import { 
-  Origin,
+  Container,
   Div,
   Text,
   IdInputForm,
@@ -49,17 +49,17 @@ export const Login = () => {
   };
 
   return(
-    <Origin>
+    <Container>
       <Div>
           <Text>로그인</Text>
           <IdInputForm onChange={onEmailHandler} type="text" placeholder='아이디'/>
           <PwdInputForm onChange={onPasswordHandler} type="password" placeholder='비밀번호'/>
           <SubmitButton onClick={onSubmitHandler}>로그인</SubmitButton>
           <Additional>
-            <SignUp>회원가입</SignUp>
+            <SignUp onClick={()=>navigate(`/register`)}>회원가입</SignUp>
           </Additional>
       </Div>
-    </Origin>
+    </Container>
   );
 };
 
