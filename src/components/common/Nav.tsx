@@ -10,7 +10,7 @@ const NavBarContainer = styled.div`
   height: 5vh;
   width: 100%;
   padding: 0 20px;
-  background-color: rgba(238, 255, 237, 0.70);
+  background-color: rgba(238, 255, 237, 0.7);
 
   @media (max-width: 1500px) {
     padding: 0px;
@@ -21,11 +21,10 @@ const NavBarInner = styled.div`
   display: flex;
   margin: 0 auto;
   height: 100%;
-  max-width: 1920px;
+  max-width: 1440px;
   align-items: center;
   justify-content: space-between;
   background-color: transparent;
-  
 
   @media (max-width: 1500px) {
     padding-right: 20px;
@@ -45,7 +44,7 @@ const StyledLink = styled(Link)`
   }
 
   font-family: "AppleBold";
-    
+
   &:hover {
     text-decoration: underline;
     text-decoration-color: #52c07e;
@@ -64,12 +63,10 @@ export const Nav = () => {
         <div>
           <StyledLink to="/">Home</StyledLink>
           <StyledLink to="/">About</StyledLink>
-          <StyledLink to="/trademark">상표권</StyledLink>
-          <StyledLink to="/design">디자인</StyledLink>
-          <StyledLink to="/">CONTACT</StyledLink>
+          <StyledLink to="/trademark">Service</StyledLink>
           <StyledLink to="/login">LOGIN</StyledLink>
         </div>
       </NavBarInner>
     </NavBarContainer>
   );
-}
+};

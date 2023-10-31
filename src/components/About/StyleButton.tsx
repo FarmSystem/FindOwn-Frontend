@@ -16,7 +16,7 @@ const buttonStyle = css`
   @media (max-width: 1500px) {
     width: 12vw;
     height: 5vh;
-    font-size: 1.5vw;
+    font-size: 1.2vw;
   }
 `;
 const StyledButton = styled(Button)`
@@ -39,16 +39,13 @@ const TextContainer = styled(Grid)`
   padding: 20px 20px 20px 20px;
 `;
 
-export const StartButton = () => {
+export const StyleButton = () => {
   const navigate = useNavigate();
   return (
     <SectionContainer container>
       <TextContainer>
         <StyledButton onClick={() => navigate("/login")}>
-          시작하기 →{" "}
-        </StyledButton>
-        <StyledButton onClick={() => navigate("/about")}>
-          침해사례 →{" "}
+          상표권 판단하기 →{" "}
         </StyledButton>
       </TextContainer>
     </SectionContainer>

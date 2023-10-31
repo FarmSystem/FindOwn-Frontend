@@ -8,7 +8,7 @@ import { Nav, MainNav } from '../../components/common';
 export const Layout = () => {
   const location = useLocation();
 
-  const showMain = location.pathname === '/';
+  const showMain = location.pathname === '/' || location.pathname === '/about';
 
   return(
     <Root>
