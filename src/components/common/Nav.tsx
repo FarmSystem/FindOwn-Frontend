@@ -62,9 +62,11 @@ export const Nav = () => {
         <MainLogo />
         <div>
           <StyledLink to="/">Home</StyledLink>
-          <StyledLink to="/">About</StyledLink>
+          <StyledLink to="/about">About Us</StyledLink>
           <StyledLink to="/trademark">Service</StyledLink>
-          <StyledLink to="/login">LOGIN</StyledLink>
+          <StyledLink to="/trademark">Community</StyledLink>
+          <StyledLink to="/mypage">MyPage</StyledLink>
+          {/* 로그인 토큰값이 있는 경우 mypage 없는 경우 login*/}
         </div>
       </NavBarInner>
     </NavBarContainer>
