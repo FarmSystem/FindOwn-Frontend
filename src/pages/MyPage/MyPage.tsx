@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import {
-  Origin,
+  Container,
   Text,
   Theader,
   InfoDiv,
@@ -12,7 +12,7 @@ import {
 
 export const MyPage = () => {
   return(
-    <Origin>
+    <Container>
       <Text>계정 관리</Text>
       <Theader>기본 정보</Theader>
       <InfoDiv>
@@ -23,6 +23,6 @@ export const MyPage = () => {
           </ProfileDiv>
         </InfoContainer>
       </InfoDiv>
-    </Origin>
+    </Container>
   );
 };

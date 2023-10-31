@@ -1,13 +1,15 @@
 import styled from "@emotion/styled";
 import profieImg from '../../assets/images/profile_img.svg';
+import { Grid } from "@mui/material";
 
-export const Origin = styled.div`
+export const Container = styled(Grid)`
+  width: 100vw;
   display: flex;
+  background-color: #fff;
   flex-direction: column;
-  width: 1280px;
-  height: 100%;
-  // border: 1px solid black;
-`;
+  max-width: 1440px;
+  padding: 50px 0;
+  `;
 
 export const Text = styled.div`
   height: 52px;
