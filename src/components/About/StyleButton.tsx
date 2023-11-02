@@ -9,7 +9,7 @@ const buttonStyle = css`
   color: white;
   font-size: 1.3vw;
   display: flex;
-  border-radius: 40px;
+  border-radius: 10px;
   width: 10vw;
   height: 5vh;
 

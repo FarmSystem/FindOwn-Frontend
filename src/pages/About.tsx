@@ -2,9 +2,11 @@ import React from "react";
 import styled from "@emotion/styled";
 import { Grid } from "@mui/material";
 import Section1 from "../components/About/section1";
+import Section2 from "../components/About/section2";
 
 const Container = styled(Grid)`
   width: 100vw;
+  height: 55vh;
   display: flex;
   background-color: #eeffed;
   flex-direction: column;
@@ -17,6 +19,7 @@ export const About = () => {
   return (
     <Container container xs>
       <Section1 />
+      <Section2 />
     </Container>
   );
 };

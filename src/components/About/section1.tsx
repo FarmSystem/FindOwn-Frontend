@@ -1,7 +1,6 @@
-import React from "react";
 import styled from "@emotion/styled";
 import { Grid } from "@mui/material";
-import image from "../../assets/images/Search engines-bro.png";
+import image from "../../assets/images/Search_engines-bro.png";
 import { StyleButton } from "./StyleButton";
 
 const Container = styled(Grid)`
@@ -38,11 +37,9 @@ const TextBox = styled(Grid)`
   padding-left: 30px;
 `;
 
-const Image = styled.div`
-  background-image: url(${image});
-  background-size: cover;
-  width: 900px;
-  height: 600px;
+const Image = styled.img`
+  width: 650px;
+  height: 550px;
 `;
 
 function Section1() {
@@ -60,7 +57,7 @@ function Section1() {
           <StyleButton />
         </TextBox>
         <TextBox item xl={6} lg={6}>
-          <Image />
+          <Image src={image} />
         </TextBox>
       </Grid>
     </Container>

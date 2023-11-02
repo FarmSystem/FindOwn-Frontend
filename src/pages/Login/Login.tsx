@@ -1,4 +1,4 @@
-import { 
+import {
   Origin,
   Div,
   Text,
@@ -6,11 +6,11 @@ import {
   PwdInputForm,
   SubmitButton,
   Additional,
-  SignUp
-} from './style';
-import React, { useState, FormEvent } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { atom } from 'jotai';
+  SignUp,
+} from "./style";
+import React, { useState, FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
+import { atom } from "jotai";
 
 interface ApiResponse {
   code: number;
@@ -18,7 +18,7 @@ interface ApiResponse {
 
 export const Login = () => {
   const navigate = useNavigate();
-  
+
   const [Email, setEmail] = useState<string>("");
   const [Password, setPassword] = useState<string>("");
 
@@ -48,18 +48,25 @@ export const Login = () => {
     setLoading(true);
   };
 
-  return(
+  return (
     <Origin>
       <Div>
-          <Text>로그인</Text>
-          <IdInputForm onChange={onEmailHandler} type="text" placeholder='아이디'/>
-          <PwdInputForm onChange={onPasswordHandler} type="password" placeholder='비밀번호'/>
-          <SubmitButton onClick={onSubmitHandler}>로그인</SubmitButton>
-          <Additional>
-            <SignUp>회원가입</SignUp>
-          </Additional>
+        <Text>로그인</Text>
+        <IdInputForm
+          onChange={onEmailHandler}
+          type="text"
+          placeholder="아이디"
+        />
+        <PwdInputForm
+          onChange={onPasswordHandler}
+          type="password"
+          placeholder="비밀번호"
+        />
+        <SubmitButton onClick={onSubmitHandler}>로그인</SubmitButton>
+        <Additional>
+          <SignUp onClick={() => navigate("/register")}>회원가입</SignUp>
+        </Additional>
       </Div>
     </Origin>
   );
 };
-

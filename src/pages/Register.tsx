@@ -18,7 +18,7 @@ const ContainerWrapper = styled.div`
   height: 100vh;
   display: flex;
   background-color: #eeffed;
-  z-index: -1;
+  z-index: 2;
   flex-direction: column;
   align-items: center;
   justify-content: center;
