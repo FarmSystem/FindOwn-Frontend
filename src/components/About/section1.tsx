@@ -4,8 +4,9 @@ import image from "../../assets/images/Search_engines-bro.png";
 import { StyleButton } from "./StyleButton";
 
 const Container = styled(Grid)`
-  height: 100vh;
+  height: 550px;
   z-index: 1;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -33,7 +34,6 @@ const TextBox = styled(Grid)`
   align-items: center;
   justify-content: center;
   width: 100%;
-  hight: 100%;
   padding-left: 30px;
 `;
 
@@ -42,16 +42,19 @@ const Image = styled.img`
   height: 550px;
 `;
 
+const PaddingText = styled(Text)`
+  padding-top: 70px;
+`
+
 function Section1() {
   return (
     <Container container xs>
-      <Grid container>
         <TextBox item xl={6} lg={6}>
-          <Text>
+          <PaddingText>
             <span className="highlight">
               {"상표권 관련 최신 이슈 및 주요 개념"}
             </span>
-          </Text>
+          </PaddingText>
           <Text>FindOwn 콘텐츠를 통해 </Text>
           <Text>상표권 관련 지식 및 트렌드를 알아봐요 ! </Text>
           <StyleButton />
@@ -59,7 +62,6 @@ function Section1() {
         <TextBox item xl={6} lg={6}>
           <Image src={image} />
         </TextBox>
-      </Grid>
     </Container>
   );
 }

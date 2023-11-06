@@ -62,7 +62,7 @@ export const MainNav = () => {
         <MainLogo />
         <div>
           <StyledLink to="/">Home</StyledLink>
-          <StyledLink to="/">About</StyledLink>
+          <StyledLink to="/about">About</StyledLink>
           <StyledLink to="/trademark">Service</StyledLink>
           <StyledLink to="/login">LOGIN</StyledLink>
         </div>
