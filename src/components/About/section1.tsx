@@ -13,7 +13,7 @@ const Container = styled(Grid)`
 `;
 
 const Text = styled.div`
-  font-size: 70px;
+  font-size: 50px;
   color: #0ac153;
   letter-spacing: 0.5px;
   margin-bottom: 10px;

@@ -7,7 +7,7 @@ const buttonStyle = css`
   background-color: #0ac153;
   padding: 10px 10px 10px 10px;
   color: white;
-  font-size: 1.3vw;
+  font-size: 1vw;
   display: flex;
   border-radius: 10px;
   width: 10vw;

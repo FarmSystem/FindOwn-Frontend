@@ -15,7 +15,7 @@ const Container = styled(Grid)`
 
 const TabMenu = styled.ul`
   background-color: #ffffff;
-  width: 80vw;
+  width: 100vw;
   color: rgb(232, 234, 237);
   font-weight: bold;
   display: flex;
@@ -31,7 +31,7 @@ const TabMenu = styled.ul`
     background-color: #ffffff;
     justify-content: center;
     text-align: center;
-    width: 15vw;
+    width: 10vw;
     font-size: 25px;
     transition: 0.5s;
     cursor: pointer;
@@ -54,8 +54,12 @@ const TabMenu = styled.ul`
 
 const Desc = styled.div`
   text-align: center;
-  background-color: #ffffff;
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
 `;
 
 export const Section2 = () => {
@@ -69,7 +73,7 @@ export const Section2 = () => {
 
   return (
     <Container container xs>
-      <div>
+      <div >
         <TabMenu>
           {menuArr.map((el, index) => (
             <li

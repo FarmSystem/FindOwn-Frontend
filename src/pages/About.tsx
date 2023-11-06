@@ -14,6 +14,7 @@ const Container = styled(Grid)`
   justify-content: center;
   max-width: 1440px;
   padding: 50px 0;
+
 `;
 export const About = () => {
   return (
