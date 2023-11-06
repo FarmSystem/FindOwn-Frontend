@@ -9,11 +9,18 @@ const Side = styled.div`
   border-radius: 10px;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   width: 15%;
   height: 90vh;
   background-color: #eeffed;
   margin-top: 50px;
+
+  @font-face {
+    font-family: "AppleBold";
+    src: url("https://cdn.jsdelivr.net/gh/cho1n/Apollo-Frontend@latest/src/assets/fonts/AppleSDGothicNeoB.ttf")
+      format("truetype");
+  }
+
+  font-family: "AppleBold";
 `;
 
 export const Sidebar = () => {
