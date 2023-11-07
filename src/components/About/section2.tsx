@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { Grid } from "@mui/material";
 import React, { useState } from "react";
 import { Tag1 } from "./Tag1";
+import { Tag2 } from "./Tag2";
 
 const Container = styled(Grid)`
   width: 100vw;
@@ -85,7 +86,7 @@ export const Section2 = () => {
           ))}
         </TabMenu>
         <Desc>{menuArr[currentTab].name === "절차" && <Tag1></Tag1>}</Desc>
-        <Desc>{menuArr[currentTab].name === "주요 개념" && <Tag1></Tag1>}</Desc>
+        <Desc>{menuArr[currentTab].name === "주요 개념" && <Tag2></Tag2>}</Desc>
         <Desc>{menuArr[currentTab].name === "이슈" && <Tag1></Tag1>}</Desc>
       </div>
     </Container>
