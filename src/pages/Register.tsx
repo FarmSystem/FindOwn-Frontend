@@ -51,15 +51,29 @@ const Input = styled.input`
   border-radius: 12px;
   padding-left: 10px;
   font-size: 20px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
+`;
+
+const AlertText = styled.div`
+  font-size: 15px;
+  color: red;
+  margin-top: 10px;
 `;
 
 export const Register = () => {
   const navigate = useNavigate();
 
+  const [name, setName] = useState<string>("");
+  const [id, setId] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [passwordCheck, setPasswordCheck] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [verificationCode, setVerificationCode] = useState<string>("");
   const [isCodeSent, setIsCodeSent] = useState<boolean>(false);
+
+  const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value);
+  };
 
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -68,6 +82,16 @@ export const Register = () => {
   const handleVerificationCodeChange = (e: ChangeEvent<HTMLInputElement>) => {
     setVerificationCode(e.target.value);
   };
+
+  const handleIdChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setId(e.target.value);
+  };
+
+  const handlePasswordCheckChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setPasswordCheck(e.target.value);
+  };
+
+  const isSame = password === passwordCheck;
 
   const handleSendVerificationCode = async () => {
     try {
@@ -153,14 +177,27 @@ export const Register = () => {
             id="name"
             name="name"
             placeholder="이름을 입력해주세요."
-            onChange={handleEmailChange}
+            value={name}
+            required
+            onChange={handleNameChange}
+          />
+          <SubText> 아이디 </SubText>
+          <Input
+            type="text"
+            name="id"
+            value={id}
+            required
+            placeholder="사용하실 아이디를 입력해주세요."
+            onChange={handleIdChange}
           />
           <SubText> 이메일 </SubText>
           <Input
             type="text"
             id="email"
             name="email"
-            placeholder="사용하실 이메일을 입력해주세요."
+            value={email}
+            required
+            placeholder="사용자 인증을 위해 이메일을 입력해주세요."
             onChange={handleEmailChange}
           />
           {isCodeSent && (
@@ -180,7 +217,6 @@ export const Register = () => {
               >
                 인증번호 확인
               </Button>
-              <p> 인증번호를 확인하고 회원가입을 진행하세요. </p>
             </>
           )}
           {!isCodeSent && (
@@ -205,17 +241,31 @@ export const Register = () => {
             name="verificationCode"
             id="verificationCode"
             placeholder="인증번호를 입력해주세요."
+            value={verificationCode}
             onChange={handleVerificationCodeChange}
             style={{ opacity: isCodeSent ? 1 : 0 }}
           />{" "}
           <SubText> 비밀번호 </SubText>
           <Input
             type="password"
-            id="password"
             name="password"
+            value={password}
             placeholder="사용하실 비밀번호를 입력해주세요."
+            required
             onChange={handlePasswordChange}
           />
+          <SubText> 비밀번호 확인 </SubText>
+          <Input
+            type="password"
+            name="passwordCheck"
+            value={passwordCheck}
+            placeholder="입력하신 비밀번호를 확인해주세요."
+            required
+            onChange={handlePasswordCheckChange}
+          />
+          {passwordCheck !== "" && !isSame && (
+            <AlertText className="passwordCheck">비밀번호가 다릅니다.</AlertText>
+          )}
         </Box>
         <Button
           type="submit"
