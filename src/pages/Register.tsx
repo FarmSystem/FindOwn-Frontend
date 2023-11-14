@@ -1,28 +1,56 @@
 import React, { useState, FormEvent, ChangeEvent } from "react";
 import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 import styled from "@emotion/styled";
 import { useNavigate } from "react-router-dom";
 import { apiClient } from "../apis/apiClient";
-
-const theme = createTheme();
 
 const ContainerWrapper = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
-  background-color: #eeffed;
+  background-color: #ffffff;
   z-index: 2;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 50px 0;
+`;
+//eeffed
+const FormWrapper = styled.form`
+  width: 700px;
+  height: 600px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+`;
+
+const Text = styled.div`
+  font-size: 40px;
+  font-weight: bold;
+`;
+
+const SubText = styled.div`
+  font-size: 22px;
+  padding: 10px 10px 10px 10px;
+`;
+
+const Box = styled.div`
+  width: 100%;
+  background-color: #ffffff;
+  display: flex;
+  align-items: left;
+  flex-direction: column;
+  padding: 20px 20px;
+`;
+
+const Input = styled.input`
+  width: 100%;
+  height: 50px;
+  border: 1px solid #545454;
+  border-radius: 12px;
+  padding-left: 10px;
+  font-size: 20px;
 `;
 
 export const Register = () => {
@@ -58,18 +86,21 @@ export const Register = () => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
-    const requiredFields = ["id", "name", "email", "phoneNumber"];
+    const requiredFields = ["name", "email"];
     for (const field of requiredFields) {
       const fieldValue = data.get(field) as string;
       if (fieldValue === null || !fieldValue.trim()) {
-        alert(`${field}칸이 누락되어 있습니다. 다시 입력해주세요.`);
+        if (field === "name")
+          alert(`이름 칸이 누락되어 있습니다. 다시 입력해주세요.`);
+        else if (field === "email")
+          alert(`이메일 칸이 누락되어 있습니다. 다시 입력해주세요.`);
         return;
       }
     }
 
     const passwordValue = password.trim();
     if (!passwordValue) {
-      alert("Password 칸이 누락되어 있습니다. 다시 입력해주세요.");
+      alert("비밀번호 칸이 누락되어 있습니다. 다시 입력해주세요.");
       return;
     }
 
@@ -79,12 +110,11 @@ export const Register = () => {
     }
 
     try {
-      const response = await apiClient.post(`/api/member/save`, {
+      const response = await apiClient.post(`/api/register`, {
         id: data.get("id"),
-        name: data.get("name"),
+        korName: data.get("name"),
         email: email,
         password: password,
-        phoneNumber: data.get("phoneNumber"),
       });
       console.log(response);
       alert("회원가입이 완료되었습니다.");
@@ -114,137 +144,92 @@ export const Register = () => {
 
   return (
     <ContainerWrapper>
-      <ThemeProvider theme={theme}>
-        <Container component="main" maxWidth="xs">
-          <CssBaseline />
-          <Box
-            sx={{
-              marginTop: 8,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              backgroundColor: "white",
-              borderRadius: "20px",
-              padding: "20px",
-              fontFamily: "Inter",
-            }}
-          >
-            <Typography component="h1" variant="h5">
-              Register
-            </Typography>
-            <Box
-              component="form"
-              noValidate
-              onSubmit={handleSubmit}
-              sx={{
-                mt: 3,
-              }}
-            >
-              <Grid container spacing={2}>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    name="id"
-                    required
-                    fullWidth
-                    id="id"
-                    label="ID"
-                    autoFocus
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    required
-                    fullWidth
-                    name="name"
-                    label="Name"
-                    id="name"
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    required
-                    fullWidth
-                    id="email"
-                    label="Email"
-                    name="email"
-                    value={email}
-                    onChange={handleEmailChange}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    required
-                    fullWidth
-                    name="verificationCode"
-                    label="인증번호"
-                    id="verificationCode"
-                    value={verificationCode}
-                    onChange={handleVerificationCodeChange}
-                    style={{ opacity: isCodeSent ? 1 : 0 }}
-                    disabled={!isCodeSent}
-                  />
-                  {isCodeSent && (
-                    <>
-                      <Button
-                        variant="contained"
-                        color="success"
-                        onClick={handleVerifyCode}
-                        style={{ marginTop: "10px" }}
-                      >
-                        인증번호 확인
-                      </Button>
-                      <p>인증번호를 확인하고 회원가입을 진행하세요.</p>
-                    </>
-                  )}
-                  {!isCodeSent && (
-                    <Button
-                      variant="contained"
-                      color="info"
-                      onClick={handleSendVerificationCode}
-                    >
-                      인증번호 전송
-                    </Button>
-                  )}
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    required
-                    fullWidth
-                    id="password"
-                    label="Password"
-                    name="password"
-                    type="password"
-                    onChange={handlePasswordChange}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    required
-                    fullWidth
-                    name="phoneNumber"
-                    label="Phone Number"
-                    id="phoneNumber"
-                  />
-                </Grid>
-              </Grid>
+      <FormWrapper onSubmit={handleSubmit}>
+        <Text> 회원가입 </Text>
+        <Box>
+          <SubText> 이름 </SubText>
+          <Input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="이름을 입력해주세요."
+            onChange={handleEmailChange}
+          />
+          <SubText> 이메일 </SubText>
+          <Input
+            type="text"
+            id="email"
+            name="email"
+            placeholder="사용하실 이메일을 입력해주세요."
+            onChange={handleEmailChange}
+          />
+          {isCodeSent && (
+            <>
               <Button
-                type="submit"
-                fullWidth
                 sx={{
-                  mt: 3,
-                  mb: 2,
-                  backgroundColor: "#0ac153",
-                  fontSize: "20px",
-                  fontWeight: "bold",
-                  color: "white",
+                  marginTop: "10px",
+                  width: "20%",
+                  background: "#52C07E",
+                  color: "#ffffff",
+                  fontSize: "17px",
+                  left: "530px",
+                  borderRadius: "12px",
                 }}
+                onClick={handleVerifyCode}
+                style={{ marginTop: "10px" }}
               >
-                회원가입
+                인증번호 확인
               </Button>
-            </Box>
-          </Box>
-        </Container>
-      </ThemeProvider>
+              <p> 인증번호를 확인하고 회원가입을 진행하세요. </p>
+            </>
+          )}
+          {!isCodeSent && (
+            <Button
+              sx={{
+                marginTop: "10px",
+                width: "20%",
+                background: "#52C07E",
+                color: "#ffffff",
+                fontSize: "17px",
+                left: "530px",
+                borderRadius: "12px",
+              }}
+              onClick={handleSendVerificationCode}
+            >
+              인증번호 전송
+            </Button>
+          )}
+          <SubText style={{ opacity: isCodeSent ? 1 : 0 }}> 인증번호 </SubText>
+          <Input
+            type="text"
+            name="verificationCode"
+            id="verificationCode"
+            placeholder="인증번호를 입력해주세요."
+            onChange={handleVerificationCodeChange}
+            style={{ opacity: isCodeSent ? 1 : 0 }}
+          />{" "}
+          <SubText> 비밀번호 </SubText>
+          <Input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="사용하실 비밀번호를 입력해주세요."
+            onChange={handlePasswordChange}
+          />
+        </Box>
+        <Button
+          type="submit"
+          sx={{
+            width: "20%",
+            background: "#52C07E",
+            color: "#ffffff",
+            fontSize: "20px",
+            borderRadius: "12px",
+          }}
+        >
+          회원가입
+        </Button>
+      </FormWrapper>
     </ContainerWrapper>
   );
 };

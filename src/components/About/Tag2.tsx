@@ -30,10 +30,10 @@ const ItemContainer = styled.div`
 `;
 
 const Item = styled.div`
-  width: 240px;
-  height: 300px;
+  width: 250px;
+  height: 325px;
   background-color: #ffffff;
-  margin: 20px 20px 0 0;
+  margin: 20px 0 20px 20px;
   border: 1px solid #bfbfbf;
   display: flex;
   justify-content: center;
@@ -43,12 +43,12 @@ const Item = styled.div`
 
 const ArrowButton = styled.button`
   margin: 20px;
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #0ac153;
+  background-color: #A3FBA8;
   border-radius: 5px;
   border: none;
   outline: none;
