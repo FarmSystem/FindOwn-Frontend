@@ -16,9 +16,11 @@ const ContainerWrapper = styled.div`
 `;
 //eeffed
 const FormWrapper = styled.form`
-  width: 700px;
-  height: 600px;
+  width: 800px;
   background-color: #ffffff;
+  border: 1px solid #545454;
+  border-radius: 12px;
+  padding: 30px 30px 30px 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,12 +48,33 @@ const Box = styled.div`
 
 const Input = styled.input`
   width: 100%;
-  height: 50px;
+  height: 40px;
   border: 1px solid #545454;
   border-radius: 12px;
   padding-left: 10px;
   font-size: 20px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
+`;
+
+const EmailInput = styled.input`
+  background-color: #ffffff;
+  width: 80%;
+  height: 38px;
+  font-size: 20px;
+`;
+
+const InputBox = styled.div`
+  width: 100%;
+  height: 40px;
+  border: 1px solid #545454;
+  border-radius: 12px;
+  padding-left: 10px;
+  font-size: 20px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 const AlertText = styled.div`
@@ -191,50 +214,52 @@ export const Register = () => {
             onChange={handleIdChange}
           />
           <SubText> 이메일 </SubText>
-          <Input
-            type="text"
-            id="email"
-            name="email"
-            value={email}
-            required
-            placeholder="사용자 인증을 위해 이메일을 입력해주세요."
-            onChange={handleEmailChange}
-          />
-          {isCodeSent && (
-            <>
+          <InputBox>
+            <EmailInput
+              type="text"
+              id="email"
+              name="email"
+              value={email}
+              required
+              placeholder="사용자 인증을 위해 이메일을 입력해주세요."
+              onChange={handleEmailChange}
+            />
+            {isCodeSent && (
+              <>
+                <Button
+                  sx={{
+                    width: "16%",
+                    height: "85%",
+                    marginRight: "10px",
+                    background: "#52C07E",
+                    color: "#ffffff",
+                    fontSize: "14px",
+                    borderRadius: "12px",
+                  }}
+                  onClick={handleVerifyCode}
+                  style={{ marginTop: "10px" }}
+                >
+                  인증번호 확인
+                </Button>
+              </>
+            )}
+            {!isCodeSent && (
               <Button
                 sx={{
-                  marginTop: "10px",
-                  width: "20%",
+                  width: "16%",
+                  height: "85%",
+                  marginRight: "10px",
                   background: "#52C07E",
                   color: "#ffffff",
-                  fontSize: "17px",
-                  left: "530px",
+                  fontSize: "14px",
                   borderRadius: "12px",
                 }}
-                onClick={handleVerifyCode}
-                style={{ marginTop: "10px" }}
+                onClick={handleSendVerificationCode}
               >
-                인증번호 확인
+                인증번호 전송
               </Button>
-            </>
-          )}
-          {!isCodeSent && (
-            <Button
-              sx={{
-                marginTop: "10px",
-                width: "20%",
-                background: "#52C07E",
-                color: "#ffffff",
-                fontSize: "17px",
-                left: "530px",
-                borderRadius: "12px",
-              }}
-              onClick={handleSendVerificationCode}
-            >
-              인증번호 전송
-            </Button>
-          )}
+            )}
+          </InputBox>
           <SubText style={{ opacity: isCodeSent ? 1 : 0 }}> 인증번호 </SubText>
           <Input
             type="text"
@@ -264,7 +289,9 @@ export const Register = () => {
             onChange={handlePasswordCheckChange}
           />
           {passwordCheck !== "" && !isSame && (
-            <AlertText className="passwordCheck">비밀번호가 다릅니다.</AlertText>
+            <AlertText className="passwordCheck">
+              비밀번호가 다릅니다.
+            </AlertText>
           )}
         </Box>
         <Button
