@@ -116,7 +116,7 @@ export const BoardList = () => {
             cursor: "pointer",
             zIndex: 5,
           }}
-          onClick={() => navigate("/board/write")}
+          onClick={() => navigate("/community/write")}
         >
           게시글 작성하기
         </Button>

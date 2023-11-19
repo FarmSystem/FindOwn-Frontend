@@ -14,6 +14,7 @@ import {
   MyPage,
   About,
   Community,
+  Write,
 } from "./pages";
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
             <Route path="/mypage" element={<MyPage />} />
             <Route path="/about" element={<About />} />
             <Route path="/community" element={<Community />} />
+            <Route path="/community/write" element={<Write />} />
           </Route>
         </Routes>
       </BrowserRouter>
