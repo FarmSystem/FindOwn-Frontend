@@ -52,7 +52,7 @@ const Input = styled.input`
   border: 1px solid #545454;
   border-radius: 12px;
   padding-left: 10px;
-  font-size: 20px;
+  font-size: 18px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
 `;
 
@@ -60,7 +60,7 @@ const EmailInput = styled.input`
   background-color: #ffffff;
   width: 80%;
   height: 38px;
-  font-size: 20px;
+  font-size: 18px;
 `;
 
 const InputBox = styled.div`
@@ -69,7 +69,7 @@ const InputBox = styled.div`
   border: 1px solid #545454;
   border-radius: 12px;
   padding-left: 10px;
-  font-size: 20px;
+  font-size: 18px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
   display: flex;
   align-items: center;

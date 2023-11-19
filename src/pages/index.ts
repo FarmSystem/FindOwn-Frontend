@@ -5,5 +5,5 @@ export { LoginPage } from "./LoginPage";
 export { Register } from "./Register";
 export { TradeMark } from "./TradeMark";
 export { About } from "./About";
-export { Board } from "./Board";
+export { Community } from "./Community";
 // export { main } from './main';

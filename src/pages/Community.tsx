@@ -21,7 +21,7 @@ const Container = styled(Grid)`
   font-family: "AppleBold";
 `;
 
-export const Board = () => {
+export const Community = () => {
   return (
     <Container xs={12}>
 

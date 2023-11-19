@@ -13,7 +13,7 @@ import {
   TradeMark,
   MyPage,
   About,
-  Board,
+  Community,
 } from "./pages";
 
 function App() {
@@ -30,7 +30,7 @@ function App() {
             <Route path="/trademark" element={<TradeMark />} />
             <Route path="/mypage" element={<MyPage />} />
             <Route path="/about" element={<About />} />
-            <Route path="/board" element={<Board />} />
+            <Route path="/community" element={<Community />} />
           </Route>
         </Routes>
       </BrowserRouter>
