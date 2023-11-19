@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { Grid } from "@mui/material";
+import { BoardList } from "../components/Community/BoardList";
 
 
 const Container = styled(Grid)`
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   display: flex;
   z-index: -1;
@@ -24,7 +25,7 @@ const Container = styled(Grid)`
 export const Community = () => {
   return (
     <Container xs={12}>
-
+      <BoardList />
     </Container>
   );
 };
