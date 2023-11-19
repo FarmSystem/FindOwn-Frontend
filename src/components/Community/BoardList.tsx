@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { apiClient } from "../../apis/apiClient";
 import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
-  width: 85%;
+  width: 90%;
   height: 90%;
   display: flex;
   flex-direction: column;
@@ -23,6 +24,7 @@ const ButtonContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-end;
+  z-index: 2;
 `;
 
 const Table = styled.table`
@@ -51,6 +53,8 @@ const Thead = styled.thead`
 export const BoardList = () => {
   //   const [boardList, setBoardList] = useState<String>([]);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     apiClient
       .get("/api/v2/users/community")
@@ -71,7 +75,7 @@ export const BoardList = () => {
       <Table>
         <colgroup>
           <col width="5%" />
-          <col width="55%" />
+          <col width="56%" />
           <col width="10%" />
           <col width="10%" />
           <col width="8%" />
@@ -112,6 +116,7 @@ export const BoardList = () => {
             cursor: "pointer",
             zIndex: 5,
           }}
+          onClick={() => navigate("/board/write")}
         >
           게시글 작성하기
         </Button>
