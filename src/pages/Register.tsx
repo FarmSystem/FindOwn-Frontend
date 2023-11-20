@@ -118,11 +118,7 @@ export const Register = () => {
 
   const handleSendVerificationCode = async () => {
     try {
-      await apiClient.get(`/api/v2/no-auth/email/send`, {
-        params: {
-          email: email,
-        },
-      });
+      await apiClient.get(`/api/v2/no-auth/email/send?email=${email}`);
       setIsCodeSent(true);
     } catch (error) {
       console.log(error);
