@@ -88,10 +88,12 @@ export const Register = () => {
 
   const [name, setName] = useState<string>("");
   const [id, setId] = useState<string>("");
+  const [idCheck, setIdCheck] = useState<boolean>(false);
   const [password, setPassword] = useState<string>("");
   const [passwordCheck, setPasswordCheck] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [verificationCode, setVerificationCode] = useState<string>("");
+  const [isCodeTrue, setIsCodeTrue] = useState<boolean>(false);
   const [isCodeSent, setIsCodeSent] = useState<boolean>(false);
 
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -125,6 +127,23 @@ export const Register = () => {
     }
   };
 
+  const handleIdCheck = async () => {
+    try {
+      const response = await apiClient.get(
+        `/api/v2/no-auth/isDuplicated?id=${id}`
+      );
+      const { notDuplicated } = response.data;
+      if (notDuplicated) {
+        alert("사용 가능한 아이디입니다.");
+        setIdCheck(true);
+      } else {
+        alert("이미 존재하는 아이디입니다.");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -152,18 +171,23 @@ export const Register = () => {
       return;
     }
 
-    try {
-      const response = await apiClient.post(`/api/v2/no-auth/register`, {
-        id: data.get("id"),
-        korName: data.get("name"),
-        email: email,
-        password: password,
-      });
-      console.log(response);
-      alert("회원가입이 완료되었습니다.");
-      navigate("/");
-    } catch (error) {
-      console.log(error);
+    if (idCheck && isSame && isCodeSent && isCodeTrue ) {
+      try {
+        const response = await apiClient.post(`/api/v2/no-auth/register`, {
+          id: data.get("id"),
+          korName: data.get("name"),
+          email: email,
+          password: password,
+        });
+        console.log(response);
+        alert("회원가입이 완료되었습니다.");
+        navigate("/");
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      alert("진행하지 않은 부분이 있습니다. 다시 확인해주세요");
+      return;
     }
   };
 
@@ -178,7 +202,7 @@ export const Register = () => {
         code: verificationCode,
       });
       alert("인증이 완료되었습니다.");
-      setIsCodeSent(true);
+      setIsCodeTrue(true);
     } catch (error) {
       console.log(error);
       alert("인증번호가 유효하지 않습니다. 다시 확인해주세요.");
@@ -201,14 +225,30 @@ export const Register = () => {
             onChange={handleNameChange}
           />
           <SubText> 아이디 </SubText>
-          <Input
-            type="text"
-            name="id"
-            value={id}
-            required
-            placeholder="사용하실 아이디를 입력해주세요."
-            onChange={handleIdChange}
-          />
+          <InputBox>
+            <EmailInput
+              type="text"
+              name="id"
+              value={id}
+              required
+              placeholder="사용하실 아이디를 입력해주세요."
+              onChange={handleIdChange}
+            />
+            <Button
+              sx={{
+                width: "16%",
+                height: "85%",
+                marginRight: "10px",
+                background: "#52C07E",
+                color: "#ffffff",
+                fontSize: "14px",
+                borderRadius: "12px",
+              }}
+              onClick={handleIdCheck}
+            >
+              아이디 중복검사
+            </Button>
+          </InputBox>
           <SubText> 이메일 </SubText>
           <InputBox>
             <EmailInput
