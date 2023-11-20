@@ -118,7 +118,7 @@ export const Register = () => {
 
   const handleSendVerificationCode = async () => {
     try {
-      await apiClient.get(`/api/mail/send/code`, {
+      await apiClient.get(`/api/v2/no-auth/email/send`, {
         params: {
           email: email,
         },
@@ -157,7 +157,7 @@ export const Register = () => {
     }
 
     try {
-      const response = await apiClient.post(`/api/register`, {
+      const response = await apiClient.post(`/api/v2/no-auth/register`, {
         id: data.get("id"),
         korName: data.get("name"),
         email: email,
@@ -177,7 +177,7 @@ export const Register = () => {
 
   const handleVerifyCode = async () => {
     try {
-      await apiClient.post(`/api/mail/verify/code`, {
+      await apiClient.post(`/api/v2/no-auth/email/check`, {
         email: email,
         code: verificationCode,
       });
