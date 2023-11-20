@@ -118,7 +118,7 @@ export const Register = () => {
 
   const handleSendVerificationCode = async () => {
     try {
-      await apiClient.get(`/api/v2/no-auth/email/send?email=${email}`);
+      await apiClient.get(`/api/v2/no-auth/email/send?address=${email}`);
       setIsCodeSent(true);
     } catch (error) {
       console.log(error);
@@ -220,25 +220,6 @@ export const Register = () => {
               placeholder="사용자 인증을 위해 이메일을 입력해주세요."
               onChange={handleEmailChange}
             />
-            {isCodeSent && (
-              <>
-                <Button
-                  sx={{
-                    width: "16%",
-                    height: "85%",
-                    marginRight: "10px",
-                    background: "#52C07E",
-                    color: "#ffffff",
-                    fontSize: "14px",
-                    borderRadius: "12px",
-                  }}
-                  onClick={handleVerifyCode}
-                  style={{ marginTop: "10px" }}
-                >
-                  인증번호 확인
-                </Button>
-              </>
-            )}
             {!isCodeSent && (
               <Button
                 sx={{
@@ -256,16 +237,36 @@ export const Register = () => {
               </Button>
             )}
           </InputBox>
-          <SubText style={{ opacity: isCodeSent ? 1 : 0 }}> 인증번호 </SubText>
-          <Input
-            type="text"
-            name="verificationCode"
-            id="verificationCode"
-            placeholder="인증번호를 입력해주세요."
-            value={verificationCode}
-            onChange={handleVerificationCodeChange}
-            style={{ opacity: isCodeSent ? 1 : 0 }}
-          />{" "}
+          <SubText style={{ opacity: isCodeSent ? 1 : 0 }}>인증번호</SubText>
+          <InputBox style={{ opacity: isCodeSent ? 1 : 0 }}>
+            <EmailInput
+              type="text"
+              name="verificationCode"
+              id="verificationCode"
+              placeholder="인증번호를 입력해주세요."
+              value={verificationCode}
+              onChange={handleVerificationCodeChange}
+              style={{ opacity: isCodeSent ? 1 : 0 }}
+            />{" "}
+            {isCodeSent && (
+              <>
+                <Button
+                  sx={{
+                    width: "16%",
+                    height: "85%",
+                    marginRight: "10px",
+                    background: "#52C07E",
+                    color: "#ffffff",
+                    fontSize: "14px",
+                    borderRadius: "12px",
+                  }}
+                  onClick={handleVerifyCode}
+                >
+                  인증번호 확인
+                </Button>
+              </>
+            )}
+          </InputBox>
           <SubText> 비밀번호 </SubText>
           <Input
             type="password"
