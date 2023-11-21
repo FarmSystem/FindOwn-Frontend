@@ -25,6 +25,15 @@ const Button = styled.button`
   font-weight: bold;
   border: none;
   cursor: pointer;
+
+
+  @font-face {
+    font-family: "AppleBold";
+    src: url("https://cdn.jsdelivr.net/gh/cho1n/Apollo-Frontend@latest/src/assets/fonts/AppleSDGothicNeoB.ttf")
+      format("truetype");
+  }
+
+  font-family: "AppleBold";
 `;
 
 export const Section1: React.FC = () => {

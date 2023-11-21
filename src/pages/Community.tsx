@@ -1,18 +1,17 @@
+import React from "react";
 import styled from "@emotion/styled";
-import CheckboxGroup from "../Trademark/CheckBox";
+import { Grid } from "@mui/material";
+import { BoardList } from "../components/Community/BoardList";
 
-const Side = styled.div`
+
+const Container = styled(Grid)`
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  position: fixed;
-  left: 0;
-  border: 1px solid #e0e0e0;
-  border-radius: 10px;
+  z-index: auto;
   flex-direction: column;
   align-items: center;
-  width: 15%;
-  height: 90vh;
-  background-color: #eeffed;
-  margin-top: 50px;
+  justify-content: center;
 
   @font-face {
     font-family: "AppleBold";
@@ -23,10 +22,10 @@ const Side = styled.div`
   font-family: "AppleBold";
 `;
 
-export const Sidebar = () => {
+export const Community = () => {
   return (
-    <Side>
-      <CheckboxGroup />
-    </Side>
+    <Container xs={12}>
+      <BoardList />
+    </Container>
   );
 };

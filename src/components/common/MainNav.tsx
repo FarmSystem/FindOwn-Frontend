@@ -63,9 +63,9 @@ export const MainNav = () => {
         <MainLogo />
         <div>
           <StyledLink to="/">Home</StyledLink>
-          <StyledLink to="/about">About Us</StyledLink>
+          <StyledLink to="/about">About</StyledLink>
           <StyledLink to="/trademark">Service</StyledLink>
-          <StyledLink to="/trademark">Community</StyledLink>
+          <StyledLink to="/community">Community</StyledLink>
           <StyledLink to="/login">LOGIN</StyledLink>
         </div>
       </NavBarInner>

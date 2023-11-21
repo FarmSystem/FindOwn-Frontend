@@ -10,7 +10,7 @@ const Container = styled(Grid)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  width: 100vw;
   padding: 20px 0;
 `;
 
@@ -21,7 +21,7 @@ const Text = styled.h1`
 `;
 
 const Input = styled.input`
-  width: 600px;
+  width: 30vw;
   height: 150px;
   border: 2px solid #e0e0e0;
   border-radius: 10px;
@@ -35,7 +35,7 @@ const Input = styled.input`
 `;
 
 const DropArea = styled.div`
-  width: 700px;
+  width: 40vw;
   height: 150px;
   color: gray;
   border: 2px dashed #e0e0e0;
