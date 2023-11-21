@@ -1,5 +1,6 @@
 export { Login } from './Login';
 export { MyPage } from './MyPage';
+export { List } from './List';
 export { Design } from './Design';
 export { LoginPage } from './LoginPage';
 export { Register } from './Register';

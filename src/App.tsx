@@ -6,7 +6,7 @@ import { Nav } from "./components/common";
 import { Layout } from "./routes/Layout";
 import { Global, css } from "@emotion/react";
 import { GlobalStyle } from "./GlobalStyle";
-import { Login, Register, Design, TradeMark, MyPage, About } from "./pages";
+import { Login, Register, Design, TradeMark, MyPage, About, List } from "./pages";
 
 function App() {
   return (
@@ -22,6 +22,7 @@ function App() {
             <Route path="/trademark" element={<TradeMark />} />
             <Route path="/mypage" element={<MyPage />} />
             <Route path="/about" element={<About />} />
+            <Route path="/list" element={<List />} />
           </Route>
         </Routes>
       </BrowserRouter>

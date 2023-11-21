@@ -47,7 +47,7 @@ export const StartButton = () => {
         <StyledButton onClick={() => navigate("/login")}>
           시작하기 →{" "}
         </StyledButton>
-        <StyledButton onClick={() => navigate("/about")}>
+        <StyledButton onClick={() => navigate("/list")}>
           침해사례 →{" "}
         </StyledButton>
       </TextContainer>

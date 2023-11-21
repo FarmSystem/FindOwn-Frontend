@@ -9,7 +9,7 @@ export const Container = styled(Grid)`
   flex-direction: column;
   max-width: 1440px;
   padding: 50px 0;
-  `;
+`;
 
 export const Text = styled.div`
   height: 52px;
