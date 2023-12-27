@@ -15,7 +15,7 @@ const Container = styled.div`
 `;
 
 const WriteBox = styled.div`
-  width: 65vw;
+  width: 55vw;
   height: 100%;
   margin-top: 5vh;
   border: 1px solid #a1a0a0;
@@ -46,7 +46,7 @@ const ContentInput = styled.textarea`
   width: 50vw;
   height: 50vh;
   border: 1px solid #a1a0a0;
-  font-size: 16px;
+  font-size: 18px;
 `;
 
 const ButtonContainer = styled.div`
@@ -68,23 +68,34 @@ const TagToggleBtn = styled.button`
   font-size: 20px;
   margin-right: 10px;
   color: #ffffff;
+
+  @font-face {
+    font-family: "AppleBold";
+    src: url("https://cdn.jsdelivr.net/gh/cho1n/Apollo-Frontend@latest/src/assets/fonts/AppleSDGothicNeoB.ttf")
+      format("truetype");
+  }
+
+  font-family: "AppleBold";
+
 `;
 
 export const Write = () => {
   const navigate = useNavigate();
   const [board, setBoard] = useState({
     title: "",
-    tagName: [],
+    tagName: "",
     content: "",
   });
-  const [tag, setTag] = useState<string | null>(null);
+  const [tag, setTag] = useState<string[]>([]);
 
   const handleTitleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setBoard({ ...board, title: event.target.value });
   };
 
   const handleTagToggle = (tagName: string) => {
-    setTag(tag === tagName ? null : tagName);
+    const newTag = tag.includes(tagName) ? [] : [tagName];
+    setTag(newTag);
+    setBoard({ ...board, tagName: newTag.length > 0 ? newTag[0] : "" }); // tagName 업데이트
   };
 
   const handleContentChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -92,7 +103,7 @@ export const Write = () => {
   };
 
   const TagToggle = ({ name }: { name: string }) => {
-    const isSelected = tag === name;
+    const isSelected = tag.includes(name);
     return (
       <TagToggleBtn
         style={{
@@ -107,8 +118,13 @@ export const Write = () => {
 
   const postBoard = async () => {
     try {
+      const dataToSend = {
+        title: board.title,
+        tagName: tag.join(", "),
+        content: board.content,
+      };
       await apiClient
-        .post(`/api/v2/users/community/post`, board)
+        .post(`/api/v2/users/community/post`, dataToSend)
         .then((res) => {
           alert("등록되었습니다.");
           navigate("/community");
@@ -148,6 +164,7 @@ export const Write = () => {
               color: "#ffffff",
               cursor: "pointer",
               fontSize: "16px",
+              fontFamily: "AppleBold",
             }}
             onClick={postBoard}
           >
