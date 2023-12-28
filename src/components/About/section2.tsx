@@ -85,9 +85,11 @@ export const Section2 = () => {
             </li>
           ))}
         </TabMenu>
-        <Desc>{menuArr[currentTab].name === "절차" && <Tag1></Tag1>}</Desc>
-        <Desc>{menuArr[currentTab].name === "주요 개념" && <Tag2></Tag2>}</Desc>
-        <Desc>{menuArr[currentTab].name === "이슈" && <Tag1></Tag1>}</Desc>
+        <Desc>
+        {currentTab === 0 && <Tag1 />}
+        {currentTab === 1 && <Tag2/>}
+        {currentTab === 2 && <Tag1 />}
+      </Desc>
       </div>
     </Container>
   );

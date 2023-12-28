@@ -47,6 +47,7 @@ const ContentInput = styled.textarea`
   height: 50vh;
   border: 1px solid #a1a0a0;
   font-size: 18px;
+  padding: 10px;
 `;
 
 const ButtonContainer = styled.div`
@@ -95,7 +96,7 @@ export const Write = () => {
   const handleTagToggle = (tagName: string) => {
     const newTag = tag.includes(tagName) ? [] : [tagName];
     setTag(newTag);
-    setBoard({ ...board, tagName: newTag.length > 0 ? newTag[0] : "" }); // tagName 업데이트
+    setBoard({ ...board, tagName: newTag.length > 0 ? newTag[0] : "" }); 
   };
 
   const handleContentChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
