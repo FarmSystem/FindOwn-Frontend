@@ -7,4 +7,5 @@ export { TradeMark } from "./TradeMark";
 export { About } from "./About";
 export { Community } from "./Community";
 export { Write } from "./Write";
+export { PostDetail } from "./PostDetail";
 // export { main } from './main';

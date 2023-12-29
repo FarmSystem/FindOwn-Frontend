@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { apiClient } from "../../apis/apiClient";
 import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   width: 100%;
@@ -107,6 +108,7 @@ const TagItem = styled.div<{ tagName: string }>`
 export const BoardList = () => {
   const [boardList, setBoardList] = useState<Board[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const navigate = useNavigate();
   const postsPerPage = 10;
 
   interface Board {
@@ -174,7 +176,11 @@ export const BoardList = () => {
           <BoardItem key={board.postId}>
             <SmallTitleItem>{board.postId + 1}</SmallTitleItem>
             <TagItem tagName={board.tagName}>{board.tagName}</TagItem>
-            <LargeTitleItem>{board.title}</LargeTitleItem>
+            <LargeTitleItem
+              onClick={() => navigate(`/community/${board.postId + 1}`)}
+            >
+              {board.title}
+            </LargeTitleItem>
             <CommentText>
               {"💬 "}
               {board.commentCnt}
