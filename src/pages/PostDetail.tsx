@@ -264,8 +264,8 @@ export const PostDetail = () => {
               backgroundColor: "#52C07E",
               color: "#FFFFFF",
               width: "5%",
-              height: "90%",
-              fontSize: "1rem",
+              height: "100%",
+              fontSize: "1.2rem",
               borderRadius: "10px",
             }}
             onClick={postComment}
@@ -283,15 +283,15 @@ export const PostDetail = () => {
             <div>{comment.createdAt}ㄴㅁㅇㄹㅇㄴ</div>
       </CommentListBlock> 
      ))}*/}
-        <CommentListBlock>
-          <CommentBlockHeader>
-            <CommentBlockTitle>작성자</CommentBlockTitle>
-            <CommentBlockTime>작성일</CommentBlockTime>
-          </CommentBlockHeader>
-          <CommentBlockBody>
-            <div>ㅁasdlkskadsjdlajdasjdlajldasjladkjdaslㄴㅇ</div>
-          </CommentBlockBody>
-        </CommentListBlock>
+        {board?.comments.map((comment) => (
+          <CommentListBlock key={comment.commentId}>
+            <CommentBlockHeader>
+              <CommentBlockTitle>{comment?.writer}</CommentBlockTitle>
+              <CommentBlockTime>{comment?.createdAt}</CommentBlockTime>
+            </CommentBlockHeader>
+            <CommentBlockBody>{comment?.content}</CommentBlockBody>
+          </CommentListBlock>
+        ))}
       </CommentContainer>
       {/* )} */}
     </Container>
