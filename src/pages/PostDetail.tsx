@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styled from "@emotion/styled";
 import { apiClient } from "../apis/apiClient";
-import { Grid } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import spinner from "../assets/images/spinner.gif";
 
 const Container = styled(Grid)`
-  width: 70vw;
+  width: 65vw;
   height: 100%;
   display: flex;
   z-index: auto;
@@ -14,6 +14,7 @@ const Container = styled(Grid)`
   align-items: center;
   justify-content: center;
   margin-top: 30px;
+  overflow: hidden;
 
   @font-face {
     font-family: "AppleBold";
@@ -29,6 +30,7 @@ const TitleBlock = styled.div`
   display: flex;
   flex-direction: column;
   align-items: left;
+  border-bottom: 2px solid #A1A0A0;
 `;
 
 const SubTitleBlock = styled.div`
@@ -37,21 +39,23 @@ const SubTitleBlock = styled.div`
   flex-direction: row;
   align-items: left;
   padding-bottom: 1rem;
-  border-bottom: 2px solid #525252;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 `;
 
 const ElseBlock = styled.div`
-  width: 10%;
-  font-size: 1.2rem;
+  width: 12%;
+  font-size: 1rem;
   font-weight: bold;
   color: #000000;
   padding-left: 1rem;
   display: flex;
   flex-direction: row;
-  align-items: left;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
 const Title = styled.p`
@@ -63,14 +67,61 @@ const Title = styled.p`
 `;
 
 const SubTitle = styled.div`
-  width: 70%;
-  font-size: 1.2rem;
+  width: 60%;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #000000;
-  padding-left: 1rem;
+  padding-left: 2rem;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+`;
+
+const ContentBlock = styled.div`
+  width: 100%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  font-size: 1.4rem;
+  padding: 20px;
+  border-bottom: 2px solid #A1A0A0;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+`;
+
+const CommentBlock = styled.div`
+  width: 100%;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding: 20px;
+  border: 1px solid #A1A0A0;
+  border-radius: 10px;
+  margin-top: 1rem;
+`;
+
+const Comment = styled.textarea`
+  width: 100%;
+  height: 80%;
+  border: none;
+  font-size: 1.2rem;
+  padding: 10px;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+`;
+
+const CommentButtonBlock = styled.div`
+  width: 100%;
+  height: 20%;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
 `;
 
 export const PostDetail = () => {
@@ -120,14 +171,35 @@ export const PostDetail = () => {
         <Title>Community</Title>
         <SubTitleBlock>
           <ElseBlock>{"[기타 질문]"}</ElseBlock>
-          <SubTitle>
-            {" "}
-            이거 어떻게 쓰는거에연 ?{" "}
-          </SubTitle>
+          <SubTitle> 이거 어떻게 쓰는거에연 ? </SubTitle>
+          <ElseBlock
+            style={{
+              color: "gray",
+            }}
+          >
+            👤 {board?.writer}
+          </ElseBlock>
           <ElseBlock>👀 {board?.viewCnt}</ElseBlock>
           <ElseBlock>⭐️ {board?.scrapCnt}</ElseBlock>
         </SubTitleBlock>
       </TitleBlock>
+      <ContentBlock>
+        <p>
+          saldkasklajldkdjlkjlkdkljdslkadjlkaddaslkdjksalasdaskjkljalkjdlkjdkljalafjlajfpajfpoiwjfoewjrowqjrioewreqfncjkwadnfcjkasdnkawdkjfnweifwnsckjvnkasdfkjwaerfawfnawskl
+        </p>
+      </ContentBlock>
+      <CommentBlock>
+        <Comment placeholder="내용을 입력하세요."></Comment>
+        <CommentButtonBlock>
+          <Button sx={{
+            backgroundColor: "#52C07E",
+            color: "#FFFFFF",
+            width: "5%",
+            fontSize: "1rem",
+            borderRadius: "10px",
+          }}>작성</Button>
+        </CommentButtonBlock>
+      </CommentBlock>
       {/* )} */}
     </Container>
   );
