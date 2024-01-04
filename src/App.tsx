@@ -16,6 +16,7 @@ import {
   List,
   Community,
   Write,
+  PostDetail, 
 } from "./pages";
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
             <Route path="/list" element={<List />} />
             <Route path="/community" element={<Community />} />
             <Route path="/community/write" element={<Write />} />
+            <Route path="/community/:postId" element={<PostDetail />} />
           </Route>
         </Routes>
       </BrowserRouter>

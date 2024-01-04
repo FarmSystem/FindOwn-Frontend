@@ -25,7 +25,6 @@ const Container = styled(Grid)`
 export const TradeMark = () => {
   return (
     <Container xs={12}>
-      <Sidebar />
       <Section1 />
       <Section2 />
     </Container>

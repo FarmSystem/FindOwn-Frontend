@@ -78,9 +78,15 @@ const InputBox = styled.div`
 `;
 
 const AlertText = styled.div`
-  font-size: 15px;
+  font-size: 14px;
   color: red;
-  margin-top: 10px;
+  padding: 10px 10px 0px 10px;
+`;
+
+const AlertText2 = styled.div`
+  font-size: 14px;
+  color: #52C07E;
+  padding: 10px 10px 0px 10px;
 `;
 
 export const Register = () => {
@@ -92,6 +98,8 @@ export const Register = () => {
   const [password, setPassword] = useState<string>("");
   const [passwordCheck, setPasswordCheck] = useState<string>("");
   const [email, setEmail] = useState<string>("");
+  const [isEmail, setIsEmail] = useState<boolean>(false);
+  const [isEmailMessage, setIsEmailMessage] = useState<string>("");
   const [verificationCode, setVerificationCode] = useState<string>("");
   const [isCodeTrue, setIsCodeTrue] = useState<boolean>(false);
   const [isCodeSent, setIsCodeSent] = useState<boolean>(false);
@@ -102,7 +110,16 @@ export const Register = () => {
 
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
-  };
+    const emailRegEx =
+      /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/;
+    if (emailRegEx.test(e.target.value)) {
+      setIsEmail(true);
+      setIsEmailMessage("사용가능한 이메일 형식입니다.");
+    } else {
+      setIsEmail(false);
+      setIsEmailMessage("올바른 이메일 형식이 아닙니다.");
+    } 
+  }; 
 
   const handleVerificationCodeChange = (e: ChangeEvent<HTMLInputElement>) => {
     setVerificationCode(e.target.value);
@@ -119,11 +136,15 @@ export const Register = () => {
   const isSame = password === passwordCheck;
 
   const handleSendVerificationCode = async () => {
-    try {
-      await apiClient.get(`/api/v2/no-auth/email/send?address=${email}`);
-      setIsCodeSent(true);
-    } catch (error) {
-      // console.log(error);
+    if (isEmail) {
+      try {
+        await apiClient.get(`/api/v2/no-auth/email/send?address=${email}`);
+        setIsCodeSent(true);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      alert("이메일 형식을 확인하세요.");
     }
   };
 
@@ -171,7 +192,7 @@ export const Register = () => {
       return;
     }
 
-    if (idCheck && isSame && isCodeSent && isCodeTrue ) {
+    if (idCheck && isSame && isCodeTrue) {
       try {
         const response = await apiClient.post(`/api/v2/no-auth/register`, {
           id: data.get("id"),
@@ -277,6 +298,8 @@ export const Register = () => {
               </Button>
             )}
           </InputBox>
+          {!isEmail && <AlertText>{isEmailMessage}</AlertText>}
+          {isEmail && <AlertText2>{isEmailMessage}</AlertText2>}
           <SubText style={{ opacity: isCodeSent ? 1 : 0 }}>인증번호</SubText>
           <InputBox style={{ opacity: isCodeSent ? 1 : 0 }}>
             <EmailInput
