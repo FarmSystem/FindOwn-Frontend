@@ -5,7 +5,8 @@ import image from "../../assets/images/64.svg";
 import { StartButton } from "./startButton";
 
 const Container = styled(Grid)`
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   z-index: 1;
   flex-direction: column;
   align-items: center;

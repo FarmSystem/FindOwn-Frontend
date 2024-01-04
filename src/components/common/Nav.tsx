@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 import { MainLogo } from "./MainLogo";
 
 const NavBarContainer = styled.div`
+  display: absolute;
   position: fixed;
   top: 0;
   z-index: 10;
