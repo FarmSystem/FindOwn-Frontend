@@ -128,6 +128,7 @@ const CommentContainer = styled.div`
   align-items: left;
   display: flex;
   flex-direction: column;
+  margin-bottom: 1rem;
 `;
 
 const CommentListBlock = styled.div`
@@ -237,8 +238,8 @@ export const PostDetail = () => {
       <TitleBlock>
         <Title>Community</Title>
         <SubTitleBlock>
-          <ElseBlock>{"[기타 질문]"}</ElseBlock>
-          <SubTitle> 이거 어떻게 쓰는거에연 ? </SubTitle>
+          <ElseBlock>{"["} {board?.tag} {"]"}</ElseBlock>
+          <SubTitle> {board?.title} </SubTitle>
           <ElseBlock
             style={{
               color: "gray",
@@ -263,9 +264,8 @@ export const PostDetail = () => {
             sx={{
               backgroundColor: "#52C07E",
               color: "#FFFFFF",
-              width: "5%",
-              height: "100%",
-              fontSize: "1.2rem",
+              height: "1.5rem",
+              fontSize: "1rem",
               borderRadius: "10px",
             }}
             onClick={postComment}
@@ -275,14 +275,6 @@ export const PostDetail = () => {
         </CommentButtonBlock>
       </CommentBlock>
       <CommentContainer>
-        {/*
-    {board?.comments.map((comment) => ( 
-      <CommentListBlock key={comment.commentId}>
-            <div>{comment.writer}ㅁㄴㅇ</div>
-            <div>{comment.content}ㅁㄴㅇ</div>
-            <div>{comment.createdAt}ㄴㅁㅇㄹㅇㄴ</div>
-      </CommentListBlock> 
-     ))}*/}
         {board?.comments.map((comment) => (
           <CommentListBlock key={comment.commentId}>
             <CommentBlockHeader>

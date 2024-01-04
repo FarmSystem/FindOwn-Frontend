@@ -38,6 +38,7 @@ const BoardListTitle = styled.div`
   border-top: 1.5px solid #525252;
   border-bottom: 1.5px solid rgb(232, 234, 237);
   padding: 10px 0;
+  background-color: #f5f5f5;
 `;
 
 const BoardItem = styled.div`
