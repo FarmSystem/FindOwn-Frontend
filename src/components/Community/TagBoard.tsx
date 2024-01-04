@@ -64,7 +64,11 @@ const getColorBasedOnTagName = (tagName: string) => {
   }
 };
 
-export const TagBoard = () => {
+interface TagBoardProps {
+  setTag: (tagName: string) => void;
+}
+
+export const TagBoard: React.FC<TagBoardProps> = ({ setTag }) => {
   const [, setSelectedTag] = useAtom(selectedTagAtom);
 
   const PostsByTags = async (tagName: string) => {

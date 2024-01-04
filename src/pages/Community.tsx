@@ -6,6 +6,8 @@ import { BoardList } from "../components/Community/BoardList";
 import { TagBoard } from "../components/Community/TagBoard";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { useAtom } from "jotai";
+import { selectedTagAtom } from "../states/jotaiStates";
 
 const Container = styled(Grid)`
   width: 85vw;
@@ -38,7 +40,7 @@ const Title = styled.div`
     position: absolute;
     left: 35%;
     bottom: 0;
-    width: 30%; 
+    width: 30%;
     border-bottom: 4px solid #52c07e;
   }
 `;
@@ -108,6 +110,7 @@ const ButtonContainer = styled.div`
 
 export const Community = () => {
   const [currentTab, clickTab] = useState(0);
+  const [selectedTag, setSelectedTag] = useAtom(selectedTagAtom); // 추가된 코드
 
   const menuArr = [{ name: "전체 게시글" }, { name: "태그별 게시판" }];
 
@@ -116,6 +119,12 @@ export const Community = () => {
   };
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (selectedTag) {
+      clickTab(0);
+    }
+  }, [selectedTag]);
 
   return (
     <Container xs={12}>
@@ -135,7 +144,7 @@ export const Community = () => {
       </TabMenu>
       <Desc>
         {currentTab === 0 && <BoardList />}
-        {currentTab === 1 && <TagBoard />}
+        {currentTab === 1 && <TagBoard setTag={setSelectedTag} />}
       </Desc>
       <ButtonContainer>
         <Button
