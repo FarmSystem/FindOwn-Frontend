@@ -74,7 +74,7 @@ export const InputBox: React.FC<InputBoxProps> = ({ onImageSelect }) => {
     if (file && (file.type === "image/jpeg" || file.type === "image/png")) {
       setSelectedImage(file);
       onImageSelect(file); // 이미지 선택 시, 상위 컴포넌트로 전달
-      console.log(file);
+      // console.log(file);
     } else {
       alert("JPG 혹은 PNG 형식의 파일만 가능합니다.");
     }
