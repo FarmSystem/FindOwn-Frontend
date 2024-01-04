@@ -34,11 +34,11 @@ const dispatch = useDispatch();
         password: Password,
       };
 
-      console.log("Email", Email);
-      console.log("Password", Password);
+      // console.log("Email", Email);
+      // console.log("Password", Password);
 
       apiClient.post<ApiResponse>("/api/members", body).then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data.code === 200) {
           dispatch({
             type: "LOGIN",

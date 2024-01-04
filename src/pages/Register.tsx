@@ -123,7 +123,7 @@ export const Register = () => {
       await apiClient.get(`/api/v2/no-auth/email/send?address=${email}`);
       setIsCodeSent(true);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -140,7 +140,7 @@ export const Register = () => {
         alert("이미 존재하는 아이디입니다.");
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -179,11 +179,11 @@ export const Register = () => {
           email: email,
           password: password,
         });
-        console.log(response);
+        // console.log(response);
         alert("회원가입이 완료되었습니다.");
         navigate("/");
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     } else {
       alert("진행하지 않은 부분이 있습니다. 다시 확인해주세요");
@@ -204,7 +204,7 @@ export const Register = () => {
       alert("인증이 완료되었습니다.");
       setIsCodeTrue(true);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       alert("인증번호가 유효하지 않습니다. 다시 확인해주세요.");
     }
   };

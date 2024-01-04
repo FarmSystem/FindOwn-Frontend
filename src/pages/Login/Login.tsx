@@ -41,8 +41,8 @@ export const Login = () => {
         email: Email,
         password: Password,
       };
-      console.log("Email", Email);
-      console.log("Password", Password);
+      // console.log("Email", Email);
+      // console.log("Password", Password);
     }
     if(Email =="user1" && Password == "1234"){
       localStorage.setItem('Email', "user1");
