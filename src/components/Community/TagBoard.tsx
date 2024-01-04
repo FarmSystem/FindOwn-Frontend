@@ -1,6 +1,9 @@
 import styled from "@emotion/styled";
 import { Button } from "@mui/material";
 import React from "react";
+import { apiClient } from "../../apis/apiClient";
+import { useAtom } from "jotai";
+import { selectedTagAtom } from "../../states/jotaiStates";
 
 const Container = styled.div`
   width: 100%;
@@ -62,6 +65,21 @@ const getColorBasedOnTagName = (tagName: string) => {
 };
 
 export const TagBoard = () => {
+  const [, setSelectedTag] = useAtom(selectedTagAtom);
+
+  const PostsByTags = async (tagName: string) => {
+    try {
+      setSelectedTag(tagName);
+
+      const response = await apiClient.get(
+        `/api/v2/users/community/post/${tagName}`
+      );
+      console.log(response.data);
+    } catch (error) {
+      alert("게시글을 불러오는데 실패했습니다.");
+      console.error("Failed to fetch posts: ", error);
+    }
+  };
   return (
     <Container>
       <TagBox>
@@ -88,6 +106,7 @@ export const TagBoard = () => {
               height: "70%",
               fontSize: "1rem",
             }}
+            onClick={() => PostsByTags("상표권")}
           >
             모아보기
           </Button>
@@ -117,6 +136,7 @@ export const TagBoard = () => {
               height: "70%",
               fontSize: "1rem",
             }}
+            onClick={() => PostsByTags("판결")}
           >
             모아보기
           </Button>
@@ -146,6 +166,7 @@ export const TagBoard = () => {
               height: "70%",
               fontSize: "1rem",
             }}
+            onClick={() => PostsByTags("기타 질문")}
           >
             모아보기
           </Button>

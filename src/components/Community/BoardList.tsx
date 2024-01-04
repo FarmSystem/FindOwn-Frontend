@@ -3,6 +3,8 @@ import styled from "@emotion/styled";
 import { apiClient } from "../../apis/apiClient";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { useAtom } from "jotai";
+import { selectedTagAtom } from "../../states/jotaiStates";
 
 const Container = styled.div`
   width: 100%;
@@ -38,7 +40,6 @@ const BoardListTitle = styled.div`
   border-top: 1.5px solid #525252;
   border-bottom: 1.5px solid rgb(232, 234, 237);
   padding: 10px 0;
-  background-color: #f5f5f5;
 `;
 
 const BoardItem = styled.div`
@@ -110,6 +111,8 @@ export const BoardList = () => {
   const [boardList, setBoardList] = useState<Board[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
+  const [selectedTag] = useAtom(selectedTagAtom);
+
   const postsPerPage = 10;
 
   interface Board {
@@ -149,7 +152,11 @@ export const BoardList = () => {
     apiClient
       .get("/api/v2/users/community/post")
       .then((response) => {
-        setBoardList(response.data);
+        const filteredBoardList = response.data.filter(
+          (board: Board) =>
+            selectedTag === null || board.tagName === selectedTag
+        );
+        setBoardList(filteredBoardList);
       })
       .catch(function (error) {
         console.log(error);
@@ -158,7 +165,7 @@ export const BoardList = () => {
 
   useEffect(() => {
     getBoardList();
-  }, []);
+  }, [selectedTag]);
 
   return (
     <Container>
