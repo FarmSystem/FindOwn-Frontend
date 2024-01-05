@@ -4,16 +4,16 @@ import {
   LightCare,
   NavService,
   ListContainer
-} from './style';
+} from '../List/style';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import brightVersion from '../../assets/images/bright_version.svg';
 import darkVersion from '../../assets/images/night_version.svg';
 import { ExampleBox } from '../../components/ItemBox';
 import Grid from '@mui/material/Grid';
+import { DetailBox } from '../../components/ItemBox';
 
-
-export const List = () => {
+export const DetailList = () => {
   const navigate = useNavigate();
   const [ bright, setBright ] = useState(true);
   const toggleBright = () => {
@@ -27,19 +27,7 @@ export const List = () => {
         <NavService onClick={() => navigate(`/trademark`)}>상표 판단 바로가기</NavService>
       </Option>
       <ListContainer>
-        <Grid
-          container
-          spacing={2}
-          columns={12}
-          style={{width: 1200}}>
-        {Array.from(Array(5)).map((_, index) => (
-          <Grid item xs={4} sm={4} md={4} key={index} style={{ width: 'auto', display: 'flex', justifyContent: 'center'}}>
-            <div onClick={()=>navigate(`/list/${index}`)} style={{cursor: 'pointer'}}>
-              <ExampleBox />
-            </div>
-          </Grid>
-        ))}
-        </Grid>
+        <DetailBox/>
       </ListContainer>
     </Container>
   );

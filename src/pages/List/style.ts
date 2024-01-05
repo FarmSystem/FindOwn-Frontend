@@ -44,5 +44,6 @@ export const ListContainer = styled.div`
   justify-content: center;
   height: 100%;
   width: 100%;
+  border: 1px solid black;
   // filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 `;
