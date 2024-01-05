@@ -5,6 +5,7 @@ import dark from '../../assets/images/night_version.svg';
 
 export const Container = styled(Grid)`
   width: 100vw;
+  height: 100vh;
   display: flex;
   background-color: #fff;
   flex-direction: column;
@@ -38,9 +39,10 @@ export const NavService = styled.button`
 `;
 
 export const ListContainer = styled.div`
-  margin-top: 54px;
-  height: 685px;
-  width: 1400px;
-  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
   // filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 `;

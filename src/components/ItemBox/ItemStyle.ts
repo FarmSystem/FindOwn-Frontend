@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import Paper from '@mui/material/Paper';
 
 export const ItemContainer = styled.div`
   display: flex;
@@ -7,7 +8,7 @@ export const ItemContainer = styled.div`
   height: 340px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   align-items: center;
-  `;
+`;
 
 export const ImageBox = styled.img`
   width:  280px;
@@ -25,6 +26,7 @@ export const TitleBox = styled.div`
 
 export const DetailBox = styled.div`
   display: -webkit-box;
+  width: 100%;
   margin-top: 9.4px;
   font-size: 14px;
   -webkit-box-orient: vertical;
