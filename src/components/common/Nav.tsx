@@ -11,7 +11,7 @@ const NavBarContainer = styled.div`
   height: 5vh;
   width: 100%;
   padding: 0 20px;
-  background-color: rgba(238, 255, 237, 0.7);
+  background-color: rgba(238, 255, 237, 1);
 
   @media (max-width: 1500px) {
     padding: 0px;
