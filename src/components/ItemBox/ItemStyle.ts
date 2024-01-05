@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import Paper from '@mui/material/Paper';
 
 export const ItemContainer = styled.div`
   display: flex;

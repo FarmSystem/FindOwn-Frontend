@@ -8,9 +8,6 @@ import {
   Author
 } from './ItemStyle';
 import itemEx from '../../assets/images/itemImage1.svg';
-//
-// import Paper from '@mui/material/Paper';
-
 
 export const ExampleBox = () => {
   return(
