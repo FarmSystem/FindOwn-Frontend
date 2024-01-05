@@ -18,6 +18,7 @@ import {
   Write,
   PostDetail, 
 } from "./pages";
+import { DetailList } from "./pages/DetailList";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             <Route path="/mypage" element={<MyPage />} />
             <Route path="/about" element={<About />} />
             <Route path="/list" element={<List />} />
+            <Route path="/list/:id" element={<DetailList/>} />
             <Route path="/community" element={<Community />} />
             <Route path="/community/write" element={<Write />} />
             <Route path="/community/:postId" element={<PostDetail />} />
