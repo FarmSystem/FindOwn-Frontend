@@ -40,7 +40,6 @@ export const NavService = styled.button`
 
 export const ListContainer = styled.div`
   display: flex;
-  align-items: center;
   justify-content: center;
   height: 100%;
   width: 100%;

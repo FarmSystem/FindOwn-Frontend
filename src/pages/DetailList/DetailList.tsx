@@ -27,7 +27,7 @@ export const DetailList = () => {
         <NavService onClick={() => navigate(`/trademark`)}>상표 판단 바로가기</NavService>
       </Option>
       <ListContainer>
-        <DetailBox/>
+        <DetailBox />
       </ListContainer>
     </Container>
   );
