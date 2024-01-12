@@ -11,7 +11,7 @@ export const Container = styled(Grid)`
   flex-direction: column;
   max-width: 1440px;
   align-items: center;
-  border: 1px solid black;
+  // border: 1px solid black;
 `;
 
 export const Option = styled.div`
@@ -40,9 +40,7 @@ export const NavService = styled.button`
 
 export const ListContainer = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   height: 100%;
-  width: 100%;
-  border: 1px solid black;
-  // filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  width: auto;
 `;

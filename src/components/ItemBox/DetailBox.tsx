@@ -1,12 +1,21 @@
-import styled from "@emotion/styled";
 import itemEx from '../../assets/images/itemImage1.svg';
 import {
-  ImageBox
+  ImageBox,
 } from './ItemStyle';
 import { useState } from "react";
+import {
+  BoxContainer,
+  ImageContainer,
+  ContentBox,
+  LineContent,
+  TitleContent,
+  Content,
+  DetailInput,
+  Description,
+  DescriptionContainer
+} from './DetailStyles';
 // 
 import Switch from "@mui/material/Switch";
-import { REPLCommand } from "repl";
 
 export const DetailBox = () => {
   const [ detailed, setDetailed ] = useState(false);
@@ -40,69 +49,28 @@ export const DetailBox = () => {
           />
         </LineContent>
         <DetailInput detailed={detailed} >
-          
+          <DescriptionContainer style={{height: 72}}>
+            <TitleContent style={{fontSize: 15}}>상표 설명</TitleContent>
+            <Description >
+            하트모양 귀를 추가하여 고양이와 사자 사이의  하트사자만의 특별한 매력을 느낄 수 있습니다.
+            하트모양 귀를 추가하여 고양이와 사자 사이의  하트사자만의 특별한 매력을 느낄 수 있습니다.
+            하트모양 귀를 추가하여 고양이와 사자 사이의  하트사자만의 특별한 매력을 느낄 수 있습니다.
+            하트모양 귀를 추가하여 고양이와 사자 사이의  하트사자만의 특별한 매력을 느낄 수 있습니다.
+            하트모양 귀를 추가하여 고양이와 사자 사이의  하트사자만의 특별한 매력을 느낄 수 있습니다.
+            </Description>
+          </DescriptionContainer>
+          <DescriptionContainer style={{marginTop: 11}}>
+            <TitleContent style={{fontSize: 15}}>결과 보기</TitleContent>
+            <Description>기존의 카카오 주식회사에서 내보인 라이언과 68%의 유사도로 위험상태입니다.</Description>
+          </DescriptionContainer>
         </DetailInput>
+        <LineContent style={{marginTop: 10, display: detailed ? 'none' : 'flex'}}>
+          <TitleContent>유사디자인</TitleContent>
+          <Content style={{marginLeft: 20, color: "#494949"}}>
+            <span style={{color: '#F00'}}>3</span> 개의 상표들과 유사합니다.
+          </Content>
+        </LineContent>
       </ContentBox>
     </BoxContainer>
   );
 };
-
-const label = { inputProps: {'aria-label': 'Size switch demo'}}
-
-const BoxContainer = styled.div`
-  width: 900px;
-  height: 350px;
-  border: 0.5px solid #959595;;
-  display: flex;
-  align-items: center;
-  border-radius: 10px;  
-  margin-top: 46px;
-`
-
-const ImageContainer = styled.div`
-  width: 245px;
-  height: 245px;
-  margin-left: 24px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid black;
-`;
-
-const ContentBox = styled.div`
-  width: 480px;
-  border: 1px solid black;
-  height: 100%;
-  margin-left: 81px;
-  padding-top: 58px;
-`;
-
-const LineContent = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`;
-
-const TitleContent = styled.div`
-  font-size: 18px;
-  font-weight: 400;
-`;
-
-const Content = styled.div`
-  margin-left: 50px;
-  color: #494949;
-  font-size: 18px;
-  font-weight: 400;
-`;
-
-interface DetailProps {
-  detailed: boolean;
-}
-
-const DetailInput = styled.div<DetailProps>`
-  display: ${(props) => props.detailed == true ? 'flex' : 'none'};
-  background-color: #F7F7F7;
-  width: 480px;
-  height: 130px;
-`;
