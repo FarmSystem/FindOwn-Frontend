@@ -16,7 +16,8 @@ import {
   List,
   Community,
   Write,
-  PostDetail, 
+  PostDetail,
+  Storage 
 } from "./pages";
 import { DetailList } from "./pages/DetailList";
 
@@ -33,6 +34,7 @@ function App() {
             <Route path="/design" element={<Design />} />
             <Route path="/trademark" element={<TradeMark />} />
             <Route path="/mypage" element={<MyPage />} />
+            <Route path="/mypage/storage" element={<Storage /> } />
             <Route path="/about" element={<About />} />
             <Route path="/list" element={<List />} />
             <Route path="/list/:id" element={<DetailList/>} />

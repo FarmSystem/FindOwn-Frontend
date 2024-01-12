@@ -3,7 +3,8 @@ import profieImg from '../../assets/images/profile_img.svg';
 import { Grid } from "@mui/material";
 
 export const Container = styled(Grid)`
-  width: 100vw;
+  // width: 100vw;
+  width: 1067px;
   height: 100vh;
   display: flex;
   background-color: #fff;
@@ -36,7 +37,6 @@ export const InfoDiv = styled.div`
   height: auto;
   display: flex;
   flex-direction: column;
-  // border: 1px solid black;
 `;
 
 export const InfoContainer = styled.div`

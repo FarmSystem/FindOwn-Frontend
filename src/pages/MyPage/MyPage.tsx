@@ -8,10 +8,10 @@ import {
   PasswordDiv,
   PasswordContainer,
  } from './style';
-import { Information, Password } from "../../components/Auth";
+import { Information, Password, CustomModal } from "../../components/Auth";
 import { useAtom } from "jotai";
 import { modalAtom } from "../../states/jotaiStates";
-import { CustomModal } from "../../components/Auth/CustomModal";
+// import { CustomModal } from "../../components/Auth/CustomModal";
 
 export const MyPage = () => {
   const [isOpenModal, setOpenModal] = useAtom(modalAtom);

@@ -7,12 +7,12 @@ export const ModalContainer = styled.div`
   align-items: center;
   justify-content: center;
   position: fixed;
-  border: 1px solid black;
+  // border: 1px solid black;
 `;
 
 export const Backdrop = styled.div`
-  width : 100vw;
-  height: 100vh;
+  width : 100%;
+  height: 100%;
   position: fixed;
   top: 0;
   z-index: 10;
