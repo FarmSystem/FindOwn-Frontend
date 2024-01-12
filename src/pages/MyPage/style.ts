@@ -4,19 +4,22 @@ import { Grid } from "@mui/material";
 
 export const Container = styled(Grid)`
   width: 100vw;
+  height: 100vh;
   display: flex;
   background-color: #fff;
   flex-direction: column;
   max-width: 1440px;
-  padding: 50px 0;
+  align-items: center;
+  border: 1px solid black;
 `;
 
 export const Text = styled.div`
   height: 52px;
-  color: #827E7E;
+  // color: #827E7E;
+  color: #515151;
   font-size: 40px;
   font-weight: 700;
-  margin: 32px 0 0 90px;
+  margin-top: 32px;
   justify-content: fit-content;
 `;
 
@@ -24,19 +27,20 @@ export const Theader = styled.div`
   color: #52C07E;
   justify-content: fit-content;
   font-size: 20px;
-  margin: 30px 0 0 107px;
+  margin-top: 30px;
+  margin-left: 15px;
 `;
 
 export const InfoDiv = styled.div`
-  width: 100%;
-  height: 390px;
+  width: 1067px;
+  height: auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 9px;
+  // border: 1px solid black;
 `;
 
 export const InfoContainer = styled.div`
+  margin-top: 9px;
   width: 1067px;
   height: 389px;
   display: flex;
@@ -46,15 +50,14 @@ export const InfoContainer = styled.div`
   border: 1px solid #BFBFBF;
 `;
 
-export const ProfileDiv = styled.div`
-  width: 150px;
-  height: 150px;
-  display: flex;
-  flex-direction: row;
-  margin-top: 44px;
-  border: 1px solid black;
+
+export const PasswordDiv = styled.div`
+  margin-top: 73px;
 `;
 
-export const ProfileImg = styled.div``;
-
-export const ProfileEditor = styled.div``;
+export const PasswordContainer = styled.div`
+  margin-top: 11px;
+  height: 175px;
+  border: 1px solid #BFBFBF;
+  border-radius: 8px;
+  `;

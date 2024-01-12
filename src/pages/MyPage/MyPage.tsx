@@ -5,23 +5,27 @@ import {
   Theader,
   InfoDiv,
   InfoContainer,
-  ProfileDiv,
-  ProfileImg,
-  ProfileEditor
+  PasswordDiv,
+  PasswordContainer,
  } from './style';
+ import edit from '../../assets/images/Edit_btn.svg';
+import { Information } from "../../components/Auth";
 
 export const MyPage = () => {
   return(
     <Container>
-      <Text>계정 관리</Text>
-      <Theader>기본 정보</Theader>
       <InfoDiv>
+        <Text>계정 관리</Text>
+        <Theader>기본정보</Theader>
         <InfoContainer>
-          <ProfileDiv>
-            <ProfileImg/>
-            <ProfileEditor/>
-          </ProfileDiv>
+          <Information />
         </InfoContainer>
+        <PasswordDiv>
+          <Theader>비밀번호</Theader>
+          <PasswordContainer>
+
+          </PasswordContainer>
+        </PasswordDiv>
       </InfoDiv>
     </Container>
   );
