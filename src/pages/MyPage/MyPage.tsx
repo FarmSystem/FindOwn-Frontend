@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useCallback } from "react";
 import {
   Container,
   Text,
@@ -8,12 +8,25 @@ import {
   PasswordDiv,
   PasswordContainer,
  } from './style';
- import edit from '../../assets/images/Edit_btn.svg';
-import { Information } from "../../components/Auth";
+import { Information, Password } from "../../components/Auth";
+import { useAtom } from "jotai";
+import { modalAtom } from "../../states/jotaiStates";
+import { CustomModal } from "../../components/Auth/CustomModal";
 
 export const MyPage = () => {
+  const [isOpenModal, setOpenModal] = useAtom(modalAtom);
+
+  const onClickToggleModal = useCallback(() => {
+    setOpenModal(!isOpenModal);
+  }, [isOpenModal]);
+
   return(
     <Container>
+      {
+        isOpenModal &&(
+          <CustomModal onClickToggleModal={onClickToggleModal}/>
+        )
+      }
       <InfoDiv>
         <Text>계정 관리</Text>
         <Theader>기본정보</Theader>
@@ -23,10 +36,11 @@ export const MyPage = () => {
         <PasswordDiv>
           <Theader>비밀번호</Theader>
           <PasswordContainer>
-
+            <Password/>
           </PasswordContainer>
         </PasswordDiv>
       </InfoDiv>
+
     </Container>
   );
 };

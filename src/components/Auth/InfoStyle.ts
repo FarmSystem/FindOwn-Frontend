@@ -11,22 +11,22 @@ export const EmailCon = styled.div`
 `;
 
 export const EditBtn = styled.div`
-display: flex;
-flex-direction: row;
-margin-top: 130px;
-margin-left: 750px;
-gap: 7px;
-align-items: center;
-cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  margin-top: 130px;
+  margin-left: 750px;
+  gap: 7px;
+  align-items: center;
+  cursor: pointer;
 `;
 export const EditText = styled.div`
-font-size: 20px;
-text-decoration: underline;
+  font-size: 20px;
+  text-decoration: underline;
 `;
 
 export const EditIcon = styled.img`
-width: 20px;
-height: 20px;
+  width: 20px;
+  height: 20px;
 `;
 
 export const Contained = styled.div`

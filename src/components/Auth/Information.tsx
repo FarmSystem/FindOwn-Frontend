@@ -26,13 +26,17 @@ export const Information = () => {
     );
   };
 
+  const EditState = () => {
+    setIsEdited(!isEdited);
+  };
+
   return(
     <>
     {!isEdited ? (
       <>
         <NickName>팜 4조</NickName>  
         <EmailCon>farm4team@gmail.com</EmailCon>                    
-        <EditBtn onClick={()=>setIsEdited(!isEdited)}>
+        <EditBtn onClick={EditState}>
           <EditText>수정</EditText>
           <EditIcon src={edit} />
         </EditBtn>
@@ -56,7 +60,7 @@ export const Information = () => {
             {customBtn({message: "인증번호"})}
           </InputContainer>
         </Contained>
-        <SubRounded>수정완료</SubRounded>
+        <SubRounded onClick={EditState}>수정완료</SubRounded>
       </>
     )}
     </>
