@@ -110,7 +110,7 @@ const ButtonContainer = styled.div`
 
 export const Community = () => {
   const [currentTab, clickTab] = useState(0);
-  const [selectedTag, setSelectedTag] = useAtom(selectedTagAtom); // 추가된 코드
+  const [selectedTag, setSelectedTag] = useAtom(selectedTagAtom);
 
   const menuArr = [{ name: "전체 게시글" }, { name: "태그별 게시판" }];
 

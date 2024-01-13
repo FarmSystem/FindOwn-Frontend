@@ -200,7 +200,6 @@ export const Register = () => {
           email: email,
           password: password,
         });
-        // console.log(response);
         alert("회원가입이 완료되었습니다.");
         navigate("/");
       } catch (error) {
