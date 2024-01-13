@@ -7,6 +7,7 @@ export const ModalContainer = styled.div`
   align-items: center;
   justify-content: center;
   position: fixed;
+  z-index: 20;
   // border: 1px solid black;
 `;
 

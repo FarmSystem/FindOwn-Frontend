@@ -8,9 +8,10 @@ import {
   Additional,
   SignUp,
 } from "./style";
-import React, { useState, FormEvent } from "react";
+import React, { useState, FormEvent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { atom } from "jotai";
+import { apiClient } from "../../apis/apiClient";
 
 interface ApiResponse {
   code: number;
@@ -31,23 +32,31 @@ export const Login = () => {
   const onPasswordHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.currentTarget.value);
   };
-  const onSubmitHandler = () => {
-    if (!Email) {
-      return alert("아이디를 입력해주세요");
-    } else if (!Password) {
-      return alert("비밀번호를 입력해주세요");
-    } else {
-      let body = {
-        email: Email,
-        password: Password,
-      };
-      // console.log("Email", Email);
-      // console.log("Password", Password);
+  const onSubmitHandler = async() => {
+    try{
+      let body={};
+      if (!Email) {
+        return alert("아이디를 입력해주세요");
+      } else if (!Password) {
+        return alert("비밀번호를 입력해주세요");
+      } else {
+        body = {
+          username: Email,
+          password: Password,
+        };
+      }
+      const response = await apiClient.post(`/api/v2/no-auth/login`, body);
+      if(response.status === 200){
+        localStorage.setItem('email', Email);
+        localStorage.setItem('token', response.data.accessToken);
+        navigate("/");
+      }else{
+        alert("아이디나 비밀번호가 잘못되었습니다.");
+      }
+    }catch(error){
+      console.log(error);
     }
-    if(Email =="user1" && Password == "1234"){
-      localStorage.setItem('Email', "user1");
-      navigate("/");
-    }
+
     setLoading(true);
   };
 

@@ -41,10 +41,20 @@ const TextContainer = styled(Grid)`
 
 export const StartButton = () => {
   const navigate = useNavigate();
+
+  const startJudge = () => {
+    const ID = localStorage.getItem("email");
+    if(ID){
+      navigate("/trademark");
+    }else{
+      navigate("/login");
+    }
+  }
+
   return (
     <SectionContainer container>
       <TextContainer>
-        <StyledButton onClick={() => navigate("/login")}>
+        <StyledButton onClick={startJudge}>
           시작하기 →{" "}
         </StyledButton>
         <StyledButton onClick={() => navigate("/list")}>

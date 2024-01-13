@@ -57,9 +57,9 @@ const StyledLink = styled(Link)`
 `;
 
 export const Nav = () => {
-  const ID = localStorage.getItem('Email');
+  const ID = localStorage.getItem('email');
   const reset = () => {
-    localStorage.removeItem("Email");
+    localStorage.clear();
   }
   return (
     <NavBarContainer>

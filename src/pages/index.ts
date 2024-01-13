@@ -11,3 +11,5 @@ export { Community } from "./Community";
 export { Write } from "./Write";
 export { PostDetail } from "./PostDetail";
 // export { main } from './main';
+export { DetailList } from "./DetailList";
+export { MarkDetail } from "./DetailList";

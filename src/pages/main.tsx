@@ -18,7 +18,7 @@ const Container = styled(Grid)`
 
 function Main() {
   return (
-    <Container container xs>
+    <Container container xs={12}>
       <Section1 />
     </Container>
   );
