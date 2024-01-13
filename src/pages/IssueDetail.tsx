@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styled from "@emotion/styled";
 import { apiClient } from "../apis/apiClient";
-import { Button, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import spinner from "../assets/images/spinner.gif";
+import unscrapped from "../assets/images/unscrapped.svg";
+import scrapped from "../assets/images/scrapped.svg";
 
 const Container = styled(Grid)`
   width: 65vw;
@@ -66,13 +68,15 @@ const Title = styled.p`
 `;
 
 const SubTitle = styled.div`
-  width: 50%;
+  width: 100%;
   font-size: 1.5rem;
   font-weight: bold;
   color: #a1a0a0;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  margin-top: 1rem;
+  padding-left: 1rem;
 `;
 
 const ContentBlock = styled.div`
@@ -123,7 +127,7 @@ const CommentButtonBlock = styled.div`
 
 export const IssueDetail = () => {
   const { id } = useParams<{ id?: string }>();
-  //   const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [issue, setIssue] = useState<Issue | null>(null);
 
   interface Issue {
@@ -139,18 +143,32 @@ export const IssueDetail = () => {
 
   const postScrap = async () => {
     const numericId = id ? parseInt(id, 10) : 0; // useParams로 받은 postId는 string이므로, number로 변환.
-    try {
-      await apiClient
-        .post(`/api/v2/users/community/scrap/?id=${numericId}`, {
-          id: issue?.issueId,
-        })
-        .then((res) => {
-          alert("스크랩이 완료되었습니다. 마이페이지에서 확인해보세요 !");
-          window.location.reload();
-        });
-    } catch (error) {
-      console.log(error);
-      alert("스크랩에 실패했습니다. 다시 시도해주세요.");
+    if (!issue?.is_scraped) {
+      try {
+        await apiClient
+          .post(`/api/v2/users/community/scrap/?id=${numericId}`, {
+            id: issue?.issueId,
+          })
+          .then((res) => {
+            alert("스크랩이 완료되었습니다. 마이페이지에서 확인해보세요 !");
+            window.location.reload();
+          });
+      } catch (error) {
+        console.log(error);
+        alert("스크랩에 실패했습니다. 다시 시도해주세요.");
+      }
+    } else {
+      try {
+        await apiClient
+          .delete(`/api/v2/users/community/scrap/?id=${issue?.issueId}`)
+          .then((res) => {
+            alert("스크랩이 취소되었습니다.");
+            window.location.reload();
+          });
+      } catch (error) {
+        console.log(error);
+        alert("스크랩 취소에 실패했습니다. 다시 시도해주세요.");
+      }
     }
   };
 
@@ -161,7 +179,7 @@ export const IssueDetail = () => {
       .get(`/api/v2/users/community/issue/?id=${numericId}`)
       .then((response) => {
         setIssue(response.data);
-        // setLoading(false);
+        setLoading(false);
       })
       .catch((error) => {
         console.log(error);
@@ -176,64 +194,60 @@ export const IssueDetail = () => {
   }, [id]);
 
   return (
-    // <Container>
-    //   {loading ? (
-    //     <div
-    //       style={{
-    //         display: "flex",
-    //         alignItems: "center",
-    //         flexDirection: "column",
-    //       }}
-    //     >
-    //       <img src={spinner} alt="spinner" />
-    //       <div style={{ color: "gray", fontSize: "1rem" }}>Please Wait...</div>
-    //     </div>
-    //   ) : (
     <Container>
-      <Title></Title>
-      <TitleBlock>
-        <SubTitleBlock style={{ marginTop: "10px" }}>
-          <SubTitle>
-            {" "}
-            {"["} {issue?.category} {"] "}
-            {issue?.title}{" "}
-          </SubTitle>
-        </SubTitleBlock>
-        <SubTitleBlock>
-          <ElseBlock
-            style={{
-              color: "gray",
-            }}
-          >
-            👤 {issue?.reporter}
-          </ElseBlock>
-          <ElseBlock>👀 {issue?.viewCnt}</ElseBlock>
-          <ElseBlock>📁 {issue?.viewCnt}</ElseBlock>
-        </SubTitleBlock>
-      </TitleBlock>
-      <ContentBlock>
-        <p style={{ fontSize: "14px"}}>{issue?.content}</p>
-      </ContentBlock>
-      <CommentBlock>
-        <Comment placeholder="내용을 입력하세요."></Comment>
-        <CommentButtonBlock>
-          <Button
-            sx={{
-              backgroundColor: "#52C07E",
-              color: "#FFFFFF",
-              height: "1.5rem",
-              fontSize: "1rem",
-              borderRadius: "10px",
-            }}
-            onClick={postScrap}
-          >
-            작성
-          </Button>
-        </CommentButtonBlock>
-      </CommentBlock>
+      {loading ? (
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+        >
+          <img src={spinner} alt="spinner" />
+          <div style={{ color: "gray", fontSize: "1rem" }}>Please Wait...</div>
+        </div>
+      ) : (
+        <Container>
+          <Title></Title>
+          <TitleBlock>
+            <SubTitleBlock style={{ marginTop: "10px" }}>
+              <SubTitle>
+                {" "}
+                {"["} {issue?.category} {"] "}
+                {issue?.title}{" "}
+              </SubTitle>
+            </SubTitleBlock>
+            <SubTitleBlock>
+              <ElseBlock
+                style={{
+                  color: "gray",
+                }}
+              >
+                👤 {issue?.reporter}
+              </ElseBlock>
+              <ElseBlock>조회수 {issue?.viewCnt}</ElseBlock>
+              <ElseBlock>📌 {issue?.viewCnt}</ElseBlock>
+            </SubTitleBlock>
+            <SubTitleBlock
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "flex-end",
+                paddingRight: "1rem",
+              }}
+            >
+              <img
+                src={issue?.is_scraped ? scrapped : unscrapped}
+                alt="scrap-button"
+                onClick={postScrap}
+              ></img>
+            </SubTitleBlock>
+          </TitleBlock>
+          <ContentBlock>
+            <p style={{ fontSize: "14px" }}>{issue?.content}</p>
+          </ContentBlock>
+        </Container>
+      )}
     </Container>
   );
 };
-// </Container>
-//   );
-// };
