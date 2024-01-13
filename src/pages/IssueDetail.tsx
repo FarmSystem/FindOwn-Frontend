@@ -81,7 +81,7 @@ const SubTitle = styled.div`
 
 const ContentBlock = styled.div`
   width: 100%;
-  height: 70%;
+  height: 60%;
   display: flex;
   flex-direction: column;
   align-items: left;
@@ -91,38 +91,6 @@ const ContentBlock = styled.div`
   white-space: normal;
   word-wrap: break-word;
   overflow-wrap: break-word;
-`;
-
-const CommentBlock = styled.div`
-  width: 100%;
-  height: 15%;
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  padding: 10px;
-  border: 1px solid #a1a0a0;
-  border-radius: 10px;
-  margin-top: 1rem;
-`;
-
-const Comment = styled.textarea`
-  width: 100%;
-  height: 80%;
-  border: none;
-  font-size: 1.2rem;
-  padding: 10px;
-  white-space: normal;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-`;
-
-const CommentButtonBlock = styled.div`
-  width: 100%;
-  height: 20%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
 `;
 
 export const IssueDetail = () => {
