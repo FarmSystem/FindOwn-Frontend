@@ -59,7 +59,7 @@ const ArrowButton = styled.button`
 `;
 
 export const Tag2 = () => {
-  const [slidePx, setSlidePx] = useState(0);
+  // const [slidePx, setSlidePx] = useState(0);
 
   return (
     <Container>

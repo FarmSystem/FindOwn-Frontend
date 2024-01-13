@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import styled from "@emotion/styled";
 import { apiClient } from "../apis/apiClient";
 import { Button, Grid } from "@mui/material";
-import spinner from "../assets/images/spinner.gif";
+import { format } from "date-fns";
 
 const Container = styled(Grid)`
   width: 65vw;
@@ -45,7 +45,7 @@ const SubTitleBlock = styled.div`
 `;
 
 const ElseBlock = styled.div`
-  width: 12%;
+  width: 17%;
   font-size: 1rem;
   font-weight: bold;
   color: #000000;
@@ -67,7 +67,7 @@ const Title = styled.p`
 `;
 
 const SubTitle = styled.div`
-  width: 60%;
+  width: 50%;
   font-size: 1.5rem;
   font-weight: bold;
   color: #000000;
@@ -173,7 +173,6 @@ const CommentBlockTime = styled.div`
   text-align: right;
 `;
 
-
 export const PostDetail = () => {
   const { postId } = useParams<{ postId?: string }>();
   const [loading, setLoading] = useState(true);
@@ -190,8 +189,8 @@ export const PostDetail = () => {
     writer: string;
     tag: string;
     content: string;
+    createdAt: string;
     viewCnt: number;
-    scrapCnt: number;
     comments: [
       {
         commentId: number;
@@ -210,8 +209,8 @@ export const PostDetail = () => {
           content: comment,
         })
         .then((res) => {
-          alert("등록되었습니다.");
-          console.log(res);
+          alert("댓글이 등록되었습니다.");
+          window.location.reload();
         });
     } catch (error) {
       console.log(error);
@@ -261,7 +260,14 @@ export const PostDetail = () => {
             👤 {board?.writer}
           </ElseBlock>
           <ElseBlock>👀 {board?.viewCnt}</ElseBlock>
-          <ElseBlock>⭐️ {board?.scrapCnt}</ElseBlock>
+          <ElseBlock
+            style={{ color: "gray", fontSize: "14px", paddingRight: "10px" }}
+          >
+            {" "}
+            {board?.createdAt
+              ? format(new Date(board.createdAt), "yyyy-MM-dd HH:mm")
+              : "날짜 정보 없음"}
+          </ElseBlock>
         </SubTitleBlock>
       </TitleBlock>
       <ContentBlock>
@@ -292,7 +298,9 @@ export const PostDetail = () => {
           <CommentListBlock key={comment.commentId}>
             <CommentBlockHeader>
               <CommentBlockTitle>{comment?.writer}</CommentBlockTitle>
-              <CommentBlockTime>{comment?.createdAt}</CommentBlockTime>
+              <CommentBlockTime>
+                {format(new Date(comment?.createdAt), "yyyy-MM-dd HH:mm")}
+              </CommentBlockTime>
             </CommentBlockHeader>
             <CommentBlockBody>{comment?.content}</CommentBlockBody>
           </CommentListBlock>

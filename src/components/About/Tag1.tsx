@@ -78,6 +78,7 @@ export const Tag1 = () => {
           <StyleText2>출원결과 및 다른 상표들의 정보를</StyleText2>
           <StyleText2>확인할 수 있는 마이페이지 기능</StyleText2>
         </ItemContainer>
+      
       </Container>
     </div>
   );

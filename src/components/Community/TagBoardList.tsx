@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { apiClient } from "../../apis/apiClient";
-import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useAtom } from "jotai";
-import { selectedTagAtom } from "../../states/jotaiStates";
+import { format } from "date-fns";
 
 const Container = styled.div`
   width: 95%;
@@ -139,10 +137,10 @@ export const TagBoardList = ({ tagName }: { tagName: string }) => {
         <BoardListTitle />
         {boardList.map((board) => (
           <BoardItem key={board.postId}>
-            <SmallTitleItem>{board.postId + 1}</SmallTitleItem>
+            <SmallTitleItem>{board.postId}</SmallTitleItem>
             <TagItem tagName={board.tagName}>{board.tagName}</TagItem>
             <LargeTitleItem
-              onClick={() => navigate(`/community/${board.postId + 1}`)}
+              onClick={() => navigate(`/community/${board.postId}`)}
             >
               {board.title}
             </LargeTitleItem>
@@ -151,9 +149,10 @@ export const TagBoardList = ({ tagName }: { tagName: string }) => {
               {board.commentCnt}
             </CommentText>
             <TitleItem>{board.writerId}</TitleItem>
-            <TitleItem>{board.createdAt}</TitleItem>
+            <TitleItem>
+              {format(new Date(board.createdAt), "yyyy-MM-dd")}
+            </TitleItem>{" "}
             <SmallTitleItem>👀 {board.viewCnt}</SmallTitleItem>
-            <SmallTitleItem>📁 {board.scrapCnt}</SmallTitleItem>
           </BoardItem>
         ))}
       </BoardListContainer>

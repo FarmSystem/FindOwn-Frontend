@@ -3,8 +3,7 @@ import styled from "@emotion/styled";
 import { apiClient } from "../../apis/apiClient";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useAtom } from "jotai";
-import { selectedTagAtom } from "../../states/jotaiStates";
+import { format } from "date-fns";
 
 const Container = styled.div`
   width: 100%;
@@ -191,7 +190,9 @@ export const BoardList = () => {
               {board.commentCnt}
             </CommentText>
             <TitleItem>{board.writerId}</TitleItem>
-            <TitleItem>{board.createdAt}</TitleItem>
+            <TitleItem>
+              {format(new Date(board.createdAt), "yyyy-MM-dd")}
+            </TitleItem>{" "}
             <SmallTitleItem>{board.viewCnt}</SmallTitleItem>
           </BoardItem>
         ))}

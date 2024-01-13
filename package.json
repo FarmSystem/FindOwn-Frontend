@@ -16,6 +16,7 @@
     "@types/react-js-pagination": "^3.0.7",
     "@types/redux": "^3.6.0",
     "axios": "^1.4.0",
+    "date-fns": "^3.2.0",
     "dayjs": "^1.11.10",
     "http-proxy-middleware": "^2.0.6",
     "jotai": "^2.4.3",
