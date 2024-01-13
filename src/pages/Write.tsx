@@ -146,9 +146,11 @@ export const Write = () => {
           onChange={handleTitleChange}
         />{" "}
         <TagBox>
-          <TagToggle name="상표권" />
-          <TagToggle name="판결" />
-          <TagToggle name="기타 질문" />
+          <TagToggle name="침해" />
+          <TagToggle name="등록" />
+          <TagToggle name="법률" />
+          <TagToggle name="사용" />
+          <TagToggle name="기타" />
         </TagBox>
         <ContentInput
           placeholder="내용을 입력하세요."

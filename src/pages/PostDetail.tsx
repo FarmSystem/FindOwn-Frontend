@@ -132,7 +132,7 @@ const CommentContainer = styled.div`
 `;
 
 const CommentListBlock = styled.div`
-  width: 60%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: left;
@@ -204,7 +204,10 @@ export const PostDetail = () => {
   const postComment = async () => {
     try {
       await apiClient
-        .post(`/api/v2/users/community/comment`, comment)
+        .post(`/api/v2/users/community/comment`, {
+          postId: board?.postId,
+          content: comment,
+        })  
         .then((res) => {
           alert("등록되었습니다.");
           console.log(res);
@@ -216,7 +219,7 @@ export const PostDetail = () => {
   };
 
   useEffect(() => {
-    const numericPostId = postId ? parseInt(postId, 10) + 1 : 0; // useParams로 받은 postId는 string이므로, number로 변환.
+    const numericPostId = postId ? parseInt(postId, 10) : 0; // useParams로 받은 postId는 string이므로, number로 변환.
     apiClient
       .get(`/api/v2/users/community/post/?id=${numericPostId}`)
       .then((response) => {

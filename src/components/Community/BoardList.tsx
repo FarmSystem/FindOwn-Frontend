@@ -111,7 +111,6 @@ export const BoardList = () => {
   const [boardList, setBoardList] = useState<Board[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
-  const [selectedTag] = useAtom(selectedTagAtom);
 
   const postsPerPage = 10;
 
@@ -148,24 +147,18 @@ export const BoardList = () => {
     setCurrentPage((prevPage) => (prevPage > 1 ? prevPage - 1 : 1));
   };
 
-  const getBoardList = () => {
-    apiClient
-      .get("/api/v2/users/community/post")
-      .then((response) => {
-        const filteredBoardList = response.data.filter(
-          (board: Board) =>
-            selectedTag === null || board.tagName === selectedTag
-        );
-        setBoardList(filteredBoardList);
-      })
-      .catch(function (error) {
-        // console.log(error);
-      });
-  };
-
   useEffect(() => {
+    const getBoardList = () => {
+      apiClient
+        .get("/api/v2/users/community/post")
+        .then((response) => {
+          const filteredBoardList = response.data;
+          setBoardList(filteredBoardList);
+        })
+        .catch(function (error) {});
+    };
     getBoardList();
-  }, [selectedTag]);
+  }, []);
 
   return (
     <Container>
@@ -182,10 +175,10 @@ export const BoardList = () => {
         </BoardListTitle>
         {currentPosts.map((board) => (
           <BoardItem key={board.postId}>
-            <SmallTitleItem>{board.postId + 1}</SmallTitleItem>
+            <SmallTitleItem>{board.postId}</SmallTitleItem>
             <TagItem tagName={board.tagName}>{board.tagName}</TagItem>
             <LargeTitleItem
-              onClick={() => navigate(`/community/${board.postId + 1}`)}
+              onClick={() => navigate(`/community/${board.postId}`)}
             >
               {board.title}
             </LargeTitleItem>

@@ -32,9 +32,9 @@ export const Login = () => {
   const onPasswordHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.currentTarget.value);
   };
-  const onSubmitHandler = async() => {
-    try{
-      let body={};
+  const onSubmitHandler = async () => {
+    try {
+      let body = {};
       if (!Email) {
         return alert("아이디를 입력해주세요");
       } else if (!Password) {
@@ -45,15 +45,23 @@ export const Login = () => {
           password: Password,
         };
       }
+      apiClient.defaults.withCredentials = true;
       const response = await apiClient.post(`/api/v2/no-auth/login`, body);
-      if(response.status === 200){
-        localStorage.setItem('email', Email);
-        localStorage.setItem('token', response.data.accessToken);
+      if (response.status === 200) {
+        let accessToken = response.data["accessToken"];
+        localStorage.setItem("email", Email);
+        localStorage.setItem("token", accessToken);
+        console.log(accessToken);
+
+        apiClient.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${accessToken}`;
+
         navigate("/");
-      }else{
+      } else {
         alert("아이디나 비밀번호가 잘못되었습니다.");
       }
-    }catch(error){
+    } catch (error) {
       console.log(error);
     }
 
