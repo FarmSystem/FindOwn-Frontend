@@ -3,6 +3,7 @@ import { Grid } from "@mui/material";
 import React, { useState } from "react";
 import { Tag1 } from "./Tag1";
 import { Tag2 } from "./Tag2";
+import { Tag3 } from "./Tag3";
 
 const Container = styled(Grid)`
   width: 100vw;
@@ -74,7 +75,7 @@ export const Section2 = () => {
 
   return (
     <Container container xs>
-      <div >
+      <div>
         <TabMenu>
           {menuArr.map((el, index) => (
             <li
@@ -86,10 +87,10 @@ export const Section2 = () => {
           ))}
         </TabMenu>
         <Desc>
-        {currentTab === 0 && <Tag1 />}
-        {currentTab === 1 && <Tag2/>}
-        {currentTab === 2 && <Tag1 />}
-      </Desc>
+          {currentTab === 0 && <Tag1 />}
+          {currentTab === 1 && <Tag2 />}
+          {currentTab === 2 && <Tag3 />}
+        </Desc>
       </div>
     </Container>
   );

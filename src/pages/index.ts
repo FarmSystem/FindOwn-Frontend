@@ -1,7 +1,7 @@
 export { Login } from "./Login";
 export { MyPage } from "./MyPage";
 export { Storage } from "./MyPage";
-export { List } from './List';
+export { List } from "./List";
 export { Design } from "./Design";
 export { LoginPage } from "./LoginPage";
 export { Register } from "./Register";
@@ -13,3 +13,4 @@ export { PostDetail } from "./PostDetail";
 // export { main } from './main';
 export { DetailList } from "./DetailList";
 export { MarkDetail } from "./DetailList";
+export { IssueDetail } from "./IssueDetail";

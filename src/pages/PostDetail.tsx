@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 import { apiClient } from "../apis/apiClient";
 import { Button, Grid } from "@mui/material";
 import { format } from "date-fns";
+import spinner from "../assets/images/spinner.gif";
 
 const Container = styled(Grid)`
   width: 65vw;
@@ -240,73 +241,86 @@ export const PostDetail = () => {
 
   return (
     <Container>
-      {/* {loading ? (
-        <div>
-          <img src={spinner} alt="loading" />
+      {loading ? (
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+        >
+          <img src={spinner} alt="spinner" />
+          <div style={{ color: "gray", fontSize: "1rem" }}>Please Wait...</div>
         </div>
-      ) : ( */}
-      <TitleBlock>
-        <Title>Community</Title>
-        <SubTitleBlock>
-          <ElseBlock>
-            {"["} {board?.tag} {"]"}
-          </ElseBlock>
-          <SubTitle> {board?.title} </SubTitle>
-          <ElseBlock
-            style={{
-              color: "gray",
-            }}
-          >
-            👤 {board?.writer}
-          </ElseBlock>
-          <ElseBlock>👀 {board?.viewCnt}</ElseBlock>
-          <ElseBlock
-            style={{ color: "gray", fontSize: "14px", paddingRight: "10px" }}
-          >
-            {" "}
-            {board?.createdAt
-              ? format(new Date(board.createdAt), "yyyy-MM-dd HH:mm")
-              : "날짜 정보 없음"}
-          </ElseBlock>
-        </SubTitleBlock>
-      </TitleBlock>
-      <ContentBlock>
-        <p>{board?.content}</p>
-      </ContentBlock>
-      <CommentBlock>
-        <Comment
-          placeholder="내용을 입력하세요."
-          onChange={handleCommentChange}
-        ></Comment>
-        <CommentButtonBlock>
-          <Button
-            sx={{
-              backgroundColor: "#52C07E",
-              color: "#FFFFFF",
-              height: "1.5rem",
-              fontSize: "1rem",
-              borderRadius: "10px",
-            }}
-            onClick={postComment}
-          >
-            작성
-          </Button>
-        </CommentButtonBlock>
-      </CommentBlock>
-      <CommentContainer>
-        {board?.comments.map((comment) => (
-          <CommentListBlock key={comment.commentId}>
-            <CommentBlockHeader>
-              <CommentBlockTitle>{comment?.writer}</CommentBlockTitle>
-              <CommentBlockTime>
-                {format(new Date(comment?.createdAt), "yyyy-MM-dd HH:mm")}
-              </CommentBlockTime>
-            </CommentBlockHeader>
-            <CommentBlockBody>{comment?.content}</CommentBlockBody>
-          </CommentListBlock>
-        ))}
-      </CommentContainer>
-      {/* )} */}
+      ) : (
+        <Container>
+          <TitleBlock>
+            <Title>Community</Title>
+            <SubTitleBlock>
+              <ElseBlock>
+                {"["} {board?.tag} {"]"}
+              </ElseBlock>
+              <SubTitle> {board?.title} </SubTitle>
+              <ElseBlock
+                style={{
+                  color: "gray",
+                }}
+              >
+                👤 {board?.writer}
+              </ElseBlock>
+              <ElseBlock>👀 {board?.viewCnt}</ElseBlock>
+              <ElseBlock
+                style={{
+                  color: "#a1a0a0",
+                  fontSize: "0.8rem",
+                  textAlign: "left",
+                }}
+              >
+                {" "}
+                {board?.createdAt
+                  ? format(new Date(board.createdAt), "yyyy-MM-dd HH:mm")
+                  : "날짜 정보 없음"}
+              </ElseBlock>
+            </SubTitleBlock>
+          </TitleBlock>
+          <ContentBlock>
+            <p>{board?.content}</p>
+          </ContentBlock>
+          <CommentBlock>
+            <Comment
+              placeholder="내용을 입력하세요."
+              onChange={handleCommentChange}
+            ></Comment>
+            <CommentButtonBlock>
+              <Button
+                sx={{
+                  backgroundColor: "#52C07E",
+                  color: "#FFFFFF",
+                  height: "1.5rem",
+                  fontSize: "1rem",
+                  borderRadius: "10px",
+                }}
+                onClick={postComment}
+              >
+                작성
+              </Button>
+            </CommentButtonBlock>
+          </CommentBlock>
+          <CommentContainer>
+            {board?.comments.map((comment) => (
+              <CommentListBlock key={comment.commentId}>
+                <CommentBlockHeader>
+                  <CommentBlockTitle>{comment?.writer}</CommentBlockTitle>
+                  <CommentBlockTime>
+                    {format(new Date(comment?.createdAt), "yyyy-MM-dd HH:mm")}
+                  </CommentBlockTime>
+                </CommentBlockHeader>
+                <CommentBlockBody>{comment?.content}</CommentBlockBody>
+              </CommentListBlock>
+            ))}
+          </CommentContainer>
+        </Container>
+      )}
     </Container>
   );
 };

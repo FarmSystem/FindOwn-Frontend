@@ -2,9 +2,8 @@ import "./App.css";
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from "./pages/main";
-import { Nav } from "./components/common";
 import { Layout } from "./routes/Layout";
-import { Global, css } from "@emotion/react";
+import { Global} from "@emotion/react";
 import { GlobalStyle } from "./GlobalStyle";
 import {
   Login,
@@ -17,9 +16,10 @@ import {
   Community,
   Write,
   PostDetail,
-  Storage ,
+  Storage,
   DetailList,
-  MarkDetail
+  MarkDetail,
+  IssueDetail,
 } from "./pages";
 
 function App() {
@@ -36,13 +36,14 @@ function App() {
             <Route path="/trademark" element={<TradeMark />} />
             <Route path="/trademark/detail" element={<MarkDetail />} />
             <Route path="/mypage" element={<MyPage />} />
-            <Route path="/mypage/storage" element={<Storage /> } />
+            <Route path="/mypage/storage" element={<Storage />} />
             <Route path="/about" element={<About />} />
             <Route path="/list" element={<List />} />
-            <Route path="/list/:id" element={<DetailList/>} />
+            <Route path="/list/:id" element={<DetailList />} />
             <Route path="/community" element={<Community />} />
             <Route path="/community/write" element={<Write />} />
             <Route path="/community/:postId" element={<PostDetail />} />
+            <Route path="/issue/:id" element={<IssueDetail />} />
           </Route>
         </Routes>
       </BrowserRouter>
