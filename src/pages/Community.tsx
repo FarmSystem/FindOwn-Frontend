@@ -121,9 +121,16 @@ export const Community = () => {
 
   const navigate = useNavigate();
 
-  useEffect(() => {    
+  useEffect(() => {
     if (selectedTag) {
       clickTab(0);
+    }
+
+    let storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      apiClient.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${storedToken}`;
     }
   }, [selectedTag]);
 

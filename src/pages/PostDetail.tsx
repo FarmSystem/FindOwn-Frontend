@@ -173,6 +173,7 @@ const CommentBlockTime = styled.div`
   text-align: right;
 `;
 
+
 export const PostDetail = () => {
   const { postId } = useParams<{ postId?: string }>();
   const [loading, setLoading] = useState(true);
@@ -207,7 +208,7 @@ export const PostDetail = () => {
         .post(`/api/v2/users/community/comment`, {
           postId: board?.postId,
           content: comment,
-        })  
+        })
         .then((res) => {
           alert("등록되었습니다.");
           console.log(res);
@@ -229,6 +230,13 @@ export const PostDetail = () => {
       .catch((error) => {
         console.log(error);
       });
+
+    let storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      apiClient.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${storedToken}`;
+    }
   }, [postId]);
 
   return (
@@ -241,7 +249,9 @@ export const PostDetail = () => {
       <TitleBlock>
         <Title>Community</Title>
         <SubTitleBlock>
-          <ElseBlock>{"["} {board?.tag} {"]"}</ElseBlock>
+          <ElseBlock>
+            {"["} {board?.tag} {"]"}
+          </ElseBlock>
           <SubTitle> {board?.title} </SubTitle>
           <ElseBlock
             style={{

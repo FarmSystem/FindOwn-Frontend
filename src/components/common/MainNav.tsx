@@ -58,26 +58,34 @@ const StyledLink = styled(Link)`
 `;
 
 export const MainNav = () => {
-  const ID = localStorage.getItem('email');
+  const ID = localStorage.getItem("email");
   const reset = () => {
     localStorage.clear();
-  }
+  };
   return (
     <NavBarContainer>
       <NavBarInner>
         <MainLogo />
-        <div style={{ display: 'flex', flexDirection: 'row'}} >
+        <div style={{ display: "flex", flexDirection: "row" }}>
           <StyledLink to="/">Home</StyledLink>
           <StyledLink to="/about">About</StyledLink>
           <StyledLink to="/trademark">Service</StyledLink>
           <StyledLink to="/community">Community</StyledLink>
-          {ID ? 
-            <div style={{display:'flex'}}>
-              <StyledLink to="/mypage" style={{height: '26px'}}>{ID}님</StyledLink>
-              <StyledLink to="/" onClick={reset}>로그아웃</StyledLink>
+          {ID ? (
+            <div style={{ display: "flex" }}>
+              <StyledLink
+                to="/mypage"
+                style={{ height: "26px", color: "#52c07e" }}
+              >
+                {ID}님
+              </StyledLink>
+              <StyledLink to="/" onClick={reset}>
+                로그아웃
+              </StyledLink>
             </div>
-            : <StyledLink to="/login">LOGIN</StyledLink>
-          }
+          ) : (
+            <StyledLink to="/login">LOGIN</StyledLink>
+          )}
         </div>
       </NavBarInner>
     </NavBarContainer>

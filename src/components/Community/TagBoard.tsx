@@ -60,9 +60,11 @@ interface TagBoardProps {
 export const TagBoard: React.FC<TagBoardProps> = ({ setTag }) => {
   const [currentTab, clickTab] = useState(0);
   const menuArr = [
-    { name: "# 상표권" },
-    { name: "# 판결" },
-    { name: "# 기타 질문" },
+    { name: "# 침해" },
+    { name: "# 등록" },
+    { name: "# 법률" },
+    { name: "# 사용" },
+    { name: "# 기타" },
   ];
 
   const selectMenuHandler = (index: number) => {
@@ -83,9 +85,11 @@ export const TagBoard: React.FC<TagBoardProps> = ({ setTag }) => {
         ))}
       </TabMenu>
       <Desc>
-        {currentTab === 0 && <TagBoardList tagName="상표권" />}
-        {currentTab === 1 && <TagBoardList tagName="판결" />}
-        {currentTab === 2 && <TagBoardList tagName="기타질문" />}
+        {currentTab === 0 && <TagBoardList tagName="침해" />}
+        {currentTab === 1 && <TagBoardList tagName="등록" />}
+        {currentTab === 2 && <TagBoardList tagName="법률" />}
+        {currentTab === 3 && <TagBoardList tagName="사용" />}
+        {currentTab === 4 && <TagBoardList tagName="기타" />}
       </Desc>
     </Container>
   );

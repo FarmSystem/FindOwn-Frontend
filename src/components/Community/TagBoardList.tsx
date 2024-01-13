@@ -75,12 +75,16 @@ const CommentText = styled.div`
 
 const getColorBasedOnTagName = (tagName: string) => {
   switch (tagName) {
-    case "상표권":
+    case "법률":
       return "color: #52c07e;";
-    case "판결":
+    case "침해":
       return "color: #B1E2C5;";
-    case "기타 질문":
+    case "등록":
       return "color: #29DF0B;";
+    case "사용":
+      return "color: #33FA06;";
+    case "기타":
+      return "color: #5B8B67;";
     default:
       return "";
   }
@@ -132,7 +136,7 @@ export const TagBoardList = ({ tagName }: { tagName: string }) => {
   return (
     <Container>
       <BoardListContainer>
-        <BoardListTitle/>
+        <BoardListTitle />
         {boardList.map((board) => (
           <BoardItem key={board.postId}>
             <SmallTitleItem>{board.postId + 1}</SmallTitleItem>

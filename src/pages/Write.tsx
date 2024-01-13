@@ -96,7 +96,7 @@ export const Write = () => {
   const handleTagToggle = (tagName: string) => {
     const newTag = tag.includes(tagName) ? [] : [tagName];
     setTag(newTag);
-    setBoard({ ...board, tagName: newTag.length > 0 ? newTag[0] : "" }); 
+    setBoard({ ...board, tagName: newTag.length > 0 ? newTag[0] : "" });
   };
 
   const handleContentChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -137,6 +137,15 @@ export const Write = () => {
     }
   };
 
+  useEffect(() => {
+    let storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      apiClient.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${storedToken}`;
+    }
+  });
+  
   return (
     <Container>
       <WriteBox>
