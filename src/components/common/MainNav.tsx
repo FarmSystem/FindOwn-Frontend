@@ -61,6 +61,7 @@ export const MainNav = () => {
   const ID = localStorage.getItem("email");
   const reset = () => {
     localStorage.clear();
+    alert("로그아웃이 완료되었습니다.");
   };
   return (
     <NavBarContainer>
