@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styled from "@emotion/styled";
 import { apiClient } from "../apis/apiClient";
 import { Grid } from "@mui/material";
@@ -91,6 +91,8 @@ const ContentBlock = styled.div`
   white-space: normal;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  flex-wrap: wrap;
+  overflow: auto;
 `;
 
 export const IssueDetail = () => {
@@ -107,6 +109,7 @@ export const IssueDetail = () => {
     viewCnt: number;
     scrapCnt: number;
     is_scraped: boolean;
+    source: string;
   }
 
   const postScrap = async () => {
@@ -152,7 +155,6 @@ export const IssueDetail = () => {
       .catch((error) => {
         console.log(error);
       });
-    console.log(issue?.is_scraped);
     let storedToken = localStorage.getItem("token");
     console.log(storedToken);
     if (storedToken) {
@@ -190,6 +192,7 @@ export const IssueDetail = () => {
               <ElseBlock
                 style={{
                   color: "gray",
+                  width: "25%",
                 }}
               >
                 👤 {issue?.reporter}
@@ -215,6 +218,18 @@ export const IssueDetail = () => {
           <ContentBlock>
             <p style={{ fontSize: "14px" }}>{issue?.content}</p>
           </ContentBlock>
+          <SubTitleBlock style={{ marginTop: "10px" }}>
+            <SubTitle style={{ fontSize: "1rem" }}>
+              {" "}
+              {"자세히 보기 ->"}
+              <Link
+                to={issue?.source || "/default/path"}
+                style={{ textDecoration: "none" }}
+              >
+                <span style={{ color: "#a1a0a0" }}> {issue?.source}</span>
+              </Link>
+            </SubTitle>
+          </SubTitleBlock>
         </Container>
       )}
     </Container>
