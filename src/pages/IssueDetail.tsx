@@ -199,7 +199,7 @@ export const IssueDetail = () => {
                 👤 {issue?.reporter}
               </ElseBlock>
               <ElseBlock>조회수 {issue?.viewCnt}</ElseBlock>
-              <ElseBlock>📌 {issue?.viewCnt}</ElseBlock>
+              <ElseBlock>📌 {issue?.scrapCnt}</ElseBlock>
             </SubTitleBlock>
             <SubTitleBlock
               style={{
