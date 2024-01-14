@@ -132,7 +132,7 @@ export const IssueDetail = () => {
       await apiClient
         .delete(`/api/v2/users/community/scrap/?id=${numericId}`)
         .then((res) => {
-          alert("스크랩이 취소되었습니다.");
+          alert("스크랩이 취소되었습니다!");
           window.location.reload();
         });
     } catch (error) {
