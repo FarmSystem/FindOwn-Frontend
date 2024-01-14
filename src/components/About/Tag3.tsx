@@ -2,7 +2,8 @@ import styled from "@emotion/styled";
 import { apiClient } from "../../apis/apiClient";
 import { useNavigate } from "react-router-dom";
 import findOwnImg from "../../assets/images/FindOwnLogo3.png";
-import scrapImage from "../../assets/images/unscrapped.svg";
+import unScrapImage from "../../assets/images/unscrapped.svg";
+import scrapImage from "../../assets/images/scrapped.svg";
 import { useEffect, useState } from "react";
 
 const Container = styled.div`
@@ -102,9 +103,10 @@ export const Tag3 = () => {
         <ItemBox onClick={() => navigate(`/issue/${issue.id}`)}>
           <ItemBoxTitle>
             <img
-              src={scrapImage}
-              alt="scrapImage"
+              src={issue?.scraped ? scrapImage : unScrapImage}
+              alt=""
               style={{
+                paddingTop: "3px",
                 paddingLeft: "10px",
               }}
             />
@@ -123,7 +125,7 @@ export const Tag3 = () => {
             }}
           >
             <img
-              src={scrapImage}
+              src={unScrapImage}
               alt="scrapImage"
               style={{ width: "30px", height: "22px" }}
             />{" "}
