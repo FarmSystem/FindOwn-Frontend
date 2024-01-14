@@ -140,6 +140,7 @@ export const Register = () => {
       try {
         await apiClient.get(`/api/v2/no-auth/email/send?address=${email}`);
         setIsCodeSent(true);
+        alert("인증번호가 전송되었습니다.");
       } catch (error) {
         console.log(error);
       }
