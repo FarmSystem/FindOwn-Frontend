@@ -93,6 +93,7 @@ const ContentBlock = styled.div`
   overflow-wrap: break-word;
   flex-wrap: wrap;
   overflow: auto;
+  white-space: pre-wrap;
 `;
 
 export const IssueDetail = () => {
