@@ -58,11 +58,13 @@ export const Login = () => {
         ] = `Bearer ${accessToken}`;
 
         navigate("/");
+        alert("환영합니다! " + Email + "님");
       } else {
         alert("아이디나 비밀번호가 잘못되었습니다.");
       }
     } catch (error) {
       console.log(error);
+      alert("로그인에 실패하였습니다. 다시 시도해주세요.");
     }
 
     setLoading(true);

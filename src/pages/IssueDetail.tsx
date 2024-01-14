@@ -111,38 +111,38 @@ export const IssueDetail = () => {
 
   const postScrap = async () => {
     const numericId = id ? parseInt(id, 10) : 0; // useParams로 받은 postId는 string이므로, number로 변환.
-    if (!issue?.is_scraped) {
-      try {
-        await apiClient
-          .post(`/api/v2/users/community/scrap/?id=${numericId}`, {
-            id: issue?.issueId,
-          })
-          .then((res) => {
-            alert("스크랩이 완료되었습니다. 마이페이지에서 확인해보세요 !");
-            window.location.reload();
-          });
-      } catch (error) {
-        console.log(error);
-        alert("스크랩에 실패했습니다. 다시 시도해주세요.");
-      }
-    } else {
-      try {
-        await apiClient
-          .delete(`/api/v2/users/community/scrap/?id=${issue?.issueId}`)
-          .then((res) => {
-            alert("스크랩이 취소되었습니다.");
-            window.location.reload();
-          });
-      } catch (error) {
-        console.log(error);
-        alert("스크랩 취소에 실패했습니다. 다시 시도해주세요.");
-      }
+    try {
+      await apiClient
+        .post(`/api/v2/users/community/scrap/?id=${numericId}`, {
+          id: issue?.issueId,
+        })
+        .then((res) => {
+          alert("스크랩이 완료되었습니다. 마이페이지에서 확인해보세요 !");
+          window.location.reload();
+        });
+    } catch (error) {
+      console.log(error);
+      alert("스크랩에 실패했습니다. 다시 시도해주세요.");
+    }
+  };
+
+  const deleteScrap = async () => {
+    const numericId = id ? parseInt(id, 10) : 0;
+    try {
+      await apiClient
+        .delete(`/api/v2/users/community/scrap/?id=${numericId}`)
+        .then((res) => {
+          alert("스크랩이 취소되었습니다.");
+          window.location.reload();
+        });
+    } catch (error) {
+      console.log(error);
+      alert("스크랩 취소에 실패했습니다. 다시 시도해주세요.");
     }
   };
 
   useEffect(() => {
     const numericId = id ? parseInt(id, 10) : 0; // useParams로 받은 postId는 string이므로, number로 변환.
-    console.log(id);
     apiClient
       .get(`/api/v2/users/community/issue/?id=${numericId}`)
       .then((response) => {
@@ -152,8 +152,9 @@ export const IssueDetail = () => {
       .catch((error) => {
         console.log(error);
       });
-
+    console.log(issue?.is_scraped);
     let storedToken = localStorage.getItem("token");
+    console.log(storedToken);
     if (storedToken) {
       apiClient.defaults.headers.common[
         "Authorization"
@@ -207,8 +208,8 @@ export const IssueDetail = () => {
               <img
                 src={issue?.is_scraped ? scrapped : unscrapped}
                 alt="scrap-button"
-                onClick={postScrap}
-              ></img>
+                onClick={issue?.is_scraped ? deleteScrap : postScrap}
+              />
             </SubTitleBlock>
           </TitleBlock>
           <ContentBlock>

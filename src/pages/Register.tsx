@@ -200,8 +200,8 @@ export const Register = () => {
           email: email,
           password: password,
         });
-        alert("회원가입이 완료되었습니다.");
-        navigate("/");
+        alert("회원가입이 완료되었습니다. 로그인 페이지로 이동합니다!");
+        navigate("/login");
       } catch (error) {
         // console.log(error);
       }
