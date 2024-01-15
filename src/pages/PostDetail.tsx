@@ -164,7 +164,9 @@ const CommentBlockBody = styled.div`
 
 const CommentBlockTitle = styled.div`
   width: 50%;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: row;
 `;
 
 const CommentBlockTime = styled.div`
@@ -179,9 +181,25 @@ export const PostDetail = () => {
   const [loading, setLoading] = useState(true);
   const [board, setBoard] = useState<Board | null>(null);
   const [comment, setComment] = useState("");
+  const [editingCommentId, setEditingCommentId] = useState<number | null>(null);
+  const [editingComment, setEditingComment] = useState("");
 
   const handleCommentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setComment(e.target.value);
+  };
+
+  const handleEditButtonClick = (commentId: number, content: string) => {
+    setEditingCommentId(commentId);
+    setEditingComment(content);
+  };
+
+  const handleEditCompleteClick = async () => {
+    if (editingCommentId !== null) {
+      await patchComment(editingCommentId);
+    }
+
+    setEditingCommentId(null);
+    setEditingComment("");
   };
 
   interface Board {
@@ -236,10 +254,9 @@ export const PostDetail = () => {
   const patchComment = async (commentId: number) => {
     try {
       await apiClient
-        .patch(`/api/v2/users/community/comment/?id=${commentId}`, {
+        .patch(`/api/v2/users/community/comment?id=${commentId}`, {
           commentId: commentId,
-          // writerId: writer,
-          content: comment,
+          content: editingComment,
         })
         .then((res) => {
           alert("댓글이 수정되었습니다.");
@@ -258,6 +275,7 @@ export const PostDetail = () => {
       .then((response) => {
         setBoard(response.data);
         setLoading(false);
+        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -341,31 +359,92 @@ export const PostDetail = () => {
           <CommentContainer>
             {board?.comments.map((comment) => (
               <CommentListBlock key={comment.commentId}>
-                <CommentBlockHeader>
-                  <CommentBlockTitle>{comment?.writer}</CommentBlockTitle>
-                  <CommentBlockTime
+                {editingCommentId === comment.commentId ? (
+                  <div
                     style={{
                       display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-end",
-                      alignItems: "center",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
                       width: "100%",
-                      textDecorationLine: "underline",
                     }}
                   >
-                    <p style={{ marginRight: "1rem" }}>수정</p>
-                    <p
-                      style={{ marginRight: "1rem" }}
-                      onClick={() => deleteComment(comment.commentId)}
+                    <textarea
+                      style={{
+                        width: "100%",
+                        fontSize: "1rem",
+                        padding: "10px",
+                      }}
+                      value={editingComment}
+                      onChange={(e) => setEditingComment(e.target.value)}
+                    />
+                    <Button
+                      sx={{
+                        backgroundColor: "#52C07E",
+                        color: "#FFFFFF",
+                        height: "1.5rem",
+                        fontSize: "1rem",
+                        borderRadius: "10px",
+                      }}
+                      onClick={handleEditCompleteClick}
                     >
-                      삭제
-                    </p>
-                  </CommentBlockTime>
-                  <CommentBlockTime>
-                    {format(new Date(comment?.createdAt), "yyyy-MM-dd HH:mm")}
-                  </CommentBlockTime>
-                </CommentBlockHeader>
-                <CommentBlockBody>{comment?.content}</CommentBlockBody>
+                      수정 완료
+                    </Button>
+                  </div>
+                ) : (
+                  <>
+                    <CommentBlockHeader>
+                      <CommentBlockTitle>
+                        {comment?.writer}
+                        <p
+                          style={{
+                            marginLeft: "1rem",
+                            cursor: "pointer",
+                            fontSize: "1rem",
+                            textDecorationLine: "underline",
+                            color: "gray",
+                          }}
+                          onClick={() =>
+                            handleEditButtonClick(
+                              comment.commentId,
+                              comment.content
+                            )
+                          }
+                        >
+                          수정
+                        </p>
+                        <p
+                          style={{
+                            marginLeft: "1rem",
+                            cursor: "pointer",
+                            fontSize: "1rem",
+                            textDecorationLine: "underline",
+                            color: "gray",
+                          }}
+                          onClick={() => deleteComment(comment.commentId)}
+                        >
+                          삭제
+                        </p>
+                      </CommentBlockTitle>
+                      <CommentBlockTime
+                        style={{
+                          display: "flex",
+                          flexDirection: "row",
+                          justifyContent: "flex-end",
+                          alignItems: "center",
+                          width: "100%",
+                          textDecorationLine: "underline",
+                        }}
+                      ></CommentBlockTime>
+                      <CommentBlockTime>
+                        {format(
+                          new Date(comment?.createdAt),
+                          "yyyy-MM-dd HH:mm"
+                        )}
+                      </CommentBlockTime>
+                    </CommentBlockHeader>
+                    <CommentBlockBody>{comment?.content}</CommentBlockBody>
+                  </>
+                )}
               </CommentListBlock>
             ))}
           </CommentContainer>
