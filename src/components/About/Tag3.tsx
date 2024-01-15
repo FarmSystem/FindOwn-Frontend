@@ -2,9 +2,16 @@ import styled from "@emotion/styled";
 import { apiClient } from "../../apis/apiClient";
 import { useNavigate } from "react-router-dom";
 import findOwnImg from "../../assets/images/FindOwnLogo3.png";
-import issueImg1 from "../../assets/images/issue_image1.png";
-import issueImg2 from "../../assets/images/issue_image2.png";
-import issueImg3 from "../../assets/images/issue_image3.png";
+// import issueImg1 from "../../assets/images/issue_image1.png";
+// import issueImg2 from "../../assets/images/issue_image2.png";
+// import issueImg3 from "../../assets/images/issue_image3.png";
+import issueImg1 from "../../assets/images/FindOwn_logo1.png";
+import issueImg2 from "../../assets/images/FindOwn_logo2.png";
+import issueImg3 from "../../assets/images/FindOwn_logo3.png";
+import issueImg4 from "../../assets/images/FindOwn_logo4.png";
+import issueImg5 from "../../assets/images/FindOwn_logo5.png";
+import issueImg6 from "../../assets/images/FindOwn_logo6.png";
+
 import unScrapImage from "../../assets/images/unscrapped.svg";
 import scrapImage from "../../assets/images/scrapped.svg";
 import { useEffect, useState } from "react";
@@ -80,7 +87,14 @@ const ItemBoxContent = styled.div`
 
 export const Tag3 = () => {
   const [issueList, setIssueList] = useState<Issue[]>([]);
-  const images = [findOwnImg, issueImg1, issueImg2, issueImg3];
+  const images = [
+    issueImg1,
+    issueImg2,
+    issueImg3,
+    issueImg4,
+    issueImg5,
+    issueImg6,
+  ];
   const navigate = useNavigate();
 
   interface Issue {
@@ -133,7 +147,9 @@ export const Tag3 = () => {
               />
             </ItemBoxImg>{" "}
           </ItemBoxImg>
-          <ItemBoxContent style={{ color: "black", fontWeight: "bold", fontSize: "1rem" }}>
+          <ItemBoxContent
+            style={{ color: "black", fontWeight: "bold", fontSize: "1rem" }}
+          >
             {issue?.title}
           </ItemBoxContent>
           <ItemBoxContent>{issue?.simpleContent}</ItemBoxContent>

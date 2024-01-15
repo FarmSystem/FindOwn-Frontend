@@ -298,10 +298,10 @@ export const PostDetail = () => {
   const patchPost = async (postId: number) => {
     try {
       await apiClient
-        .patch(`/api/v2/users/community/post?id=${postId}`, {
+        .patch(`/api/v2/users/community/post`, {
           postId: postId,
           title: board?.title,
-          tag: board?.tag,
+          tagName: board?.tag,
           content: editingContent,
         })
         .then((res) => {
