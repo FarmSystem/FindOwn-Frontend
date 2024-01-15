@@ -219,6 +219,38 @@ export const PostDetail = () => {
     }
   };
 
+  const deleteComment = async (commentId: number) => {
+    try {
+      await apiClient
+        .delete(`/api/v2/users/community/comment?id=${commentId}`)
+        .then((res) => {
+          alert("댓글이 삭제되었습니다.");
+          window.location.reload();
+        });
+    } catch (error) {
+      console.log(error);
+      alert("삭제에 실패했습니다. 다시 시도해주세요.");
+    }
+  };
+
+  const patchComment = async (commentId: number) => {
+    try {
+      await apiClient
+        .patch(`/api/v2/users/community/comment/?id=${commentId}`, {
+          commentId: commentId,
+          // writerId: writer,
+          content: comment,
+        })
+        .then((res) => {
+          alert("댓글이 수정되었습니다.");
+          window.location.reload();
+        });
+    } catch (error) {
+      console.log(error);
+      alert("수정에 실패했습니다. 다시 시도해주세요.");
+    }
+  };
+
   useEffect(() => {
     const numericPostId = postId ? parseInt(postId, 10) : 0; // useParams로 받은 postId는 string이므로, number로 변환.
     apiClient
@@ -311,6 +343,24 @@ export const PostDetail = () => {
               <CommentListBlock key={comment.commentId}>
                 <CommentBlockHeader>
                   <CommentBlockTitle>{comment?.writer}</CommentBlockTitle>
+                  <CommentBlockTime
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "flex-end",
+                      alignItems: "center",
+                      width: "100%",
+                      textDecorationLine: "underline",
+                    }}
+                  >
+                    <p style={{ marginRight: "1rem" }}>수정</p>
+                    <p
+                      style={{ marginRight: "1rem" }}
+                      onClick={() => deleteComment(comment.commentId)}
+                    >
+                      삭제
+                    </p>
+                  </CommentBlockTime>
                   <CommentBlockTime>
                     {format(new Date(comment?.createdAt), "yyyy-MM-dd HH:mm")}
                   </CommentBlockTime>

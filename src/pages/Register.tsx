@@ -85,7 +85,7 @@ const AlertText = styled.div`
 
 const AlertText2 = styled.div`
   font-size: 14px;
-  color: #52C07E;
+  color: #52c07e;
   padding: 10px 10px 0px 10px;
 `;
 
@@ -118,8 +118,8 @@ export const Register = () => {
     } else {
       setIsEmail(false);
       setIsEmailMessage("올바른 이메일 형식이 아닙니다.");
-    } 
-  }; 
+    }
+  };
 
   const handleVerificationCodeChange = (e: ChangeEvent<HTMLInputElement>) => {
     setVerificationCode(e.target.value);
@@ -195,7 +195,7 @@ export const Register = () => {
 
     if (idCheck && isSame && isCodeTrue) {
       try {
-        const response = await apiClient.post(`/api/v2/no-auth/register`, {
+        await apiClient.post(`/api/v2/no-auth/register`, {
           id: data.get("id"),
           korName: data.get("name"),
           email: email,
