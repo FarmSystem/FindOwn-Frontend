@@ -205,7 +205,7 @@ export const BoardList = () => {
             height: "40px",
             fontSize: "1.5rem",
             textAlign: "center",
-            color: "#52c07e",
+            color: "gray",
             borderRadius: "15px",
             margin: "0 5px",
           }}
@@ -216,9 +216,18 @@ export const BoardList = () => {
           { length: Math.ceil(boardList.length / postsPerPage) },
           (_, i) => i + 1
         ).map((pageNumber) => (
-          <button key={pageNumber} onClick={() => handlePageClick(pageNumber)}>
+          <Button
+            sx={{
+              color: "#52c07e",
+              width: "20px",
+              fontWeight: "bold",
+              backgroundColor: "transparent",
+            }}
+            key={pageNumber}
+            onClick={() => handlePageClick(pageNumber)}
+          >
             {pageNumber}
-          </button>
+          </Button>
         ))}
         <Button
           onClick={handleNextPage}
@@ -226,7 +235,7 @@ export const BoardList = () => {
             width: "40px",
             height: "40px",
             fontSize: "1.5rem",
-            color: "#52c07e",
+            color: "gray",
             textAlign: "center",
             borderRadius: "15px",
             margin: "0 5px",

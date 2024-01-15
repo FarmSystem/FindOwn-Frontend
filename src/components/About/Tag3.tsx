@@ -7,11 +7,21 @@ import scrapImage from "../../assets/images/scrapped.svg";
 import { useEffect, useState } from "react";
 
 const Container = styled.div`
-  width: 60%;
+  width: 70%;
   display: flex;
   flex-direction: row;
   overflow: auto;
   flex-wrap: wrap;
+  margin-left: 20px;
+  align-items: center;
+  justify-content: center;
+  @font-face {
+    font-family: "AppleBold";
+    src: url("https://cdn.jsdelivr.net/gh/cho1n/Apollo-Frontend@latest/src/assets/fonts/AppleSDGothicNeoB.ttf")
+      format("truetype");
+  }
+
+  font-family: "AppleBold";
 `;
 
 const ItemBox = styled.div`
@@ -114,6 +124,9 @@ export const Tag3 = () => {
           <ItemBoxImg>
             <img src={findOwnImg} alt="findOwnImg" />
           </ItemBoxImg>
+          <ItemBoxContent style={{ color: "black", fontWeight: "bold" }}>
+            {issue?.title}
+          </ItemBoxContent>
           <ItemBoxContent>{issue?.simpleContent}</ItemBoxContent>
           <ItemBoxContent
             style={{

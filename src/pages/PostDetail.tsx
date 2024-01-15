@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 import { apiClient } from "../apis/apiClient";
 import { Button, Grid } from "@mui/material";
 import { format } from "date-fns";
+import { useNavigate, useLocation } from "react-router-dom";
 import spinner from "../assets/images/spinner.gif";
 
 const Container = styled(Grid)`
@@ -90,6 +91,15 @@ const ContentBlock = styled.div`
   white-space: normal;
   word-wrap: break-word;
   overflow-wrap: break-word;
+`;
+
+const ContentBottom = styled.div`
+  width: 100%;
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
 `;
 
 const CommentBlock = styled.div`
@@ -183,6 +193,10 @@ export const PostDetail = () => {
   const [comment, setComment] = useState("");
   const [editingCommentId, setEditingCommentId] = useState<number | null>(null);
   const [editingComment, setEditingComment] = useState("");
+  const [editingPostId, setEditingPostId] = useState<number | null>(null);
+  const [editingContent, setEditingContent] = useState("");
+
+  const navigate = useNavigate();
 
   const handleCommentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setComment(e.target.value);
@@ -191,6 +205,20 @@ export const PostDetail = () => {
   const handleEditButtonClick = (commentId: number, content: string) => {
     setEditingCommentId(commentId);
     setEditingComment(content);
+  };
+
+  const handleEditPostButtonClick = (postId: number, content: string) => {
+    setEditingPostId(postId);
+    setEditingContent(content);
+  };
+
+  const handleEditPostCompleteClick = async () => {
+    if (editingPostId !== null) {
+      await patchPost(editingPostId);
+    }
+
+    setEditingPostId(null);
+    setEditingContent("");
   };
 
   const handleEditCompleteClick = async () => {
@@ -243,7 +271,6 @@ export const PostDetail = () => {
         .delete(`/api/v2/users/community/comment?id=${commentId}`)
         .then((res) => {
           alert("댓글이 삭제되었습니다.");
-          window.location.reload();
         });
     } catch (error) {
       console.log(error);
@@ -265,6 +292,39 @@ export const PostDetail = () => {
     } catch (error) {
       console.log(error);
       alert("수정에 실패했습니다. 다시 시도해주세요.");
+    }
+  };
+
+  const patchPost = async (postId: number) => {
+    try {
+      await apiClient
+        .patch(`/api/v2/users/community/post?id=${postId}`, {
+          postId: postId,
+          title: board?.title,
+          tag: board?.tag,
+          content: editingContent,
+        })
+        .then((res) => {
+          alert("게시글이 수정되었습니다.");
+          window.location.reload();
+        });
+    } catch (error) {
+      console.log(error);
+      alert("수정에 실패했습니다. 다시 시도해주세요.");
+    }
+  };
+
+  const deletePost = async (postId: number) => {
+    try {
+      await apiClient
+        .delete(`/api/v2/users/community/post?id=${postId}`)
+        .then((res) => {
+          alert("게시글이 삭제되었습니다.");
+          navigate("/community");
+        });
+    } catch (error) {
+      console.log(error);
+      alert("삭제에 실패했습니다. 다시 시도해주세요.");
     }
   };
 
@@ -334,8 +394,72 @@ export const PostDetail = () => {
             </SubTitleBlock>
           </TitleBlock>
           <ContentBlock>
-            <p>{board?.content}</p>
+            {editingPostId === board?.postId ? (
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-end",
+                  width: "100%",
+                }}
+              >
+                <textarea
+                  style={{
+                    width: "100%",
+                    fontSize: "1rem",
+                    padding: "10px",
+                  }}
+                  value={editingContent}
+                  onChange={(e) => setEditingContent(e.target.value)}
+                />
+                <Button
+                  sx={{
+                    backgroundColor: "#52C07E",
+                    color: "#FFFFFF",
+                    height: "1.5rem",
+                    fontSize: "1rem",
+                    borderRadius: "10px",
+                  }}
+                  onClick={handleEditPostCompleteClick}
+                >
+                  수정 완료
+                </Button>
+              </div>
+            ) : (
+              <p>{board?.content}</p>
+            )}
           </ContentBlock>
+          <ContentBottom>
+            <p
+              style={{
+                marginLeft: "1rem",
+                cursor: "pointer",
+                fontSize: "1rem",
+                textDecorationLine: "underline",
+                color: "gray",
+              }}
+              onClick={() =>
+                handleEditPostButtonClick(
+                  board?.postId || 0,
+                  board?.content || ""
+                )
+              }
+            >
+              게시글 수정
+            </p>
+            <p
+              style={{
+                marginLeft: "1rem",
+                cursor: "pointer",
+                fontSize: "1rem",
+                textDecorationLine: "underline",
+                color: "gray",
+              }}
+              onClick={() => deletePost(board?.postId || 0)}
+            >
+              삭제
+            </p>{" "}
+          </ContentBottom>
           <CommentBlock>
             <Comment
               placeholder="내용을 입력하세요."

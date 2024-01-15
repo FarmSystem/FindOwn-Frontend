@@ -222,12 +222,15 @@ export const IssueDetail = () => {
           <SubTitleBlock style={{ marginTop: "10px" }}>
             <SubTitle style={{ fontSize: "1rem" }}>
               {" "}
-              {"자세히 보기 ->"}
+              {"기사 상세 보기 ["}
               <Link
                 to={issue?.source || "/default/path"}
                 style={{ textDecoration: "none" }}
               >
-                <span style={{ color: "#a1a0a0" }}> {issue?.source}</span>
+                <span style={{ color: "#a1a0a0", cursor: "pointer" }}>
+                  {" "}
+                  {issue?.source} {"]"}
+                </span>
               </Link>
             </SubTitle>
           </SubTitleBlock>

@@ -44,7 +44,7 @@ export const StyleButton = () => {
   return (
     <SectionContainer container>
       <TextContainer>
-        <StyledButton onClick={() => navigate("/login")}>
+        <StyledButton onClick={() => navigate("/trademark")}>
           상표권 판단하기 →{" "}
         </StyledButton>
       </TextContainer>
