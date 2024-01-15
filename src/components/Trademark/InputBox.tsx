@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { Grid } from "@mui/material";
-
+import { Button } from "@mui/material";
 interface InputBoxProps {
   onImageSelect: (file: File | null) => void;
 }

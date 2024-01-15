@@ -1,10 +1,6 @@
 import styled from "@emotion/styled";
 import { apiClient } from "../../apis/apiClient";
 import { useNavigate } from "react-router-dom";
-import findOwnImg from "../../assets/images/FindOwnLogo3.png";
-// import issueImg1 from "../../assets/images/issue_image1.png";
-// import issueImg2 from "../../assets/images/issue_image2.png";
-// import issueImg3 from "../../assets/images/issue_image3.png";
 import issueImg1 from "../../assets/images/FindOwn_logo1.png";
 import issueImg2 from "../../assets/images/FindOwn_logo2.png";
 import issueImg3 from "../../assets/images/FindOwn_logo3.png";
