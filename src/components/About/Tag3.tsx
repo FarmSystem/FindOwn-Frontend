@@ -2,6 +2,9 @@ import styled from "@emotion/styled";
 import { apiClient } from "../../apis/apiClient";
 import { useNavigate } from "react-router-dom";
 import findOwnImg from "../../assets/images/FindOwnLogo3.png";
+import issueImg1 from "../../assets/images/issue_image1.png";
+import issueImg2 from "../../assets/images/issue_image2.png";
+import issueImg3 from "../../assets/images/issue_image3.png";
 import unScrapImage from "../../assets/images/unscrapped.svg";
 import scrapImage from "../../assets/images/scrapped.svg";
 import { useEffect, useState } from "react";
@@ -77,6 +80,7 @@ const ItemBoxContent = styled.div`
 
 export const Tag3 = () => {
   const [issueList, setIssueList] = useState<Issue[]>([]);
+  const images = [findOwnImg, issueImg1, issueImg2, issueImg3];
   const navigate = useNavigate();
 
   interface Issue {
@@ -122,9 +126,14 @@ export const Tag3 = () => {
             />
           </ItemBoxTitle>
           <ItemBoxImg>
-            <img src={findOwnImg} alt="findOwnImg" />
+            <ItemBoxImg>
+              <img
+                src={images[Math.floor(Math.random() * images.length)]}
+                alt="random"
+              />
+            </ItemBoxImg>{" "}
           </ItemBoxImg>
-          <ItemBoxContent style={{ color: "black", fontWeight: "bold" }}>
+          <ItemBoxContent style={{ color: "black", fontWeight: "bold", fontSize: "1rem" }}>
             {issue?.title}
           </ItemBoxContent>
           <ItemBoxContent>{issue?.simpleContent}</ItemBoxContent>
