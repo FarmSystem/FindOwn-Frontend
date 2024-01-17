@@ -40,7 +40,7 @@ export const Information = () => {
     refetchOnWindowFocus: true,
   });
   
-  const mutation = useMutation({
+  const { mutate } = useMutation({
     mutationFn: changeId,
   });
 
@@ -96,7 +96,7 @@ export const Information = () => {
       }
       const originMemberId = userInfo?.nickname;
       const newMemberId = nickname;
-      mutation.mutate({originMemberId, newMemberId});
+      mutate({originMemberId: originMemberId, newMemberId: newMemberId});
 
     }catch(error){
       console.log(error);

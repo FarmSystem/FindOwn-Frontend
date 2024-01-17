@@ -24,23 +24,39 @@ interface ChangeIdProps {
 };
 
 // 사용자 마이페이지에서 아이디 변경하기
-export const changeId = async ({originMemberId, newMemberId} : ChangeIdProps) => {
-  try{
-    const body = {
-      originMemberId: "user2",
-      newMemberId: newMemberId,
-    }
-    console.log(originMemberId);
-    console.log(newMemberId);
-    const {data} = await loginInstance.patch(`/my-page/change/id`, body, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    });
-    if(data.status == 200 ){
-      console.log("성공적");
-    }
-  }catch(error){
-    console.error(error);
+export const changeId = async (props : ChangeIdProps): Promise<ChangeIdProps> => {
+  // try{
+  //   const body = {
+  //     originMemberId: props.originMemberId || "user",
+  //     newMemberId: props.newMemberId,
+  //   }
+  //   // console.log(originMemberId);
+  //   // console.log(newMemberId);
+  //   const {data} = await loginInstance.patch(`/my-page/change/id`, body, {
+  //     headers: {
+  //       Authorization: `Bearer ${token}`
+  //     }
+  //   });
+  //   if(data.status == 200 ){
+  //     console.log("성공적");
+  //   }
+  //   return data;
+  // }catch(error){
+  //   console.error(error);
+  // }
+  const body = {
+    originMemberId: props.originMemberId || "user",
+    newMemberId: props.newMemberId,
   }
+  // console.log(originMemberId);
+  // console.log(newMemberId);
+  const {data} = await loginInstance.patch(`/my-page/change/id`, body, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
+  if(data.status == 200 ){
+    console.log("성공적");
+  }
+  return data;
 }
