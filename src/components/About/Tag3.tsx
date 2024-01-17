@@ -123,26 +123,6 @@ export const Tag3 = () => {
     <Container>
       {issueList.map((issue) => (
         <ItemBox onClick={() => navigate(`/issue/${issue.id}`)}>
-          <ItemBoxTitle>
-            {/* <img
-              src={issue?.scraped ? scrapImage : unScrapImage}
-              alt=""
-              style={{
-                paddingTop: "3px",
-                paddingLeft: "10px",
-              }}
-            /> */}
-            {/* {issue?.scraped ? (
-              <div
-                style={{
-                  padding: "5px",
-                  fontSize: "1rem",
-                }}
-              >
-                {"📌"}
-              </div>
-            ) : null} */}
-          </ItemBoxTitle>
           <ItemBoxImg>
             <img
               src={images[Math.floor(Math.random() * images.length)]}
@@ -163,7 +143,7 @@ export const Tag3 = () => {
             }}
           >
             {issue?.scraped ? (
-              <div style={{ paddingRight: "10px", fontSize: "14px" }}>
+              <div style={{ paddingRight: "10px", fontSize: "12px" }}>
                 {"회원님이 스크랩한 이슈입니다."}
               </div>
             ) : (
@@ -175,7 +155,7 @@ export const Tag3 = () => {
               style={{ width: "30px", height: "22px" }}
             />{" "}
             <div style={{ paddingRight: "10px" }}>{issue.scrapCnt}</div>
-            <div style={{ paddingBottom: "3px" }}> 👀 {issue.viewCnt}</div>
+            <div> 👀 {issue.viewCnt}</div>
           </ItemBoxContent>
         </ItemBox>
       ))}
