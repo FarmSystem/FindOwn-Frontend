@@ -6,12 +6,12 @@ import {
   ListContainer
 } from './style';
 import React, { ReactEventHandler, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import brightVersion from '../../assets/images/bright_version.svg';
 import darkVersion from '../../assets/images/night_version.svg';
 import { ExampleBox } from '../../components/ItemBox';
 import { Grid } from '@mui/material';
 import { ListPagination } from '../../components/Pagination';
+import { useNavigate } from "react-router-dom";
 
 export const List = () => {
   const navigate = useNavigate();
