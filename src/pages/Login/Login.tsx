@@ -51,7 +51,7 @@ export const Login = () => {
         let accessToken = response.data["accessToken"];
         localStorage.setItem("email", Email);
         localStorage.setItem("token", accessToken);
-        console.log(accessToken);
+        // console.log(accessToken);
 
         apiClient.defaults.headers.common[
           "Authorization"

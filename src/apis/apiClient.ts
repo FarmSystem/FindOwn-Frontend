@@ -5,8 +5,8 @@ export const apiClient = axios.create({
 });
 
 // 로그인 api모듈
-// const loginInstance = axios.create(apiClient.defaults);
-// loginInstance.defaults.baseURL += `/api/v2/no-auth/login`;
+export const loginInstance = axios.create(apiClient.defaults);
+loginInstance.defaults.baseURL += `/api/v2/users`;
 
 // export {
 //   loginInstance,
