@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import styled from "@emotion/styled";
 import { Grid } from "@mui/material";
-import Section1 from "../components/About/section1";
-import { Section2 } from "../components/About/section2";
-import { apiClient } from "../apis/apiClient";
+import Section1 from "../../components/About/section1";
+import { Section2 } from "../../components/About/section2";
+import { apiClient } from "../../apis/apiClient";
 
 const Container = styled(Grid)`
   width: 100vw;

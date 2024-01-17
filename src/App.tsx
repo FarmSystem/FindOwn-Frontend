@@ -3,7 +3,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from "./pages/main";
 import { Layout } from "./routes/Layout";
-import { Global} from "@emotion/react";
+import { Global } from "@emotion/react";
 import { GlobalStyle } from "./GlobalStyle";
 import {
   Login,
@@ -20,6 +20,7 @@ import {
   DetailList,
   MarkDetail,
   IssueDetail,
+  MainConcept,
 } from "./pages";
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
             <Route path="/community/write" element={<Write />} />
             <Route path="/community/:postId" element={<PostDetail />} />
             <Route path="/issue/:id" element={<IssueDetail />} />
+            <Route path="/mainConcept/:index" element={<MainConcept />} />
           </Route>
         </Routes>
       </BrowserRouter>

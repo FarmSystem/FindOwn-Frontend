@@ -121,6 +121,13 @@ export const Community = () => {
 
   const navigate = useNavigate();
 
+  const navigateTo = () => {
+    if (!localStorage.getItem("token")) {
+      alert("로그인이 필요한 서비스입니다.");
+      navigate("/login");
+    } else navigate("/community/write");
+  };
+
   useEffect(() => {
     if (selectedTag) {
       clickTab(0);
@@ -167,7 +174,7 @@ export const Community = () => {
             cursor: "pointer",
             zIndex: 5,
           }}
-          onClick={() => navigate("/community/write")}
+          onClick={navigateTo}
         >
           글쓰기
         </Button>

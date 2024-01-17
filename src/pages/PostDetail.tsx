@@ -271,6 +271,7 @@ export const PostDetail = () => {
         .delete(`/api/v2/users/community/comment?id=${commentId}`)
         .then((res) => {
           alert("댓글이 삭제되었습니다.");
+          window.location.reload();
         });
     } catch (error) {
       console.log(error);

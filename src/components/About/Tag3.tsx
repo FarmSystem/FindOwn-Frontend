@@ -33,27 +33,23 @@ const Container = styled.div`
 const ItemBox = styled.div`
   width: 28%;
   height: 30%;
-  border: 1px solid #a1a0a0;
   align-items: center;
   display: flex;
   flex-direction: column;
   margin: 10px;
-  box-shadow: 0px 0px 5px #a1a0a0;
+  cursor: pointer;
 `;
 
 const ItemBoxImg = styled.div`
   width: 100%;
-  height: 30%;
+  height: 20%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #a1a0a0;
-  margin: 10px;
-  padding: 10px;
+  overflow: hidden;
+  border-radius: 10px;
+
   img {
     width: 100%;
-    height: 190px;
-    object-fit: contain;
+    border: none;
   }
 `;
 
@@ -65,6 +61,7 @@ const ItemBoxTitle = styled.div`
   align-items: center;
   justify-content: flex-start;
   padding: 0 0 10px 0;
+  flex-wrap: wrap;
 `;
 
 const ItemBoxContent = styled.div`
@@ -79,6 +76,7 @@ const ItemBoxContent = styled.div`
   white-space: nowrap;
   text-overflow: ellipsis;
   color: #a1a0a0;
+  flex-wrap: wrap;
 `;
 
 export const Tag3 = () => {
@@ -126,27 +124,34 @@ export const Tag3 = () => {
       {issueList.map((issue) => (
         <ItemBox onClick={() => navigate(`/issue/${issue.id}`)}>
           <ItemBoxTitle>
-            <img
+            {/* <img
               src={issue?.scraped ? scrapImage : unScrapImage}
               alt=""
               style={{
                 paddingTop: "3px",
                 paddingLeft: "10px",
               }}
-            />
+            /> */}
+            {/* {issue?.scraped ? (
+              <div
+                style={{
+                  padding: "5px",
+                  fontSize: "1rem",
+                }}
+              >
+                {"📌"}
+              </div>
+            ) : null} */}
           </ItemBoxTitle>
           <ItemBoxImg>
-            <ItemBoxImg>
-              <img
-                src={images[Math.floor(Math.random() * images.length)]}
-                alt="random"
-              />
-            </ItemBoxImg>{" "}
+            <img
+              src={images[Math.floor(Math.random() * images.length)]}
+              alt="random"
+            />
+            {" "}
           </ItemBoxImg>
-          <ItemBoxContent
-            style={{ color: "black", fontWeight: "bold", fontSize: "1rem" }}
-          >
-            {issue?.title}
+          <ItemBoxContent style={{ color: "black", fontSize: "1.3rem" }}>
+            {issue?.title} 
           </ItemBoxContent>
           <ItemBoxContent>{issue?.simpleContent}</ItemBoxContent>
           <ItemBoxContent

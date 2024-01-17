@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "@emotion/styled";
 import { Grid } from "@mui/material";
-import { Sidebar } from "../components/Trademark/Sidebar";
 import { Section1 } from "../components/Trademark/section1";
 import { Section2 } from "../components/Trademark/section2";
 
@@ -23,6 +22,15 @@ const Container = styled(Grid)`
 `;
 
 export const TradeMark = () => {
+
+  useEffect(() => {
+    let storedToken = localStorage.getItem("token");
+    if (!storedToken) {
+      alert("로그인이 필요한 서비스입니다.");
+      window.location.href = "/login";
+    }
+  }, []);
+
   return (
     <Container xs={12}>
       <Section1 />
