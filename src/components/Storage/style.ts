@@ -67,6 +67,10 @@ export const TitleBlock = styled.div`
   margin-top: 30px;
   // margin-left: 300px;
   font-size: 20px;
+  cursor: pointer;
+  &:hover{
+    text-decoration: underline;
+  }
 `;
 
 export const DetailBox = styled.div`

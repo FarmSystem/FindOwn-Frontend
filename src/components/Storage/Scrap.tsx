@@ -26,43 +26,54 @@ import { ListPagination } from "../Pagination";
 
 export const Scrap = () => {
   const [scrap, setScrap] = useState<boolean>(true);
+  const [unScrapNum, setUnScrapNum] = useState<number>(0);
+  const [lastPage, setLastPage] = useState<number>(0);
   const navigate = useNavigate();
   const {data: scrapData, isLoading } = useQuery({
     queryKey: ["scrap-storage"],
     queryFn: getScrap,
-    refetchOnMount: true,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false
   });
 
+  //스크랩한 번호전송
+  const exitScrap = (index: any) => {
+    setScrap(false);
+    setUnScrapNum(index); // 어떤 이슈번호를 scrap을 안할지
+  };
+
   // 클라이언트 측에서 pagination
-  const LAST_PAGE = scrapData?.length % 4 === 0 ? 
-    scrapData?.length/4 : Math.floor(scrapData?.length/4) + 1;
-  const [page, setPage] = useState(1);
+  // 여기서 LAST_PAGE가 integer 아니라고 에러뜸
+  useEffect(()=>{
+    let LAST_PAGE = scrapData?.length % 4 === 0 ? 
+      scrapData?.length/4 : Math.floor(scrapData?.length/4) + 1;
+    setLastPage(LAST_PAGE);
+  }, [scrapData]);
+  const [page, setPage] = useState<number>(1);
   const [data, setData] = useState<string[]>([]);
   useEffect(()=>{
-    if(page === LAST_PAGE){
+    if(page === lastPage){
       setData(scrapData?.slice(4 * (page-1)));
     }else{
       setData(scrapData?.slice(4 * (page-1) , 6 * (page-1) + 4));
     }
-  }, [page]);
+  }, [page, scrapData]);
   const handlePage = (e: React.MouseEvent<HTMLButtonElement>, page: number) => {
-    const currentPage = Math.round(page);
-    setPage(currentPage);
+    setPage(page);
   };
 
   // 이슈번호로 넘어가기
-  const toIssue = () => {
-    navigate(`/`)
+  const toIssue = (index: number) => {
+    navigate(`/issue/${index}`);
   }
-
 
   const ScrapItem = () => {
     return(
       <>
-        {scrapData?.map((item: any, index: number) => (
+        {data?.map((item: any, index: number) => (
           <Block key={index}>
-            { scrap ? 
-            <Scrapped src={scrapIcon} onClick={()=>setScrap(!scrap)}/>
+            { scrap  ? 
+            <Scrapped src={scrapIcon} onClick={()=>exitScrap(item?.issue_id)}/>
           : <Scrapped src={nonScrapIcon} /> }
             <DetailBox>
               <AddDiv>
@@ -75,7 +86,7 @@ export const Scrap = () => {
               </AddDiv>
             </DetailBox>
             <ContentBlock>
-              <TitleBlock>{item?.issue_title}</TitleBlock>
+              <TitleBlock onClick={()=>toIssue(item?.issue_id)}>{item?.issue_title}</TitleBlock>
               <Tagcontainer>
                 <HashTag>{item?.category}</HashTag>
                 <Date>{item?.year}년 {item?.month}월 {item?.day}일</Date>
@@ -94,12 +105,19 @@ export const Scrap = () => {
         <ScrapForIcon src={scrapIcon}/>
         <Text>버튼을 클릭하면 저장내역에서 사라집니다.</Text>
       </ScrapHeader>
-      <ScrapTable>
-        {ScrapItem()}
-        <div style={{marginTop: 54}}>
-          <ListPagination page={page} totalPages={LAST_PAGE} handlePageChange={handlePage}/>
-        </div>
-      </ScrapTable>
+      {
+        !isLoading ?
+          <ScrapTable>
+          <div style={{width: "100%", height: 610}}>
+            {ScrapItem()}
+          </div>
+          <div style={{marginTop: 54}}>
+            <ListPagination page={page} totalPages={lastPage} handlePageChange={handlePage}/>
+          </div>
+        </ScrapTable>
+        :
+        <div>데이터를 불러오고 있습니다.</div>
+      }
     </Wrapper>
   );
 };
