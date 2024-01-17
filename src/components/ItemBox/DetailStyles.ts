@@ -63,7 +63,7 @@ export const DetailInput = styled.div<DetailProps>`
 export const Description = styled.div`
   width: 384px;
   height: auto;
-  font-size: 10px;
+  font-size: 11px;
   color: #494949;
 `;
 
