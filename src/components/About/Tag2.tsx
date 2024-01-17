@@ -14,6 +14,7 @@ const Container = styled(motion.div)`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
 `;
 
 const ItemContainer = styled.div`

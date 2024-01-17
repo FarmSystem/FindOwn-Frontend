@@ -12,6 +12,7 @@ const buttonStyle = css`
   border-radius: 40px;
   width: 10vw;
   height: 5vh;
+  font-weight: bold;
 
   @media (max-width: 1500px) {
     width: 12vw;
@@ -44,19 +45,17 @@ export const StartButton = () => {
 
   const startJudge = () => {
     const ID = localStorage.getItem("email");
-    if(ID){
+    if (ID) {
       navigate("/trademark");
-    }else{
+    } else {
       navigate("/login");
     }
-  }
+  };
 
   return (
     <SectionContainer container>
       <TextContainer>
-        <StyledButton onClick={startJudge}>
-          시작하기 →{" "}
-        </StyledButton>
+        <StyledButton onClick={startJudge}>시작하기 → </StyledButton>
         <StyledButton onClick={() => navigate("/list")}>
           침해사례 →{" "}
         </StyledButton>

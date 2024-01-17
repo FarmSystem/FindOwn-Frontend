@@ -196,7 +196,7 @@ export const IssueDetail = () => {
                   width: "25%",
                 }}
               >
-                👤 {issue?.reporter}
+                by. {issue?.reporter}
               </ElseBlock>
               <ElseBlock>조회수 {issue?.viewCnt}</ElseBlock>
               <ElseBlock>📌 {issue?.scrapCnt}</ElseBlock>

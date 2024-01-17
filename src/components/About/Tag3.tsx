@@ -70,7 +70,7 @@ const ItemBoxContent = styled.div`
   display: flex;
   align-items: center;
   flex-direction: row;
-  font-size: 0.9rem;
+  font-size: 1rem;
   padding: 10px;
   overflow: hidden;
   white-space: nowrap;
@@ -147,11 +147,10 @@ export const Tag3 = () => {
             <img
               src={images[Math.floor(Math.random() * images.length)]}
               alt="random"
-            />
-            {" "}
+            />{" "}
           </ItemBoxImg>
           <ItemBoxContent style={{ color: "black", fontSize: "1.3rem" }}>
-            {issue?.title} 
+            {issue?.title}
           </ItemBoxContent>
           <ItemBoxContent>{issue?.simpleContent}</ItemBoxContent>
           <ItemBoxContent
@@ -163,6 +162,13 @@ export const Tag3 = () => {
               fontSize: "1rem",
             }}
           >
+            {issue?.scraped ? (
+              <div style={{ paddingRight: "10px", fontSize: "14px" }}>
+                {"회원님이 스크랩한 이슈입니다."}
+              </div>
+            ) : (
+              <div style={{ paddingRight: "10px" }}></div>
+            )}
             <img
               src={unScrapImage}
               alt="scrapImage"
