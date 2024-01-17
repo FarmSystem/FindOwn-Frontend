@@ -43,4 +43,19 @@ export const ListContainer = styled.div`
   flex-direction: column;
   height: 100%;
   width: auto;
+  // border: 1px solid black;
+`;
+
+export const OriginalImage = styled.div`
+height: 46px;
+display: flex;
+align-items: flex-end;
+// border: 1px solid black;
+color: #959595;
+width: 100%;
+font-size: 20px;
+text-decoration: underline;
+margin-left: 10px;
+margin-bottom: 10px;
+cursor: pointer;
 `;
