@@ -4,7 +4,7 @@ import {
   Container,
   LeftWrapper
 } from './style';
-import { Nav, MainNav, Footer } from '../../components/common';
+import { Nav, MainNav, Footer, MainFooter } from '../../components/common';
 import { FixedMenu } from '../../components/Auth';
 
 export const Layout = () => {
@@ -26,7 +26,8 @@ export const Layout = () => {
           )}
           <Outlet />
         </Container>
-      <Footer/>
+      {/* <Footer/> */}
+      {showMain ? <MainFooter/> : <Footer/>}
     </Root>
   )
 }
