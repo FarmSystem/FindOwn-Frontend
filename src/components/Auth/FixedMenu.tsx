@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "@emotion/styled";
 import { useAtom } from "jotai";
@@ -14,12 +14,16 @@ type navItems = navItem[];
 export const FixedMenu = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const change = location.pathname.includes(`/storage`);
 
   const [currentPage, setCurrentPage] = useAtom(menuAtom);
   const PageChange = (page: string) => {
     setCurrentPage(page);
     navigate(`${page}`);
   }
+  useEffect(()=>{
+    PageChange(currentPage);
+  }, [location.pathname]);
 
   const MenuItems = useMemo<navItems>(
     () => [
@@ -32,7 +36,7 @@ export const FixedMenu = () => {
   return(
     <MenuContainer>
       {MenuItems.map((item, index) => (
-        <NavItem key={`%{item.name}_${index}`} onClick={()=>PageChange(item.src)} value={currentPage} link={item.src} >
+        <NavItem key={`${item.name}_${index}`}  onClick={()=>PageChange(item.src)} value={currentPage} link={item.src } >
           {item.name}
         </NavItem>
       ))}
