@@ -72,6 +72,22 @@ export const changePwd = async (props: ChangePwProps) => {
   }
 };
 
+//사용자 마이페이지에서 회원탈퇴
+export const exitMember = async() => {
+  try{ 
+    const {data} = await loginInstance.delete(`/my-page/delete`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    if(data.status==200){
+      return true;
+    }
+  }catch(error){
+    console.error(error);
+  }
+};
+
 //사용자 스토리지에서 스크랩 가져오기
 export const getScrap = async() => {
   try{

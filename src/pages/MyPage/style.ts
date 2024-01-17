@@ -52,7 +52,7 @@ export const InfoContainer = styled.div`
 
 
 export const PasswordDiv = styled.div`
-  margin-top: 73px;
+  margin-top: 20px;
 `;
 
 export const PasswordContainer = styled.div`
@@ -60,4 +60,38 @@ export const PasswordContainer = styled.div`
   height: 175px;
   border: 1px solid #BFBFBF;
   border-radius: 8px;
-  `;
+`;
+
+export const ExitDiv = styled.div`
+  height: 80px;
+  // border: 1px solid black;
+  margin-top: 20px;
+`;
+
+export const ExitContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding: 0 60px 0 10px;
+  width: 100%;
+  justify-content: space-between;
+  // border: 1px solid #BFBFBF;
+`;
+
+export const ExitText = styled.div`
+  color: #847B7B;
+  font-size: 18px;
+  margin-top: 10px;
+  margin-left: 15px;
+`;
+
+export const ExitBtn = styled.button`
+  font-size: 18px;
+  width: 100px;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  color: #494949;
+  background-color: #52C07E73;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+`;
