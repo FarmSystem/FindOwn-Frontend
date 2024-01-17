@@ -6,7 +6,7 @@ import { Button } from "@mui/material";
 import { AnimatePresence, motion } from "framer-motion";
 import findOwnImg1 from "../../assets/images/mainConcept_1.png";
 import findOwnImg2 from "../../assets/images/mainConcept_2.jpeg";
-import findOwnImg3 from "../../assets/images/mainConcept_3.jpeg";
+import findOwnImg3 from "../../assets/images/FindOwn_logo6.png";
 import findOwnImg4 from "../../assets/images/mainConcept_4.jpeg";
 
 const Container = styled(motion.div)`

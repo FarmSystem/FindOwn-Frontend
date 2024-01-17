@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import { apiClient } from "../apis/apiClient";
 import { Button, Grid } from "@mui/material";
 import { format } from "date-fns";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import spinner from "../assets/images/spinner.gif";
 
 const Container = styled(Grid)`
