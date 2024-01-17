@@ -22,7 +22,7 @@ export const Backdrop = styled.div`
 
 export const DialogBox = styled.dialog`
   width: 532px;
-  height: 621px;
+  height: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
