@@ -30,7 +30,7 @@ export const Text = styled.div`
 
 export const ScrapTable = styled.div`
   margin-top: 20px;
-  border: 1px solid black;
+  // border: 1px solid black;
   width: 100%;
   height: 100%;
   display: flex;
