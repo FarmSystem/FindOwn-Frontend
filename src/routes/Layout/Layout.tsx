@@ -27,7 +27,7 @@ export const Layout = () => {
           <Outlet />
         </Container>
       {/* <Footer/> */}
-      {showMain ? <MainFooter/> : <Footer/>}
+      {/* {showMain ? <MainFooter/> : <Footer/>} */}
     </Root>
   )
 }

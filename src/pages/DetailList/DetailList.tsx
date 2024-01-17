@@ -12,14 +12,14 @@ import darkVersion from '../../assets/images/night_version.svg';
 import { DetailBox, SimilarItem } from '../../components/ItemBox';
 import styled from '@emotion/styled';
 import alarm from '../../assets/images/alarm_table.svg';
-import { imgModalAtom } from '../../states/jotaiStates';
+import { imgModalAtom, lightAtom } from '../../states/jotaiStates';
 import { useAtom } from 'jotai';
 import { ImageModal } from './ImageModal';
 import { useNavigate } from "react-router-dom";
 
 export const DetailList = () => {
   const navigate = useNavigate();
-  const [ bright, setBright ] = useState(true);
+  const [ bright, setBright ] = useAtom(lightAtom);
   const [ currentImg, setCurrentImg ] = useAtom(imgModalAtom);
   const toggleBright = () => {
     setBright(!bright);

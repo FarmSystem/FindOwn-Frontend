@@ -12,10 +12,12 @@ import { ExampleBox } from '../../components/ItemBox';
 import { Grid } from '@mui/material';
 import { ListPagination } from '../../components/Pagination';
 import { useNavigate } from "react-router-dom";
+import { useAtom } from 'jotai';
+import { lightAtom } from '../../states/jotaiStates';
 
 export const List = () => {
   const navigate = useNavigate();
-  const [ bright, setBright ] = useState(true);
+  const [ bright, setBright ] = useAtom(lightAtom);
   const toggleBright = () => {
     setBright(!bright);
   };

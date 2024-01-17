@@ -14,13 +14,13 @@ import { DetailBox, SimilarItem } from '../../components/ItemBox';
 import styled from '@emotion/styled';
 import alarm from '../../assets/images/alarm_table.svg';
 import { useAtom } from 'jotai';
-import { imgModalAtom, submitModalAtom } from '../../states/jotaiStates';
+import { imgModalAtom, lightAtom, submitModalAtom } from '../../states/jotaiStates';
 import { ImageModal } from './ImageModal';
 import { SubmitModal } from './SubmitModal';
 
 export const MarkDetail = () => {
   const navigate = useNavigate();
-  const [ bright, setBright ] = useState(true);
+  const [ bright, setBright ] = useAtom(lightAtom);
   const [ currentImg, setCurrentImg ] = useAtom(imgModalAtom);
   const [ submitBtn, setSubmitBtn ] = useAtom(submitModalAtom);
   const toggleBright = () => {

@@ -19,3 +19,6 @@ export const storageAtom = atom<string>("scrap");
 
 //similar Item index 관리
 export const similarAtom = atom<number>(0);
+
+//밝기 조절
+export const lightAtom = atom<boolean>(true);
