@@ -41,17 +41,19 @@ export const ScrapTable = styled.div`
 export const Block = styled.div`
   height: 150px;
   width: 1060px;
-  border: 1px solid black;
   position: relative;
+  border-top: 3px solid #E2E8F0;
   // align-items: space-evenly;
   display: flex;
-  flex-direction: row;
+  // flex-direction: column;
 `;
 
 export const Scrapped = styled.img`
-  position: absolute;
-  top: 15px;
-  left: 80px;
+  // position: absolute;
+  // top: 15px;
+  // left: 80px;
+  margin-top: 15px;
+  margin-left: 80px;
   width: 24px;
   height: 32px;
 `;

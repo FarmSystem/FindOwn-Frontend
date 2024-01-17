@@ -39,7 +39,7 @@ export const Written = () => {
         <ColumnContainer>
           <RowContainer>
             <TitleBlock>라이언하트 외 2개</TitleBlock>
-            <IconBtn src={trashIcon} style={{margin:0, marginLeft: 770}} onClick={trashed}/>
+            <IconBtn src={trashIcon} style={{margin:0, marginRight: 30}} onClick={trashed}/>
           </RowContainer>
           <Tagcontainer style={{marginRight: 20}}>
             <HashTag style={{width: 60, height: 30}}>위험</HashTag>
@@ -68,7 +68,7 @@ export const Written = () => {
 const IconBtn = styled.img`
   width: 20px;
   height: 23px;
-  margin: 19px 0 0 16px;
+  margin: 19px 0 0 80px;
 `;
 
 const ColumnContainer = styled.div`
@@ -85,6 +85,7 @@ const RowContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
 `;
 
 const TitleBlock = styled.div`

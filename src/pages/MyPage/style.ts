@@ -11,7 +11,7 @@ export const Container = styled(Grid)`
   flex-direction: column;
   max-width: 1440px;
   align-items: center;
-  border: 1px solid black;
+  // border: 1px solid black;
 `;
 
 export const Text = styled.div`

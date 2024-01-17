@@ -1,4 +1,5 @@
 import { apiClient, loginInstance } from "./apiClient";
+import { useNavigate } from "react-router-dom";
 
 export const LOGIN_USER = "login_user";
 const token = localStorage.getItem('token');
@@ -24,23 +25,26 @@ interface ChangeIdProps {
 };
 
 // 사용자 마이페이지에서 아이디 변경하기
-export const changeId = async (props : ChangeIdProps): Promise<ChangeIdProps> => {
-  const body = {
-    originMemberId: props.originMemberId || "user",
-    newMemberId: props.newMemberId,
-  }
-  // console.log(originMemberId);
-  // console.log(newMemberId);
-  const {data} = await loginInstance.patch(`/my-page/change/id`, body, {
-    headers: {
-      Authorization: `Bearer ${token}`
+export const changeId = async (props : ChangeIdProps)=> {
+  try{
+    const body = {
+      originMemberId: props.originMemberId || "user",
+      newMemberId: props.newMemberId,
     }
-  });
-  if(data.status == 200 ){
-    console.log("성공적");
+    // console.log(originMemberId);
+    // console.log(newMemberId);
+    const {data} = await loginInstance.patch(`/my-page/change/id`, body, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    if(data.status == 200 ){
+      console.log("성공적");
+    }
+  }catch(error){
+    console.error(error);
   }
-  return data;
-}
+};
 
 interface ChangePwProps{
   originMemberPw: string,
@@ -49,14 +53,36 @@ interface ChangePwProps{
 
 //사용자 마이페이지에서 비밀번호 변경
 export const changePwd = async (props: ChangePwProps) => {
-  const body = {
-    originMemberPw: props.originMemberPw,
-    newMemberPw: props.newMemberPw
-  };
-  const {data} = await loginInstance.patch(`/my-page/change/pw`, body, {
-    headers: {
-      Authorization: `Bearer ${token}`
+  try{
+    const body = {
+      originMemberPw: props.originMemberPw,
+      newMemberPw: props.newMemberPw
+    };
+    const {data} = await loginInstance.patch(`/my-page/change/pw`, body, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    // return data; 
+    if(data.status == 200){
+      // navigate(`/login`);
     }
-  });
-  return data;
-}
+  }catch(error){
+    console.error(error);
+  }
+};
+
+//사용자 스토리지에서 스크랩 가져오기
+export const getScrap = async() => {
+  try{
+    const {data} = await loginInstance.get(`/my-page/storage`,{
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    console.log(data);
+    return data;
+  }catch(error){
+    console.error(error);
+  }
+};
