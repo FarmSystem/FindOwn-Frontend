@@ -36,8 +36,8 @@ export const Information = () => {
   const { data: userInfo, isLoading } = useQuery({
     queryKey: ["userInfo"],
     queryFn: getInfo,
-    refetchOnMount: true,
-    refetchOnWindowFocus: true,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
   });
   
   const { mutate } = useMutation({
