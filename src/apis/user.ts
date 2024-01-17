@@ -101,3 +101,17 @@ export const getScrap = async() => {
     console.error(error);
   }
 };
+
+// 사용자 스토리지에서 스크랩 취소하기
+export const deleteScrap = async (props:any) => {
+  try{
+    console.log(props.id);  
+    const {data} = await loginInstance.delete(`/community/scrap/?id=${props.id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  }catch(error){
+    console.error(error);
+  }
+};

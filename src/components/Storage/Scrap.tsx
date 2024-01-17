@@ -19,16 +19,17 @@ import {
   HashTag,
   Date
 } from './style';
-import { getScrap } from "../../apis/user";
-import { useQuery } from "@tanstack/react-query";
+import { deleteScrap, getScrap } from "../../apis/user";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { ListPagination } from "../Pagination";
 
 export const Scrap = () => {
   const [scrap, setScrap] = useState<boolean>(true);
-  const [unScrapNum, setUnScrapNum] = useState<number>(0);
+  const [unScrapNum, setUnScrapNum] = useState<number>();
   const [lastPage, setLastPage] = useState<number>(0);
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const {data: scrapData, isLoading } = useQuery({
     queryKey: ["scrap-storage"],
     queryFn: getScrap,
@@ -37,10 +38,22 @@ export const Scrap = () => {
   });
 
   //스크랩한 번호전송
-  const exitScrap = (index: any) => {
-    setScrap(false);
+  const exitScrap = (props: any) => {
+    const {issue_id, index} = props;
+    // console.log(index);
+    setScrap(!scrap);
     setUnScrapNum(index); // 어떤 이슈번호를 scrap을 안할지
+    mutate({id: issue_id});
   };
+  const {mutate} = useMutation({
+    mutationFn: deleteScrap,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["scrap-storage"]
+      });
+    }
+  });
+
 
   // 클라이언트 측에서 pagination
   // 여기서 LAST_PAGE가 integer 아니라고 에러뜸
@@ -72,9 +85,10 @@ export const Scrap = () => {
       <>
         {data?.map((item: any, index: number) => (
           <Block key={index}>
-            { scrap  ? 
-            <Scrapped src={scrapIcon} onClick={()=>exitScrap(item?.issue_id)}/>
-          : <Scrapped src={nonScrapIcon} /> }
+            { unScrapNum!==index ? 
+            <Scrapped src={scrapIcon} onClick={()=>exitScrap({issue_id: item.issue_id, index})} /> //스크랩된 경우
+            : <Scrapped src={nonScrapIcon} key={index}/> //스크랩취소하면
+            } 
             <DetailBox>
               <AddDiv>
                 <AddText>{item?.scrap_cnt}</AddText>
@@ -121,4 +135,3 @@ export const Scrap = () => {
     </Wrapper>
   );
 };
-
