@@ -38,12 +38,24 @@ export const Contained = styled.div`
 
 export const InputContainer = styled.div`
   width: 400px;
-  height: 35px;
+  height: auto;
   border-bottom: 2px solid #BFBFBF;
   display: flex;
   flex-direction: row;
   align-items: center;
   position: relative;
+`;
+
+export const AlertText = styled.div`
+  font-size: 14px;
+  color: red;
+  // padding: 10px 10px 0px 10px;
+`;
+
+export const AlertText2 = styled.div`
+  font-size: 14px;
+  color: #52C07E;
+  // padding: 10px 10px 0px 10px;
 `;
 
 export const Title = styled.div`
