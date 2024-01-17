@@ -460,6 +460,19 @@ export const PostDetail = () => {
             >
               삭제
             </p>{" "}
+            <Button
+              sx={{
+                backgroundColor: "#52C07E",
+                color: "#FFFFFF",
+                height: "2rem",
+                fontSize: "1rem",
+                borderRadius: "10px",
+                marginLeft: "auto",
+              }}
+              onClick={() => navigate("/community")}
+            >
+              목록으로
+            </Button>
           </ContentBottom>
           <CommentBlock>
             <Comment
@@ -471,7 +484,7 @@ export const PostDetail = () => {
                 sx={{
                   backgroundColor: "#52C07E",
                   color: "#FFFFFF",
-                  height: "1.5rem",
+                  height: "1.8rem",
                   fontSize: "1rem",
                   borderRadius: "10px",
                 }}

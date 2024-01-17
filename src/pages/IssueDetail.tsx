@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import styled from "@emotion/styled";
 import { apiClient } from "../apis/apiClient";
 import { Grid } from "@mui/material";
+import { Button } from "@mui/material";
 import spinner from "../assets/images/spinner.gif";
 import unscrapped from "../assets/images/unscrapped.svg";
 import scrapped from "../assets/images/scrapped.svg";
@@ -94,6 +95,15 @@ const ContentBlock = styled.div`
   flex-wrap: wrap;
   overflow: auto;
   white-space: pre-wrap;
+`;
+
+const ButtonDiv = styled.div`
+  width: 100%;
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
 `;
 
 export const IssueDetail = () => {
@@ -234,6 +244,23 @@ export const IssueDetail = () => {
               </Link>
             </SubTitle>
           </SubTitleBlock>
+          <ButtonDiv>
+            <Button
+              sx={{
+                width: "80px",
+                height: "40px",
+                backgroundColor: "#52C07E",
+                color: "#ffffff",
+                fontSize: "16px",
+                fontWeight: "bold",
+                borderRadius: "10px",
+                marginRight: "20px",
+              }}
+              onClick={() => window.history.back()}
+            >
+              목록으로
+            </Button>
+          </ButtonDiv>
         </Container>
       )}
     </Container>
