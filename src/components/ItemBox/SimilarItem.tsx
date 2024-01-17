@@ -10,6 +10,9 @@ import {
   BasicCircle,
   InsideCircle
 } from './SimilarStyle';
+import { useAtom } from "jotai";
+import { similarAtom } from "../../states/jotaiStates";
+import { useEffect } from "react";
 
 export const SimilarItem = () => {
   const itemExample = [{
@@ -28,19 +31,31 @@ export const SimilarItem = () => {
     src: example3,
     level: "low"
   },];
+
+  const [itemIndex, setItemIndex] = useAtom(similarAtom);
   
+  const itemSelect = (index: number) => {
+    setItemIndex(index);
+    // console.log(index+"엥");
+    // console.log(itemIndex);
+  };
+  
+  useEffect(()=>{
+    console.log(itemIndex);
+  }, [itemExample]);
+
   const warningLight = (props: string) => {
     return(
       <BasicCircle>
         <InsideCircle color={props}/>
       </BasicCircle>
     );
-  }
+  };
 
   const displayItem = (props: any) => {
     return(
       props.map((item: any,index: number) => (
-        <ItemBox key={index}>
+        <ItemBox key={index} onClick={()=>itemSelect(index)} >
           <WarningBlock>
             {warningLight(item.level)}
           </WarningBlock>
