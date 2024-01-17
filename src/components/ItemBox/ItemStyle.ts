@@ -9,6 +9,13 @@ export const ItemContainer = styled.div`
   align-items: center;
 `;
 
+export const ImageContain = styled.div`
+  width: 100%;
+  height: 254px;
+  display: flex;
+  align-items: center;
+`;
+
 export const ImageBox = styled.img`
   width:  280px;
   height: 166px;
@@ -46,7 +53,8 @@ export const Author = styled.div`
   border-top: 1px solid #BFBFBF;
   width: 100%;
   height: 32px;
+  display: flex;
   margin-top: 10px;
-  padding: 5px 10px 0 10px;
+  padding: 20px 10px 0 10px;
   font-size: 14px;
 `;

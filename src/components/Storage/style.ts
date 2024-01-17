@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 export const Wrapper = styled.div`
   width: 100%;
   height: 100%;
-  border: 1px solid black;
+  // border: 1px solid black;
 `;
 
 export const ScrapHeader = styled.div`
@@ -100,7 +100,7 @@ export const Tagcontainer = styled.div`
   justify-content: flex-end;
   gap: 40px;
   align-items: center;
-
+  // border: 1px solid black;
 `;
 
 export const HashTag = styled.div`
@@ -117,4 +117,10 @@ export const HashTag = styled.div`
 
 export const Date = styled.div`
   color: #64748B;
+`;
+
+//written
+export const IconImage = styled.img`
+  width: 24px;
+  height: 32px;
 `;
