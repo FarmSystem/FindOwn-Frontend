@@ -25,25 +25,6 @@ interface ChangeIdProps {
 
 // 사용자 마이페이지에서 아이디 변경하기
 export const changeId = async (props : ChangeIdProps): Promise<ChangeIdProps> => {
-  // try{
-  //   const body = {
-  //     originMemberId: props.originMemberId || "user",
-  //     newMemberId: props.newMemberId,
-  //   }
-  //   // console.log(originMemberId);
-  //   // console.log(newMemberId);
-  //   const {data} = await loginInstance.patch(`/my-page/change/id`, body, {
-  //     headers: {
-  //       Authorization: `Bearer ${token}`
-  //     }
-  //   });
-  //   if(data.status == 200 ){
-  //     console.log("성공적");
-  //   }
-  //   return data;
-  // }catch(error){
-  //   console.error(error);
-  // }
   const body = {
     originMemberId: props.originMemberId || "user",
     newMemberId: props.newMemberId,
@@ -58,5 +39,24 @@ export const changeId = async (props : ChangeIdProps): Promise<ChangeIdProps> =>
   if(data.status == 200 ){
     console.log("성공적");
   }
+  return data;
+}
+
+interface ChangePwProps{
+  originMemberPw: string,
+  newMemberPw: string,
+};
+
+//사용자 마이페이지에서 비밀번호 변경
+export const changePwd = async (props: ChangePwProps) => {
+  const body = {
+    originMemberPw: props.originMemberPw,
+    newMemberPw: props.newMemberPw
+  };
+  const {data} = await loginInstance.patch(`/my-page/change/pw`, body, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
   return data;
 }

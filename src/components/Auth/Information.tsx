@@ -82,12 +82,6 @@ export const Information = () => {
 
   const handleSubmit = async() => {
     try{
-      let a = localStorage.getItem(email);
-      // console.log(a);
-      let body = {
-        originMemberId: localStorage.getItem(email),
-        newMemberId: nickname,
-      };
       if(isCodeTrue == false){
         alert("이메일 인증이 제대로 되지 않았습니다.");
       }

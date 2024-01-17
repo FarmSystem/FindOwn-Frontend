@@ -66,4 +66,5 @@ const NavItem = styled.div<pageProps>`
   align-items: center;
   background-color: ${(props) => props.value == props.link ? "#EEFFED" : "#FFF"};
   color: ${(props) => props.value == props.link ? "#838383" : "#000" };
+  cursor: pointer;
 `;
