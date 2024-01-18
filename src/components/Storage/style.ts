@@ -107,6 +107,7 @@ export const Tagcontainer = styled.div`
   gap: 40px;
   align-items: center;
   // border: 1px solid black;
+  position: relative;
 `;
 
 export const HashTag = styled.div`
@@ -115,6 +116,9 @@ export const HashTag = styled.div`
   background-color: #F1F5F9EB;
   color: #64748B;
   border-radius: 5px;
+  position: absolute;
+  right: 150px;
+  // left: 177px;
   display: flex;
   justify-content: center;
   align-items: center;
