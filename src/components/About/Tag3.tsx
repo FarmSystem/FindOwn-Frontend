@@ -60,8 +60,8 @@ const ItemBoxTitle = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  padding: 0 0 10px 0;
   flex-wrap: wrap;
+  padding: 10px;
 `;
 
 const ItemBoxContent = styled.div`
@@ -129,9 +129,9 @@ export const Tag3 = () => {
               alt="random"
             />{" "}
           </ItemBoxImg>
-          <ItemBoxContent style={{ color: "black", fontSize: "1.3rem" }}>
+          <ItemBoxTitle style={{ color: "black", fontSize: "1.4rem" }}>
             {issue?.title}
-          </ItemBoxContent>
+          </ItemBoxTitle>
           <ItemBoxContent>{issue?.simpleContent}</ItemBoxContent>
           <ItemBoxContent
             style={{

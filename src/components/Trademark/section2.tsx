@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { Grid } from "@mui/material";
+import camera from "../../assets/images/findOwn_camera.png";
+import search from "../../assets/images/findOwn_search.png";
 
 const Container = styled(Grid)`
   width: 100%;
@@ -31,6 +33,11 @@ const ColorBox = styled.div`
   background-color: #c5f3a1;
   border-radius: 10px;
   margin: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 30px;
 `;
 
 const Text = styled.div`
@@ -51,7 +58,18 @@ export const Section2 = () => {
     <Container xs={12}>
       <div>
         <Box>
-          <ColorBox />
+          <ColorBox>
+            <div>Step 1</div>
+            <img
+              style={{
+                width: "40%",
+                height: "40%",
+                margin: "10px",
+              }}
+              src={camera}
+              alt="camera"
+            />
+          </ColorBox>
           <TextBox>
             <Text>
               {" "}
@@ -68,7 +86,22 @@ export const Section2 = () => {
           </TextBox>
         </Box>
         <Box>
-          <ColorBox />
+          <ColorBox
+            style={{
+              backgroundColor: "#9CF1B4",
+            }}
+          >
+            <div>Step 2</div>
+            <img
+              style={{
+                width: "40%",
+                height: "40%",
+                margin: "10px",
+              }}
+              src={search}
+              alt="search"
+            />
+          </ColorBox>
           <TextBox>
             <Text>
               <span className="highlight">

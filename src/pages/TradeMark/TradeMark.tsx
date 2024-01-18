@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import styled from "@emotion/styled";
 import { Grid } from "@mui/material";
-import { Section1 } from "../components/Trademark/section1";
-import { Section2 } from "../components/Trademark/section2";
+import { Section1 } from "../../components/Trademark/section1";
+import { Section2 } from "../../components/Trademark/section2";
 
 const Container = styled(Grid)`
   width: 100%;
@@ -22,7 +22,6 @@ const Container = styled(Grid)`
 `;
 
 export const TradeMark = () => {
-
   useEffect(() => {
     let storedToken = localStorage.getItem("token");
     if (!storedToken) {
