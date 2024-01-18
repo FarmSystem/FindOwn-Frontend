@@ -3,29 +3,6 @@ import { loginInstance } from "./apiClient";
 
 const token = localStorage.getItem("token");
 
-interface resultProps {
-  originImage: string,
-  open: boolean,
-  trademarks: string[],
-}
-
-//상표권 침해판단 결과 저장하기
-export const submitResult = async(props: resultProps) => {
-  try{
-    const body = {
-      // originImage: 
-    };
-    const {data} = await loginInstance.post(`/comparison`, body, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    });
-
-  }catch(error){
-    console.error(error);
-  }
-};
-
 //상표권 결과 삭제하기
 export const deleteResult = async() => {
   try{
