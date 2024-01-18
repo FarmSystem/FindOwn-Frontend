@@ -16,7 +16,7 @@ import alarm from '../../assets/images/alarm_table.svg';
 import { useAtom } from 'jotai';
 import { imgModalAtom, lightAtom, submitModalAtom } from '../../states/jotaiStates';
 import { ImageModal } from './ImageModal';
-import { SubmitModal } from './SubmitModal';
+import { SubmitModal } from '../TradeMark';
 
 export const MarkDetail = () => {
   const navigate = useNavigate();
