@@ -22,6 +22,8 @@ export const similarAtom = atom<number>(0);
 
 //밝기 조절
 export const lightAtom = atom<boolean>(true);
+
+//Detail List 관리
 export interface Detail {
   input_image: string;
   trademarks: [

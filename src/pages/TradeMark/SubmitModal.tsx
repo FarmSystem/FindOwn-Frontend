@@ -33,19 +33,29 @@ PropsWithChildren<ModalDefaultType>) => {
   const [detail] = useAtom(detailAtom);
 
   const saveResult = () => {
-    apiClient.post(`/api/v2/users/comparison, `, {
-      originImage: detail?.input_image,
-      open: true,
-      trademarks: detail?.trademarks,
-    });
+    try {
+      apiClient.post(`/api/v2/users/comparison, `, {
+        originImage: detail?.input_image,
+        open: true,
+        trademarks: detail?.trademarks,
+      });
+    } catch (error) {
+      console.log(error);
+      alert("저장에 실패했습니다. 다시 시도해주세요.");
+    }
   };
 
   const saveResultPrivate = () => {
-    apiClient.post(`/api/v2/users/comparison, `, {
-      originImage: detail?.input_image,
-      open: false,
-      trademarks: detail?.trademarks,
-    });
+    try {
+      apiClient.post(`/api/v2/users/comparison, `, {
+        originImage: detail?.input_image,
+        open: false,
+        trademarks: detail?.trademarks,
+      });
+    } catch (error) {
+      console.log(error);
+      alert("저장에 실패했습니다. 다시 시도해주세요.");
+    }
   };
 
   useEffect(() => {

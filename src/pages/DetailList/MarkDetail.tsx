@@ -4,25 +4,29 @@ import {
   LightCare,
   NavService,
   ListContainer,
-   OriginalImage
-} from '../List/style';
-import React, { useState, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
-import brightVersion from '../../assets/images/bright_version.svg';
-import darkVersion from '../../assets/images/night_version.svg';
-import { DetailBox, SimilarItem } from '../../components/ItemBox';
-import styled from '@emotion/styled';
-import alarm from '../../assets/images/alarm_table.svg';
-import { useAtom } from 'jotai';
-import { imgModalAtom, lightAtom, submitModalAtom } from '../../states/jotaiStates';
-import { ImageModal } from './ImageModal';
-import { SubmitModal } from './SubmitModal';
+  OriginalImage,
+} from "../List/style";
+import React, { useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
+import brightVersion from "../../assets/images/bright_version.svg";
+import darkVersion from "../../assets/images/night_version.svg";
+import { DetailBox, SimilarItem } from "../../components/ItemBox";
+import styled from "@emotion/styled";
+import alarm from "../../assets/images/alarm_table.svg";
+import { useAtom } from "jotai";
+import {
+  imgModalAtom,
+  lightAtom,
+  submitModalAtom,
+} from "../../states/jotaiStates";
+import { ImageModal } from "./ImageModal";
+import { SubmitModal } from "../TradeMark/SubmitModal";
 
 export const MarkDetail = () => {
   const navigate = useNavigate();
-  const [ bright, setBright ] = useAtom(lightAtom);
-  const [ currentImg, setCurrentImg ] = useAtom(imgModalAtom);
-  const [ submitBtn, setSubmitBtn ] = useAtom(submitModalAtom);
+  const [bright, setBright] = useAtom(lightAtom);
+  const [currentImg, setCurrentImg] = useAtom(imgModalAtom);
+  const [submitBtn, setSubmitBtn] = useAtom(submitModalAtom);
   const toggleBright = () => {
     setBright(!bright);
   };
@@ -37,25 +41,24 @@ export const MarkDetail = () => {
     setSubmitBtn(!submitBtn);
   }, [submitBtn]);
 
-  return(
+  return (
     <Container>
-      {
-        currentImg && (
-          <ImageModal onClickToggleModal={onClickToggleModal}/>
-        )
-      }
-      { 
-        submitBtn && (
-          <SubmitModal onClickToggleModal={handleSubmitModal}/>
-        )
-      }
-      <Option >
-        <LightCare onClick={toggleBright} src={bright ? brightVersion : darkVersion} />
-        <NavService onClick={() => navigate(`/trademark`)}>상표 판단 바로가기</NavService>
+      {currentImg && <ImageModal onClickToggleModal={onClickToggleModal} />}
+      {submitBtn && <SubmitModal onClickToggleModal={handleSubmitModal} />}
+      <Option>
+        <LightCare
+          onClick={toggleBright}
+          src={bright ? brightVersion : darkVersion}
+        />
+        <NavService onClick={() => navigate(`/trademark`)}>
+          상표 판단 바로가기
+        </NavService>
       </Option>
       <ListContainer>
         <AdditionalContainer>
-          <OriginalImage onClick={onClickToggleModal} >원본 이미지 보기</OriginalImage>
+          <OriginalImage onClick={onClickToggleModal}>
+            원본 이미지 보기
+          </OriginalImage>
           <DetailBox />
           <SimilarItem />
         </AdditionalContainer>
@@ -69,7 +72,7 @@ export const MarkDetail = () => {
       </ListContainer>
     </Container>
   );
-};  
+};
 
 const AdditionalContainer = styled.div`
   height: auto;
@@ -104,7 +107,7 @@ const AlarmText = styled.div`
 const AlarmImg = styled.img`
   margin-top: 9px;
 `;
-  const SubmitBtn = styled.button`
+const SubmitBtn = styled.button`
   width: 210px;
   height: 58px;
   font-size: 22px;
