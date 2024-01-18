@@ -79,9 +79,10 @@ export const MarkDetail = () => {
 
   //원본 이미지보기 모달
   const onClickToggleModal = useCallback(() => {
-    setCurrentImg(true);
+    // setCurrentImg(true);
+    setCurrentImg(!currentImg);
     setImageURL(detail?.input_image || null);
-  }, [detail?.input_image]);
+  }, [currentImg]);
 
   //결과 저장하기 모달
   const handleSubmitModal = useCallback(() => {
