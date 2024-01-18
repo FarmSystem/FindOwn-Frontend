@@ -26,7 +26,7 @@ export const lightAtom = atom<boolean>(true);
 //Detail List 관리
 export interface Detail {
   input_image: string;
-  trademarks: [
+  trademark: [
     {
       result: string;
       similarity: string;
@@ -40,3 +40,6 @@ export interface Detail {
 }
 
 export const detailAtom = atom<Detail | null>(null);
+
+//접근 권환 관리
+export const accessAtom = atom<boolean>(false);

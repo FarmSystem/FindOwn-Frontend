@@ -6,33 +6,41 @@ import {
   ImageBox,
   Close,
   ImgContainer,
-  OriginImg
-} from './ImgModalStyle';
-import close from '../../assets/images/close_icon.svg';
-import original from '../../assets/images/similar1.png';
+  OriginImg,
+} from "./ImgModalStyle";
+import close from "../../assets/images/close_icon.svg";
 
-interface ModalDefaultType{
+interface ModalDefaultType {
+  imageURL: string | null;
   onClickToggleModal: () => void;
 }
 
 export const ImageModal = ({
-  onClickToggleModal, 
-  // children
-}: PropsWithChildren<ModalDefaultType>) => {
-  return(
+  imageURL,
+  onClickToggleModal,
+}: // children
+PropsWithChildren<ModalDefaultType>) => {
+  
+  return (
     <ModalContainer>
       <DialogBox>
         <ImageBox>
-          <Close src={close} onClick={onClickToggleModal} />
+          <Close
+            src={close}
+            onClick={() => {
+              console.log("clicked");
+              onClickToggleModal();
+            }}
+          />
         </ImageBox>
         <ImgContainer>
-          <OriginImg src={original}/>
+          <OriginImg src={imageURL || undefined} />
         </ImgContainer>
       </DialogBox>
-      <Backdrop 
+      <Backdrop
         onClick={(e: React.MouseEvent) => {
           e.preventDefault();
-          if(onClickToggleModal){
+          if (onClickToggleModal) {
             onClickToggleModal();
           }
         }}

@@ -3,6 +3,10 @@ import styled from "@emotion/styled";
 import { Grid } from "@mui/material";
 import { InputBox } from "./InputBox";
 import { apiClient } from "../../apis/apiClient";
+import { useNavigate } from "react-router-dom";
+import { detailAtom, accessAtom } from "../../states/jotaiStates";
+import { useAtom } from "jotai";
+import spinner from "../../assets/images/Spinner_2.svg";
 
 const Container = styled(Grid)`
   width: 100vw;
@@ -36,6 +40,10 @@ const Button = styled.button`
 
 export const Section1: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
+  const [access, setAccess] = useAtom(accessAtom);
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [detail, setDetail] = useAtom(detailAtom);
 
   const postImage = async (file: File | null) => {
     if (!file) {
@@ -44,13 +52,16 @@ export const Section1: React.FC = () => {
     }
     const formData = new FormData();
     formData.append("image", file);
+    setLoading(true);
     try {
       await apiClient
         .post("/api/v2/users/comparison/result", formData)
         .then((res) => {
+          setLoading(false);
           alert("정상적으로 전송되었습니다.");
-          console.log(res);
-          console.log(res.data);
+          setDetail(res.data);
+          setAccess(true);
+          navigate("/trademark/detail");
         });
     } catch (e) {
       console.log(e);
@@ -59,7 +70,6 @@ export const Section1: React.FC = () => {
 
   useEffect(() => {
     let storedToken = localStorage.getItem("token");
-    console.log(storedToken);
     if (storedToken) {
       apiClient.defaults.headers.common[
         "Authorization"
@@ -73,8 +83,25 @@ export const Section1: React.FC = () => {
 
   return (
     <Container>
-      <InputBox onImageSelect={handleImageSelect} />
-      <Button onClick={() => postImage(selectedImage)}>분석 시작</Button>
+      {loading ? (
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+        >
+          <img src={spinner} alt="spinner" />
+          <div style={{ color: "gray", fontSize: "1rem" }}>
+            값을 받아오는 중입니다.
+          </div>
+        </div>
+      ) : (
+        <>
+          <InputBox onImageSelect={handleImageSelect} />
+          <Button onClick={() => postImage(selectedImage)}>분석 시작</Button>
+        </>
+      )}
     </Container>
   );
 };

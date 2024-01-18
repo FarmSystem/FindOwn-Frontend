@@ -12,12 +12,12 @@ export const ModalContainer = styled.div`
 `;
 
 export const Backdrop = styled.div`
-  width : 100%;
+  width: 100%;
   height: 100%;
   position: fixed;
   top: 0;
   z-index: 10;
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(0, 0, 0, 0.2);
 `;
 
 export const DialogBox = styled.dialog`
@@ -42,6 +42,8 @@ export const ImageBox = styled.div`
 export const Close = styled.img`
   width: 20px;
   height: 20px;
+  pointer-events: auto;
+  z-index: 40;
 `;
 
 export const ImgContainer = styled.div`
@@ -64,11 +66,11 @@ export const SubmitContainer = styled.div`
 
 export const OriginImg = styled.img`
   width: 70%;
-  height: 80%
+  height: 80%;
 `;
 
-//결과저장 스타일 
-export const Header =styled.div`
+//결과저장 스타일
+export const Header = styled.div`
   margin-top: 80px;
   font-size: 30px;
   font-weight: 600;
@@ -105,7 +107,8 @@ export const PressButton = styled.button<BtnProps>`
   justify-content: center;
   align-items: center;
   font-size: 25px;
-  background-color: ${(props) => props.msg == "취소" ? "#D9D9D9C7" : "#3D85C6"};
-  color: ${(props) => props.msg == "취소" ? "#000" : "#FFF"};
+  background-color: ${(props) =>
+    props.msg == "취소" ? "#D9D9D9C7" : "#3D85C6"};
+  color: ${(props) => (props.msg == "취소" ? "#000" : "#FFF")};
   font-weight: 500;
 `;
