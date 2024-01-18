@@ -30,6 +30,13 @@ const ItemContainer = styled.div`
   }
 
   font-family: "AppleBold";
+
+    transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.15);
+  }
+
 `;
 const Img = styled.img`
   width: 120px;

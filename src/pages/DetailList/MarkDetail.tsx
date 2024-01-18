@@ -4,6 +4,7 @@ import {
   LightCare,
   NavService,
   ListContainer,
+<<<<<<< HEAD
   OriginalImage,
 } from "../List/style";
 import React, { useState, useCallback } from "react";
@@ -21,6 +22,21 @@ import {
 } from "../../states/jotaiStates";
 import { ImageModal } from "./ImageModal";
 import { SubmitModal } from "../TradeMark/SubmitModal";
+=======
+   OriginalImage
+} from '../List/style';
+import React, { useState, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+import brightVersion from '../../assets/images/bright_version.svg';
+import darkVersion from '../../assets/images/night_version.svg';
+import { DetailBox, SimilarItem } from '../../components/ItemBox';
+import styled from '@emotion/styled';
+import alarm from '../../assets/images/alarm_table.svg';
+import { useAtom } from 'jotai';
+import { imgModalAtom, lightAtom, submitModalAtom } from '../../states/jotaiStates';
+import { ImageModal } from './ImageModal';
+import { SubmitModal } from '../TradeMark';
+>>>>>>> 532a12a8f733d9b5b90556a487a653f5b8b3d240
 
 export const MarkDetail = () => {
   const navigate = useNavigate();

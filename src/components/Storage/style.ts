@@ -30,7 +30,6 @@ export const Text = styled.div`
 
 export const ScrapTable = styled.div`
   margin-top: 20px;
-  // border: 1px solid black;
   width: 100%;
   height: 100%;
   display: flex;
@@ -39,10 +38,11 @@ export const ScrapTable = styled.div`
 `;
 
 export const Block = styled.div`
-  height: 150px;
+  height: 100%;
   width: 1060px;
   position: relative;
   border-top: 3px solid #E2E8F0;
+  border-bottom: 3px solid #E2E8F0;
   // align-items: space-evenly;
   display: flex;
   // flex-direction: column;
