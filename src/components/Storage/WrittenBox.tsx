@@ -23,16 +23,12 @@ export const WrittenBox = () => {
 
   //특정 판단결과로 이동
   const navToItem = () => {
-
   }
 
   //작성글 삭제하기
   const goTrash = () => {
-    if(confirm("정말로 삭제하시겠습니까?")){
-      console.log("예");
-    }else{
-      console.log("아니요");
-    }
+    alert("삭제하시겠습니까?");
+    
   }
 
   return(
