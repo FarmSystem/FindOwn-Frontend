@@ -56,11 +56,14 @@ export const Scrap = () => {
 
 
   // 클라이언트 측에서 pagination
-  // 여기서 LAST_PAGE가 integer 아니라고 에러뜸
   useEffect(()=>{
-    let LAST_PAGE = scrapData?.length % 4 === 0 ? 
+    if(scrapData) {
+      let LAST_PAGE = scrapData?.length % 4 === 0 ? 
       scrapData?.length/4 : Math.floor(scrapData?.length/4) + 1;
-    setLastPage(LAST_PAGE);
+      setLastPage(LAST_PAGE);
+    }else{
+      setLastPage(0);
+    }
   }, [scrapData]);
   const [page, setPage] = useState<number>(1);
   const [data, setData] = useState<string[]>([]);

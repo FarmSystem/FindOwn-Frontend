@@ -5,9 +5,6 @@ import {
   ScrapTable, 
   Wrapper ,
   Text,
-  Tagcontainer,
-  HashTag,
-  Date
 } from "./style";
 import trashIcon from '../../assets/images/trash_icon.svg';
 import unlockIcon from '../../assets/images/unlock_represent.svg';
@@ -17,22 +14,42 @@ import { Grid } from "@mui/material";
 import { WrittenBox } from "./WrittenBox";
 import { useNavigate } from "react-router-dom";
 import { ListPagination } from "../Pagination";
+import { useQuery } from "@tanstack/react-query";
+import { ownResult } from "../../apis/comparison";
 
 export const Written = () => {
   const [ locked, setLocked ] = useState(false);
   const navigate = useNavigate();
+  const [lastPage, setLastPage] = useState<number>(0);
 
-  // 더미데이터로 구성하기
-  const Items = Array(10).fill(0);
-  const LAST_PAGE = Items.length % 6 === 0 ? 
-    Items.length /6 : Math.floor(Items.length /6) +1;
+  //데이터 불러오기
+  const {data: userWrite, isLoading} = useQuery({
+    queryKey: ["userWrite"],
+    queryFn: ownResult,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+  });
+
+  // 실제 데이터 연결하기
+  useEffect(()=>{
+    if(userWrite) {
+      let LAST_PAGE = userWrite?.length % 4 === 0 ? 
+      userWrite?.length/4 : Math.floor(userWrite?.length/4) + 1;
+      setLastPage(LAST_PAGE);
+    }else{
+      setLastPage(0);
+    }
+  }, [userWrite]);
+
   const [page, setPage] = useState(1);
   const [data, setData] = useState<string[]>([]);
   useEffect(()=>{
-    if(page === LAST_PAGE){
-      setData(Items.slice(6 * (page-1)));
+    if(page === lastPage){
+      // setData(Items.slice(6 * (page-1)));
+      setData(userWrite?.slice(6 * (page-1)));
     }else{
-      setData(Items.slice(6 * (page-1) , 6 * (page-1) + 6));
+      // setData(Items.slice(6 * (page-1) , 6 * (page-1) + 6));
+      setData(userWrite?.slice(6 * (page-1) , 6 * (page-1) + 6));
     }
   }, [page]);
   const handlePage = (e: React.MouseEvent<HTMLButtonElement>, page: number) => {
@@ -58,19 +75,19 @@ export const Written = () => {
             spacing={2}
             columns={12}
             style={{width: "100%", height: "100%"}}>
-          {data.map((_, index) => (
+          {userWrite?.map((item: any, index: number) => (
             <Grid item xs={4} sm={4} md={4} key={index} style={{ width: 'auto', display: 'flex', justifyContent: 'center'}}>
               <div
               //  onClick={()=>navigate(`/list/${index}`)} 
                style={{cursor: 'pointer'}}>
-                <WrittenBox />
+                <WrittenBox data={userWrite}/>
               </div>
             </Grid>
           ))}
           </Grid>
 
           <div style={{alignItems: "center"}}>
-            <ListPagination page={page} totalPages={LAST_PAGE} handlePageChange={handlePage} />
+            <ListPagination page={page} totalPages={lastPage} handlePageChange={handlePage} />
           </div>
 
         </ColumnContainer>

@@ -13,8 +13,8 @@ import lock from '../../assets/images/lock_icon.svg';
 import unlock from '../../assets/images/unlock_icon.svg';
 import trash from '../../assets/images/trash_icon.svg';
 
-export const WrittenBox = () => {
-  const [locked, setLocked] = useState(false);
+export const WrittenBox = (data: any) => {
+  const [locked, setLocked] = useState(data?.open);
 
   //비공개로 바꾸기 
   const Locked = () => {
@@ -43,10 +43,10 @@ export const WrittenBox = () => {
         {/* <IconImg src={}/> */}
       </LockContainer>
       <ImageContain onClick={navToItem}>
-        <ImageBox src={itemEx} />
+        <ImageBox src={data?.image_path} />
       </ImageContain>
       <LowerLayer>
-        <DateBox>2023년 09월 27일</DateBox>
+        <DateBox>{data?.created_at}</DateBox>
         <IconImg style={{margin: 0}} src={trash} onClick={goTrash}/>
       </LowerLayer>
     </ItemContainer>

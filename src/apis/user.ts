@@ -91,7 +91,7 @@ export const exitMember = async() => {
 //사용자 스토리지에서 스크랩 가져오기
 export const getScrap = async() => {
   try{
-    const {data} = await loginInstance.get(`/my-page/storage`,{
+    const {data} = await loginInstance.get(`/my-page/scrap`,{
       headers: {
         Authorization: `Bearer ${token}`
       }
