@@ -42,7 +42,6 @@ export const ImageBox = styled.div`
 export const Close = styled.img`
   width: 20px;
   height: 20px;
-  pointer-events: auto;
   z-index: 40;
 `;
 
