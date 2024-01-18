@@ -17,7 +17,6 @@ import { Grid } from "@mui/material";
 import { WrittenBox } from "./WrittenBox";
 import { useNavigate } from "react-router-dom";
 import { ListPagination } from "../Pagination";
-import { SimpleModal } from "../common";
 
 export const Written = () => {
   const [ locked, setLocked ] = useState(false);
