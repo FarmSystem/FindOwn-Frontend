@@ -20,9 +20,9 @@ import {
   detailAtom,
   accessAtom,
 } from "../../states/jotaiStates";
-import { ImageModal } from "../DetailList/ImageModal";
 import { SubmitModal } from "./SubmitModal";
 import { apiClient } from "../../apis/apiClient";
+import { ImageModal } from "../DetailList/ImageModal";
 
 const AdditionalContainer = styled.div`
   height: auto;
@@ -79,7 +79,6 @@ export const MarkDetail = () => {
 
   //원본 이미지보기 모달
   const onClickToggleModal = useCallback(() => {
-    // setCurrentImg(true);
     setCurrentImg(!currentImg);
     setImageURL(detail?.input_image || null);
   }, [currentImg]);

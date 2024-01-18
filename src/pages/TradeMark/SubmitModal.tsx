@@ -37,7 +37,7 @@ PropsWithChildren<ModalDefaultType>) => {
 
   const saveResult = () => {
     try {
-      apiClient.post(`/api/v2/users/comparison, `, {
+      apiClient.post(`/api/v2/users/comparison`, {
         originImage: detail?.input_image,
         open: true,
         trademarks: detail?.trademark,
@@ -53,7 +53,7 @@ PropsWithChildren<ModalDefaultType>) => {
 
   const saveResultPrivate = () => {
     try {
-      apiClient.post(`/api/v2/users/comparison, `, {
+      apiClient.post(`/api/v2/users/comparison`, {
         originImage: detail?.input_image,
         open: false,
         trademarks: detail?.trademark,
@@ -86,8 +86,10 @@ PropsWithChildren<ModalDefaultType>) => {
         <SubmitContainer>
           <Header>침해 사례를 저장하시겠습니까?</Header>
           <BtnUpper>
-            <CommonBtn onClick={() => saveResultPrivate}>비공개 저장</CommonBtn>
-            <CommonBtn onClick={() => saveResult}>공개 저장</CommonBtn>
+            <CommonBtn onClick={() => saveResultPrivate()}>
+              비공개 저장
+            </CommonBtn>
+            <CommonBtn onClick={() => saveResult()}>공개 저장</CommonBtn>
           </BtnUpper>
           <CommonBtn
             style={{ width: 360, height: 50, marginTop: 35 }}
