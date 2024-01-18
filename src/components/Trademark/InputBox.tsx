@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { Grid } from "@mui/material";
-import { Button } from "@mui/material";
 interface InputBoxProps {
   onImageSelect: (file: File | null) => void;
 }
@@ -73,8 +72,7 @@ export const InputBox: React.FC<InputBoxProps> = ({ onImageSelect }) => {
   const handleImageSelection = (file: File | null) => {
     if (file && (file.type === "image/jpeg" || file.type === "image/png")) {
       setSelectedImage(file);
-      onImageSelect(file); // 이미지 선택 시, 상위 컴포넌트로 전달
-      // console.log(file);
+      onImageSelect(file);
     } else {
       alert("JPG 혹은 PNG 형식의 파일만 가능합니다.");
     }

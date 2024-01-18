@@ -1,75 +1,45 @@
-import styled from "@emotion/styled";
 import { BoxContainer } from "./DetailStyles";
-import example1 from '../../assets/images/similar1.png';
-import example2 from '../../assets/images/similar2.png';
-import example3 from '../../assets/images/similar3.png';
-import { 
+import {
   ItemBox,
   ImageBox,
   WarningBlock,
   BasicCircle,
-  InsideCircle
-} from './SimilarStyle';
+  InsideCircle,
+} from "./SimilarStyle";
 import { useAtom } from "jotai";
-import { similarAtom } from "../../states/jotaiStates";
-import { useEffect } from "react";
+import { similarAtom, detailAtom } from "../../states/jotaiStates";
 
 export const SimilarItem = () => {
-  const itemExample = [{
-    id: 1,
-    label: "카카오프렌즈 라이언",
-    src: example1,
-    level: "high",
-  }, {
-    id: 2,
-    label: "카카오프렌즈 라이언",
-    src: example2,
-    level: "normal",
-  }, {
-    id: 3,
-    label: "카카오프렌즈 라이언",
-    src: example3,
-    level: "low"
-  },];
-
   const [itemIndex, setItemIndex] = useAtom(similarAtom);
-  
+  const [detail] = useAtom(detailAtom);
+
   const itemSelect = (index: number) => {
     setItemIndex(index);
-    // console.log(index+"엥");
-    // console.log(itemIndex);
   };
-  
-  useEffect(()=>{
-    console.log(itemIndex);
-  }, [itemExample]);
 
   const warningLight = (props: string) => {
-    return(
+    return (
       <BasicCircle>
-        <InsideCircle color={props}/>
+        <InsideCircle color={props} />
       </BasicCircle>
     );
   };
 
-  const displayItem = (props: any) => {
-    return(
-      props.map((item: any,index: number) => (
-        <ItemBox key={index} onClick={()=>itemSelect(index)} >
-          <WarningBlock>
-            {warningLight(item.level)}
-          </WarningBlock>
-          <ImageBox>
-            <img src={item.src}/>
-          </ImageBox>
-        </ItemBox>
-      ))
-    );
+  const displayItem = () => {
+    if (!detail || !detail.trademarks) return null;
+    return detail.trademarks.map((item, index) => (
+      <ItemBox key={index} onClick={() => itemSelect(index)}>
+        <WarningBlock>{warningLight(item.result)}</WarningBlock>
+        <ImageBox>
+          <img src={item.image_path} alt="item" />
+        </ImageBox>
+      </ItemBox>
+    ));
   };
 
-  return(
-    <BoxContainer style={{gap: 90, border: "none", marginTop: 20}}>
-      {displayItem(itemExample)}
+  return (
+    <BoxContainer style={{ gap: 90, border: "none", marginTop: 20 }}>
+      {displayItem()}
     </BoxContainer>
   );
 };

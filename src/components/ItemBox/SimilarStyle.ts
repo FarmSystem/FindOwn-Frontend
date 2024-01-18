@@ -49,8 +49,8 @@ export interface colorProps {
 export const InsideCircle = styled.div<colorProps>`
   width: 20px;
   height: 20px;
-  background-color: ${(props) => props.color === "high" ? "#FF0000" : (
-    props.color === "normal" ? "#FF9900" : "#1AB001"
+  background-color: ${(props) => props.color === "위험" ? "#FF0000" : (
+    props.color === "주의" ? "#FF9900" : "#1AB001"
   )};
   position: absolute;
   z-index: 2;

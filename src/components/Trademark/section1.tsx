@@ -6,12 +6,10 @@ import { apiClient } from "../../apis/apiClient";
 
 const Container = styled(Grid)`
   width: 100vw;
-  height: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 50px;
   @media (max-width: 1400px) {
     padding-top: 0px;
   }
@@ -47,11 +45,13 @@ export const Section1: React.FC = () => {
     const formData = new FormData();
     formData.append("image", file);
     try {
-      await apiClient.post("/api/v2/comparison", formData).then((res) => {
-        alert("정상적으로 전송되었습니다.");
-        console.log(res);
-        console.log(res.data);
-      });
+      await apiClient
+        .post("/api/v2/users/comparison/result", formData)
+        .then((res) => {
+          alert("정상적으로 전송되었습니다.");
+          console.log(res);
+          console.log(res.data);
+        });
     } catch (e) {
       console.log(e);
     }

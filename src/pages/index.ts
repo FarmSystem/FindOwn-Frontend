@@ -5,7 +5,7 @@ export { List } from "./List";
 export { Design } from "./Design";
 export { LoginPage } from "./LoginPage";
 export { Register } from "./Register";
-export { TradeMark } from "./TradeMark";
+export { TradeMark } from "./TradeMark/TradeMark";
 export { About } from "./About/About";
 export { Community } from "./Community";
 export { Write } from "./Write";

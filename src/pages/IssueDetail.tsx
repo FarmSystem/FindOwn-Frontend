@@ -227,7 +227,7 @@ export const IssueDetail = () => {
             </SubTitleBlock>
           </TitleBlock>
           <ContentBlock>
-            <p style={{ fontSize: "14px" }}>{issue?.content}</p>
+            <p style={{ fontSize: "16px" }}>{issue?.content}</p>
           </ContentBlock>
           <SubTitleBlock style={{ marginTop: "10px" }}>
             <SubTitle style={{ fontSize: "1rem" }}>
