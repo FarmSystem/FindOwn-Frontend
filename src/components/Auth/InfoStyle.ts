@@ -96,11 +96,9 @@ export const SubRounded = styled.button`
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
   font-size: 18px;
-  justify-content: center;
+  // justify-content: center;
   color: #494949;
-  align-items: center;
+  // align-items: center;
   width: 80px;
   height: 35px;
-  margin-top: 70px;
-  margin-left: 800px;
 `;

@@ -213,7 +213,10 @@ export const Information = () => {
             </InputContainer>
           )}
         </Contained>
+        <div style={{display: "flex", flexDirection: "row", marginTop: 70, marginLeft: 750, width: 200, justifyContent: "space-between"}}>
+        <SubRounded onClick={()=>window.location.reload()} style={{backgroundColor: "#959595", color: "white"}}>돌아가기</SubRounded>
         <SubRounded onClick={EditState}>수정완료</SubRounded>
+        </div>
       </>
     )}
     </>
