@@ -11,7 +11,7 @@ import {
 import close from "../../assets/images/close_icon.svg";
 
 interface ModalDefaultType {
-  imageURL: string | null;
+  imageURL?: string | null;
   onClickToggleModal: () => void;
 }
 
