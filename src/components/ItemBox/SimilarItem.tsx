@@ -26,8 +26,8 @@ export const SimilarItem = () => {
   };
 
   const displayItem = () => {
-    if (!detail || !detail.trademarks) return null;
-    return detail.trademarks.map((item, index) => (
+    if (!detail || !detail.trademark) return null;
+    return detail.trademark.map((item, index) => (
       <ItemBox key={index} onClick={() => itemSelect(index)}>
         <WarningBlock>{warningLight(item.result)}</WarningBlock>
         <ImageBox>

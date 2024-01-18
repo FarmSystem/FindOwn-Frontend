@@ -10,6 +10,13 @@ export const BoxContainer = styled.div`
   margin-top: 46px;
 `
 
+export const Container = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+`;
+
 export const ImageContainer = styled.div`
   width: 245px;
   height: 245px;

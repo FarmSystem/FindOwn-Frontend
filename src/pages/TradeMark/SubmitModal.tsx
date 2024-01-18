@@ -13,8 +13,9 @@ import {
 import close from "../../assets/images/close_icon.svg";
 import { useNavigate } from "react-router-dom";
 import { apiClient } from "../../apis/apiClient";
-import { detailAtom } from "../../states/jotaiStates";
+import { detailAtom, accessAtom } from "../../states/jotaiStates";
 import { useAtom } from "jotai";
+import { set } from "date-fns";
 
 interface ModalDefaultType {
   onClickToggleModal: () => void;
@@ -30,15 +31,20 @@ PropsWithChildren<ModalDefaultType>) => {
     onClickToggleModal();
     navigate(`/`);
   };
+
   const [detail] = useAtom(detailAtom);
+  const [access, setAccess] = useAtom(accessAtom);
 
   const saveResult = () => {
     try {
       apiClient.post(`/api/v2/users/comparison, `, {
         originImage: detail?.input_image,
         open: true,
-        trademarks: detail?.trademarks,
+        trademarks: detail?.trademark,
       });
+      setAccess(false);
+      navigate(`/`);
+      alert("성공적으로 저장되었습니다!");
     } catch (error) {
       console.log(error);
       alert("저장에 실패했습니다. 다시 시도해주세요.");
@@ -50,8 +56,11 @@ PropsWithChildren<ModalDefaultType>) => {
       apiClient.post(`/api/v2/users/comparison, `, {
         originImage: detail?.input_image,
         open: false,
-        trademarks: detail?.trademarks,
+        trademarks: detail?.trademark,
       });
+      setAccess(false);
+      navigate(`/`);
+      alert("성공적으로 저장되었습니다! 마이페이지에서 확인해주세요");
     } catch (error) {
       console.log(error);
       alert("저장에 실패했습니다. 다시 시도해주세요.");
@@ -62,7 +71,7 @@ PropsWithChildren<ModalDefaultType>) => {
     const storage = localStorage.getItem("token");
     if (!storage) {
       navigate(`/`);
-      alert("로그인이 필요한 서비스입니다.");
+      alert("접근 권한이 없습니다.");
     } else {
       apiClient.defaults.headers.common["Authorization"] = `Bearer ${storage}`;
     }

@@ -18,11 +18,11 @@ import {
   imgModalAtom,
   submitModalAtom,
   detailAtom,
+  accessAtom,
 } from "../../states/jotaiStates";
 import { ImageModal } from "../DetailList/ImageModal";
 import { SubmitModal } from "./SubmitModal";
 import { apiClient } from "../../apis/apiClient";
-import spinner from "../../assets/images/Spinner_2.svg";
 
 const AdditionalContainer = styled.div`
   height: auto;
@@ -67,18 +67,20 @@ const SubmitBtn = styled.button`
 
 export const MarkDetail = () => {
   const navigate = useNavigate();
-  const [detail, setDetail] = useAtom(detailAtom);
+  const [detail] = useAtom(detailAtom);
+  const [access] = useAtom(accessAtom);
   const [bright, setBright] = useState(true);
-  const [loading, setLoading] = useState(true);
   const [currentImg, setCurrentImg] = useAtom(imgModalAtom);
   const [submitBtn, setSubmitBtn] = useAtom(submitModalAtom);
   const toggleBright = () => {
     setBright(!bright);
   };
+  const [imageURL, setImageURL] = useState<string | null>(null);
 
   //원본 이미지보기 모달
   const onClickToggleModal = useCallback(() => {
-    setCurrentImg(!detail?.input_image);
+    setCurrentImg(true);
+    setImageURL(detail?.input_image || null);
   }, [detail?.input_image]);
 
   //결과 저장하기 모달
@@ -86,46 +88,25 @@ export const MarkDetail = () => {
     setSubmitBtn(!submitBtn);
   }, [submitBtn]);
 
-  const getDetail = async () => {
-    try {
-      await apiClient.get(``).then((res) => {
-        setDetail(res.data);
-        setLoading(false);
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
-    getDetail();
+    const accessAuth = access;
     const storage = localStorage.getItem("token");
-    if (!storage) {
+    if (!storage || !accessAuth) {
       navigate(`/`);
-      alert("로그인이 필요한 서비스입니다.");
+      alert("접근 권한이 없습니다.");
     } else {
       apiClient.defaults.headers.common["Authorization"] = `Bearer ${storage}`;
     }
   }, []);
 
-  return loading ? (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        flexDirection: "column",
-        justifyContent: "center",
-        height: "100vh",
-      }}
-    >
-      <img src={spinner} alt="spinner" />
-      <div style={{ color: "gray", fontSize: "1.1rem" }}>
-        결과 값을 받아오는 중입니다. 잠시만 기다려주세요.
-      </div>
-    </div>
-  ) : (
+  return (
     <Container>
-      {currentImg && <ImageModal onClickToggleModal={onClickToggleModal} />}
+      {currentImg && (
+        <ImageModal
+          imageURL={imageURL}
+          onClickToggleModal={onClickToggleModal}
+        />
+      )}
       {submitBtn && <SubmitModal onClickToggleModal={handleSubmitModal} />}
 
       <Option>

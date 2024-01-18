@@ -32,11 +32,11 @@ export const DetailList = () => {
   
   return(
     <Container>
-      {
+      {/* {
         currentImg && (
           <ImageModal onClickToggleModal={onClickToggleModal}/>
         )
-      }
+      } */}
       <Option>
         <LightCare onClick={toggleBright} src={bright ? brightVersion : darkVersion} />
         <NavService onClick={() => navigate(`/trademark`)}>상표 판단 바로가기</NavService>
