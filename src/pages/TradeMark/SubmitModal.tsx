@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from "react";
+import React, { PropsWithChildren, useEffect } from "react";
 import {
   ModalContainer,
   Backdrop,
@@ -12,6 +12,9 @@ import {
 } from "../DetailList/ImgModalStyle";
 import close from "../../assets/images/close_icon.svg";
 import { useNavigate } from "react-router-dom";
+import { apiClient } from "../../apis/apiClient";
+import { detailAtom } from "../../states/jotaiStates";
+import { useAtom } from "jotai";
 
 interface ModalDefaultType {
   onClickToggleModal: () => void;
@@ -27,6 +30,33 @@ PropsWithChildren<ModalDefaultType>) => {
     onClickToggleModal();
     navigate(`/`);
   };
+  const [detail] = useAtom(detailAtom);
+
+  const saveResult = () => {
+    apiClient.post(`/api/v2/users/comparison, `, {
+      originImage: detail?.input_image,
+      open: true,
+      trademarks: detail?.trademarks,
+    });
+  };
+
+  const saveResultPrivate = () => {
+    apiClient.post(`/api/v2/users/comparison, `, {
+      originImage: detail?.input_image,
+      open: false,
+      trademarks: detail?.trademarks,
+    });
+  };
+
+  useEffect(() => {
+    const storage = localStorage.getItem("token");
+    if (!storage) {
+      navigate(`/`);
+      alert("로그인이 필요한 서비스입니다.");
+    } else {
+      apiClient.defaults.headers.common["Authorization"] = `Bearer ${storage}`;
+    }
+  });
 
   return (
     <ModalContainer>
@@ -37,8 +67,8 @@ PropsWithChildren<ModalDefaultType>) => {
         <SubmitContainer>
           <Header>침해 사례를 저장하시겠습니까?</Header>
           <BtnUpper>
-            <CommonBtn>비공개 저장</CommonBtn>
-            <CommonBtn>공개 저장</CommonBtn>
+            <CommonBtn onClick={() => saveResultPrivate}>비공개 저장</CommonBtn>
+            <CommonBtn onClick={() => saveResult}>공개 저장</CommonBtn>
           </BtnUpper>
           <CommonBtn
             style={{ width: 360, height: 50, marginTop: 35 }}
