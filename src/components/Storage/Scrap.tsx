@@ -8,7 +8,7 @@ import {
   ScrapForIcon,
   Text,
   ScrapTable,
-  Block,
+  // Block,
   Scrapped,
   TitleBlock,
   DetailBox,
@@ -138,3 +138,15 @@ export const Scrap = () => {
     </Wrapper>
   );
 };
+
+const Block = styled.div`
+  height: 150px;
+  width: 1060px;
+  // border: 1px solid black;
+  position: relative;
+  border-top: 3px solid #E2E8F0;
+  // align-items: space-evenly;
+  display: flex;
+  flex-direction: row;
+  // flex-direction: column;
+`;
