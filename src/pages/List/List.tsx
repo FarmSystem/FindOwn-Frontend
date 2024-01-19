@@ -76,7 +76,7 @@ export const List = () => {
           style={{width: 1200, marginTop: 54, height: 712}}>
         {list?.map((item: any, index: number) => (
           <Grid item xs={4} sm={4} md={4} key={index} style={{ width: 'auto', display: 'flex', justifyContent: 'center'}}>
-            <div onClick={()=>navigate(`/list/${item?.index}`)} style={{cursor: 'pointer'}}>
+            <div onClick={()=>navigate(`/list/${item?.comparison_id}`)} style={{cursor: 'pointer'}}>
               <ExampleBox data={item}/>
             </div>
           </Grid>

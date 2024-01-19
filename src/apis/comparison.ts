@@ -28,7 +28,24 @@ export const resultList = async() => {
 
 
 // 상표권 침해판단 디테일 페이지 (결과 저장하기랑 유사)
-
+export const resultDetail = async(props: any) => {
+  try{
+    // console.log(props?.index);
+    console.log(props);
+    // console.log(props.queryKey[1]);
+    const comparisonId = props.queryKey[1];
+    // console.log(comparisonId);
+    const {data} = await loginInstance.get(`/comparison/?comparisonId=${comparisonId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    
+    return data;
+  }catch(error){
+    console.error(error);
+  }
+};
 
 // 마이페이지에서 상표권 침해판단 저장한 부분 리스트 불러오기
 export const ownResult = async() => {

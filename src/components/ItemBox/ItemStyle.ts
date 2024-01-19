@@ -21,7 +21,7 @@ export const ImageBox = styled.img`
   width:  80%;
   height: 80%;
   justify-content: center;
-  border: 1px solid black;
+  // border: 1px solid black;
 `;
 
 export const ContentBox = styled.div`

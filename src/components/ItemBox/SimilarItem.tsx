@@ -35,6 +35,7 @@ export const SimilarItem = () => {
         </ImageBox>
       </ItemBox>
     ));
+
   };
 
   return (

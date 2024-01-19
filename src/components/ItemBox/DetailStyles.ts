@@ -15,6 +15,7 @@ export const Container = styled.div`
   height: 100%;
   display: flex;
   flex-direction: row;
+  align-items: center;
 `;
 
 export const ImageContainer = styled.div`

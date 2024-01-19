@@ -23,7 +23,7 @@ export const DetailBox = () => {
   const [detailed, setDetailed] = useState(false);
   const [itemIndex] = useAtom(similarAtom);
 
-  console.log(detail); // Add this line to log the received data
+  // console.log(detail); // Add this line to log the received data
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDetailed(e.target.checked);
@@ -38,7 +38,7 @@ export const DetailBox = () => {
           <ImageContainer>
             <ImageBox
               src={selectedItem.image_path}
-              style={{ width: 137, height: 220 }}
+              style={{ width: "80%", height: "80%" }}
             />
           </ImageContainer>
           <ContentBox>
