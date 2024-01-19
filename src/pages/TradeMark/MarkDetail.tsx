@@ -110,10 +110,6 @@ export const MarkDetail = () => {
       {submitBtn && <SubmitModal onClickToggleModal={handleSubmitModal} />}
 
       <Option>
-        <LightCare
-          onClick={toggleBright}
-          src={bright ? brightVersion : darkVersion}
-        />
         <NavService onClick={() => navigate(`/trademark`)}>
           상표 판단 바로가기
         </NavService>
