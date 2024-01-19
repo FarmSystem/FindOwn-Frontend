@@ -45,25 +45,14 @@ export const Written = () => {
   const [data, setData] = useState<string[]>([]);
   useEffect(()=>{
     if(page === lastPage){
-      // setData(Items.slice(6 * (page-1)));
       setData(userWrite?.slice(6 * (page-1)));
     }else{
-      // setData(Items.slice(6 * (page-1) , 6 * (page-1) + 6));
       setData(userWrite?.slice(6 * (page-1) , 6 * (page-1) + 6));
     }
   }, [page]);
   const handlePage = (e: React.MouseEvent<HTMLButtonElement>, page: number) => {
     const currentPage = Math.round(page);
     setPage(currentPage);
-  };
-
-
-  //비공개로 바꾸기
-  const Locked = () => {
-    setLocked(!locked);
-  }
-
-  const trashed = () => {
   };
 
   const WriteBlock = () => {
@@ -78,9 +67,9 @@ export const Written = () => {
           {userWrite?.map((item: any, index: number) => (
             <Grid item xs={4} sm={4} md={4} key={index} style={{ width: 'auto', display: 'flex', justifyContent: 'center'}}>
               <div
-              //  onClick={()=>navigate(`/list/${index}`)} 
+              //  onClick={()=>navigate(`/list/${item?.comparison_id}`)} 
                style={{cursor: 'pointer'}}>
-                <WrittenBox data={userWrite}/>
+                <WrittenBox listIndex={index} data={userWrite} itemIndex={item?.comparison_id}/>
               </div>
             </Grid>
           ))}

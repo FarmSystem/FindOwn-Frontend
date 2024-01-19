@@ -35,8 +35,8 @@ export const ImageContain = styled.div`
 `;
 
 export const ImageBox = styled.img`
-  width:  75px;
-  // height: 130px;
+  width:80%;
+  height: 80%;
   justify-content: center;
 `;
 

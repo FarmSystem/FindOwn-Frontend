@@ -4,9 +4,16 @@ import { loginInstance } from "./apiClient";
 const token = localStorage.getItem("token");
 
 //상표권 결과 삭제하기
-export const deleteResult = async() => {
+export const deleteResult = async(props: any) => {
   try{
-    const {data} = await loginInstance.delete(`/comparison`);
+    const {data} = await loginInstance.delete(`/comparison/?comparisonId=${props.id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    if(data.status == 200){
+      return true;
+    }
   }catch(error){
     console.error(error);
   }
@@ -30,11 +37,8 @@ export const resultList = async() => {
 // 상표권 침해판단 디테일 페이지 (결과 저장하기랑 유사)
 export const resultDetail = async(props: any) => {
   try{
-    // console.log(props?.index);
     console.log(props);
-    // console.log(props.queryKey[1]);
     const comparisonId = props.queryKey[1];
-    // console.log(comparisonId);
     const {data} = await loginInstance.get(`/comparison/?comparisonId=${comparisonId}`, {
       headers: {
         Authorization: `Bearer ${token}`
