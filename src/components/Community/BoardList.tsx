@@ -4,6 +4,7 @@ import { apiClient } from "../../apis/apiClient";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { format } from "date-fns";
+import { ListPagination } from "../Pagination/ListPagination";
 
 const Container = styled.div`
   width: 100%;
@@ -138,18 +139,6 @@ export const BoardList = () => {
     setCurrentPage(pageNumber);
   };
 
-  const handleNextPage = () => {
-    setCurrentPage((prevPage) =>
-      prevPage + 1 <= Math.ceil(boardList.length / postsPerPage)
-        ? prevPage + 1
-        : prevPage
-    );
-  };
-
-  const handlePrevPage = () => {
-    setCurrentPage((prevPage) => (prevPage > 1 ? prevPage - 1 : 1));
-  };
-
   useEffect(() => {
     const getBoardList = () => {
       apiClient
@@ -197,53 +186,13 @@ export const BoardList = () => {
           </BoardItem>
         ))}
       </BoardListContainer>
-      <PageButtonContainer>
-        <Button
-          onClick={handlePrevPage}
-          sx={{
-            width: "50px",
-            height: "40px",
-            fontSize: "1.5rem",
-            textAlign: "center",
-            color: "gray",
-            borderRadius: "15px",
-            margin: "0 5px",
-          }}
-        >
-          {"<"}
-        </Button>
-        {Array.from(
-          { length: Math.ceil(boardList.length / postsPerPage) },
-          (_, i) => i + 1
-        ).map((pageNumber) => (
-          <Button
-            sx={{
-              color: "#52c07e",
-              width: "20px",
-              fontWeight: "bold",
-              backgroundColor: "transparent",
-            }}
-            key={pageNumber}
-            onClick={() => handlePageClick(pageNumber)}
-          >
-            {pageNumber}
-          </Button>
-        ))}
-        <Button
-          onClick={handleNextPage}
-          sx={{
-            width: "40px",
-            height: "40px",
-            fontSize: "1.5rem",
-            color: "gray",
-            textAlign: "center",
-            borderRadius: "15px",
-            margin: "0 5px",
-          }}
-        >
-          {">"}
-        </Button>
-      </PageButtonContainer>
+      <ListPagination
+        page={currentPage}
+        totalPages={Math.ceil(boardList.length / postsPerPage)}
+        handlePageChange={(event: React.ChangeEvent<unknown>, page: number) =>
+          handlePageClick(page)
+        }
+      />
     </Container>
   );
 };
