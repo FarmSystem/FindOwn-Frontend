@@ -33,8 +33,8 @@ export const Written = () => {
   // 실제 데이터 연결하기
   useEffect(()=>{
     if(userWrite) {
-      let LAST_PAGE = userWrite?.length % 4 === 0 ? 
-      userWrite?.length/4 : Math.floor(userWrite?.length/4) + 1;
+      let LAST_PAGE = userWrite?.length % 6 === 0 ? 
+      userWrite?.length/6 : Math.floor(userWrite?.length/6) + 1;
       setLastPage(LAST_PAGE);
     }else{
       setLastPage(0);

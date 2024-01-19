@@ -34,11 +34,13 @@ export const List = () => {
     refetchOnMount: false,
   });
 
+  // console.log(lastPage);
+
   // 실제 데이터 연결하기
   useEffect(()=>{
     if(list) {
-      let LAST_PAGE = list?.length % 4 === 0 ? 
-      list?.length/4 : Math.floor(list?.length/4) + 1;
+      let LAST_PAGE = list?.length % 6 === 0 ? 
+      list?.length/6 : Math.floor(list?.length/6) + 1;
       setLastPage(LAST_PAGE);
     }else{
       setLastPage(0);
