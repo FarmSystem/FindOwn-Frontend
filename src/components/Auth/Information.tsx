@@ -171,7 +171,7 @@ export const Information = () => {
 
   return(
     <>
-    {!isEdited ? (
+    {!isEdited && userInfo ? (
       <>
         <NickName> {userInfo?.nickname || "팜 4조"}</NickName>  
         <EmailCon>{userInfo?.email}</EmailCon>                    

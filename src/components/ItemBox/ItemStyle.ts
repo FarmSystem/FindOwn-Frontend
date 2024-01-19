@@ -14,12 +14,14 @@ export const ImageContain = styled.div`
   height: 254px;
   display: flex;
   align-items: center;
+  justify-content: center;
 `;
 
 export const ImageBox = styled.img`
-  width:  280px;
-  height: 166px;
+  width:  80%;
+  height: 80%;
   justify-content: center;
+  border: 1px solid black;
 `;
 
 export const ContentBox = styled.div`
@@ -55,6 +57,7 @@ export const Author = styled.div`
   height: 32px;
   display: flex;
   margin-top: 10px;
-  padding: 20px 10px 0 10px;
+  padding: 30px 10px 0 10px;
+  align-items: center;
   font-size: 14px;
 `;

@@ -13,6 +13,18 @@ export const deleteResult = async() => {
 }
 
 //상표권 침해판단 리스트 불러오기
+export const resultList = async() => {
+  try{
+    const {data} = await loginInstance.get(`/comparison`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    return data;
+  }catch(error){
+    console.error(error);
+  }
+};
 
 
 // 상표권 침해판단 디테일 페이지 (결과 저장하기랑 유사)
@@ -26,6 +38,7 @@ export const ownResult = async() => {
         Authorization: `Bearer ${token}`
       }
     });
+    console.log(data);
     return data;
   }catch(error){
     console.error(error);
