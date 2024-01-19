@@ -71,7 +71,7 @@ export const Scrap = () => {
     if(page === lastPage){
       setData(scrapData?.slice(4 * (page-1)));
     }else{
-      setData(scrapData?.slice(4 * (page-1) , 6 * (page-1) + 4));
+      setData(scrapData?.slice(4 * (page-1) , 4 * (page-1) + 4));
     }
   }, [page, scrapData]);
   const handlePage = (e: React.MouseEvent<HTMLButtonElement>, page: number) => {
