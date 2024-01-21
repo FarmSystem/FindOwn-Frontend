@@ -43,12 +43,22 @@ const TextContainer = styled(Grid)`
 
 export const StartButton = () => {
   const navigate = useNavigate();
-
   const startJudge = () => {
     const ID = localStorage.getItem("email");
     if (ID) {
       navigate("/trademark");
     } else {
+      alert("로그인을 해주세요.");
+      navigate("/login");
+    }
+  };
+
+  const startList = () => {
+    const ID = localStorage.getItem("email");
+    if (ID) {
+      navigate("/list");
+    } else {
+      alert("로그인을 해주세요.");
       navigate("/login");
     }
   };
@@ -57,7 +67,7 @@ export const StartButton = () => {
     <SectionContainer container>
       <TextContainer>
         <StyledButton onClick={startJudge}>시작하기 → </StyledButton>
-        <StyledButton onClick={() => navigate("/list")}>
+        <StyledButton  onClick={startList}>
           침해사례 →{" "}
         </StyledButton>
       </TextContainer>
