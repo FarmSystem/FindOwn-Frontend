@@ -14,6 +14,7 @@ import {
 import { useMutation } from "@tanstack/react-query";
 import { changePwd } from "../../apis/user";
 import { AlertText2 } from "./InfoStyle";
+import { useNavigate } from "react-router-dom";
 
 interface ModalDefaultType{
   onClickToggleModal: () => void;
@@ -31,7 +32,9 @@ export const CustomModal = ({
 
   const { mutate } = useMutation({
     mutationFn: changePwd
-  })
+  });
+
+  const navigate = useNavigate();
 
   //비밀번호와 새로운 비밀번호가 동일한지 
   const checkBetween = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,6 +58,8 @@ export const CustomModal = ({
   const handleSubmit = () => {
     if(newPw == checkPw){
       mutate({originMemberPw: originPw, newMemberPw: checkPw});
+      localStorage.clear();
+      navigate(`/login`);
     }else{
       alert("비밀번호가 틀렸습니다.");
     }

@@ -17,7 +17,7 @@ import edit from '../../assets/images/Edit_btn.svg';
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { apiClient } from '../../apis/apiClient';
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { changeId, getInfo } from '../../apis/user';
 
 export const Information = () => {
@@ -40,8 +40,12 @@ export const Information = () => {
     refetchOnWindowFocus: false,
   });
   
+  const queryClient = useQueryClient();
   const { mutate } = useMutation({
     mutationFn: changeId,
+    onSuccess: () => {
+      queryClient.invalidateQueries({queryKey: ["userInfo"]});
+    }
   });
 
   type customProps = {
@@ -71,13 +75,13 @@ export const Information = () => {
 
   //초기에 수정완료 클릭할때 
   const DefaultEditState = () =>{
-    setIsEdited(!isEdited);
+    setIsEdited(true);
   }
 
   //수정한 결괏값 전송
   const EditState = () => {
     handleSubmit();
-    setIsEdited(!isEdited);
+    setIsEdited(false);
   };
 
   const handleSubmit = async() => {
@@ -86,12 +90,12 @@ export const Information = () => {
         alert("이메일 인증이 제대로 되지 않았습니다.");
       }
       if(nicknameCheck == false){
-        alert("아이디가 확인되지 않습니다.");
+        alert("닉네임이 확인되지 않습니다.");
       }
-      const userId = localStorage.getItem("email") || undefined;
-      // const originMemberId = userInfo?.nickname;
+      // const userId = localStorage.getItem("email") || undefined;
+      const originMemberId = userInfo?.nickname;
       const newMemberId = nickname;
-      mutate({originMemberId: userId, newMemberId: newMemberId});
+      mutate({originNickname: originMemberId, newNickname: newMemberId});
 
     }catch(error){
       console.log(error);
@@ -151,7 +155,7 @@ export const Information = () => {
     }
   };
 
-  // 아이디 중복확인
+  // 닉네임 중복확인
   const handleIdCheck = async () => {
     try {
       const response = await apiClient.get(
@@ -160,10 +164,10 @@ export const Information = () => {
       console.log("중복요청 클릭됨");
       const { notDuplicated } = response.data;
       if (notDuplicated) {
-        alert("사용 가능한 아이디입니다.");
+        alert("사용 가능한 닉네임입니다.");
         setNicknameCheck(true);
       } else {
-        alert("이미 존재하는 아이디입니다.");
+        alert("이미 존재하는 닉네임입니다.");
       }
     } catch (error) {
       // console.log(error);
@@ -172,9 +176,9 @@ export const Information = () => {
 
   return(
     <>
-    {!isEdited && userInfo ? (
+    { isEdited==false && userInfo ? (
       <>
-        <NickName> {userInfo?.korName || "팜 4조"}</NickName>  
+        <NickName> {userInfo?.nickname || "팜 4조"}</NickName>  
         <EmailCon>{userInfo?.email}</EmailCon>                    
         <EditBtn onClick={DefaultEditState}>
           <EditText>수정</EditText>
@@ -185,7 +189,7 @@ export const Information = () => {
       <>
         <Contained>
           <InputContainer>
-            <Title>아이디</Title>
+            <Title>닉네임</Title>
             <InputValue
               onChange={handleNicknameChange}
             />

@@ -20,17 +20,18 @@ export const getInfo = async () => {
 }
 
 interface ChangeIdProps {
-  originMemberId?: string,
-  newMemberId: string,
+  originNickname?: string,
+  newNickname: string,
 };
 
-// 사용자 마이페이지에서 아이디 변경하기
+// 사용자 마이페이지에서 닉네임 변경하기
 export const changeId = async (props : ChangeIdProps)=> {
   try{
     const body = {
-      originMemberId: props.originMemberId || "user",
-      newMemberId: props.newMemberId,
+      originNickname: props.originNickname || "user",
+      newNickname: props.newNickname,
     }
+    console.log(body);
     // console.log(originMemberId);
     // console.log(newMemberId);
     const {data} = await loginInstance.patch(`/my-page/change/id`, body, {

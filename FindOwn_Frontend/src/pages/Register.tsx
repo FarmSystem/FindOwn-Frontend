@@ -183,7 +183,7 @@ export const Register = () => {
       const fieldValue = data.get(field) as string;
       if (fieldValue === null || !fieldValue.trim()) {
         if (field === "name")
-          alert(`이름 칸이 누락되어 있습니다. 다시 입력해주세요.`);
+          alert(`닉네임 칸이 누락되어 있습니다. 다시 입력해주세요.`);
         else if (field === "email")
           alert(`이메일 칸이 누락되어 있습니다. 다시 입력해주세요.`);
         return;
@@ -205,7 +205,7 @@ export const Register = () => {
       try {
         await apiClient.post(`/api/v2/no-auth/register`, {
           id: data.get("id"),
-          korName: data.get("name"),
+          nickname: data.get("name"),
           email: email,
           password: password,
         });
@@ -243,12 +243,12 @@ export const Register = () => {
       <FormWrapper onSubmit={handleSubmit}>
         <Text> 회원가입 </Text>
         <Box>
-          <SubText> 이름 </SubText>
+          <SubText> 닉네임 </SubText>
           <Input
             type="text"
             id="name"
             name="name"
-            placeholder="이름을 입력해주세요."
+            placeholder="닉네임을 입력해주세요."
             value={name}
             required
             onChange={handleNameChange}

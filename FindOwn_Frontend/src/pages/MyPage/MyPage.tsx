@@ -17,10 +17,12 @@ import { useAtom } from "jotai";
 import { modalAtom } from "../../states/jotaiStates";
 import { exitMember } from "../../apis/user";
 import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 // import { CustomModal } from "../../components/Auth/CustomModal";
 
 export const MyPage = () => {
   const [isOpenModal, setOpenModal] = useAtom(modalAtom);
+  const navigate = useNavigate();
 
   const onClickToggleModal = useCallback(() => {
     setOpenModal(!isOpenModal);
@@ -33,6 +35,8 @@ export const MyPage = () => {
   //회원탈퇴
   const realExit = () => {
     mutate();
+    localStorage.clear();
+    navigate(`/`);
   }
 
   return(
