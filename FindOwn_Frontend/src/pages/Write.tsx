@@ -138,7 +138,7 @@ export const Write = () => {
   };
 
   useEffect(() => {
-    let storedToken = localStorage.getItem("token");
+    const storedToken = localStorage.getItem("token");
     if (storedToken) {
       apiClient.defaults.headers.common[
         "Authorization"

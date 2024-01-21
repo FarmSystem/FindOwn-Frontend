@@ -18,7 +18,7 @@ const Container = styled(Grid)`
 `;
 export const About = () => {
   useEffect(() => {
-    let storedToken = localStorage.getItem("token");
+    const storedToken = localStorage.getItem("token");
     if (storedToken) {
       apiClient.defaults.headers.common[
         "Authorization"

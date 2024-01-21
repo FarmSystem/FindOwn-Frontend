@@ -29,6 +29,7 @@ PropsWithChildren<ModalDefaultType>) => {
   //저장취소하기
   const skipped = () => {
     onClickToggleModal();
+    alert("저장이 취소되었습니다.");
     navigate(`/`);
   };
 

@@ -23,7 +23,7 @@ const Container = styled(Grid)`
 
 export const TradeMark = () => {
   useEffect(() => {
-    let storedToken = localStorage.getItem("token");
+    const storedToken = localStorage.getItem("token");
     if (!storedToken) {
       alert("로그인이 필요한 서비스입니다.");
       window.location.href = "/login";

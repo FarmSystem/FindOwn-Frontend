@@ -166,14 +166,15 @@ export const IssueDetail = () => {
       .catch((error) => {
         console.log(error);
       });
-    let storedToken = localStorage.getItem("token");
+
+    const storedToken = localStorage.getItem("token");
     console.log(storedToken);
     if (storedToken) {
       apiClient.defaults.headers.common[
         "Authorization"
       ] = `Bearer ${storedToken}`;
     }
-  }, [id]);
+  }, []);
 
   return (
     <Container>
