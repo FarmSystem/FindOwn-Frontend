@@ -39,9 +39,13 @@ export const CustomModal = ({
   };
 
   useEffect(() => {
-    if(newPw == checkPw) {
+    console.log(newPw);
+    if(newPw == checkPw && newPw) {
       setIsOkay(true);
       setIsMsg("비밀번호가 동일합니다.");
+    }else if( newPw == "" ){
+      setIsOkay(false);
+      setIsMsg("");
     }else{
       setIsOkay(false);
       setIsMsg("새로운 비밀번호와 다릅니다.");

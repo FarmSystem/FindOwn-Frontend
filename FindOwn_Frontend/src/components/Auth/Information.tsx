@@ -88,14 +88,15 @@ export const Information = () => {
       if(nicknameCheck == false){
         alert("아이디가 확인되지 않습니다.");
       }
-      const originMemberId = userInfo?.nickname;
+      const userId = localStorage.getItem("email") || undefined;
+      // const originMemberId = userInfo?.nickname;
       const newMemberId = nickname;
-      mutate({originMemberId: originMemberId, newMemberId: newMemberId});
+      mutate({originMemberId: userId, newMemberId: newMemberId});
 
     }catch(error){
       console.log(error);
     }
-  }
+  };
 
   //닉네임 변경
   const handleNicknameChange = (e: React.ChangeEvent<HTMLInputElement>, ) => {
@@ -173,7 +174,7 @@ export const Information = () => {
     <>
     {!isEdited && userInfo ? (
       <>
-        <NickName> {userInfo?.nickname || "팜 4조"}</NickName>  
+        <NickName> {userInfo?.korName || "팜 4조"}</NickName>  
         <EmailCon>{userInfo?.email}</EmailCon>                    
         <EditBtn onClick={DefaultEditState}>
           <EditText>수정</EditText>
