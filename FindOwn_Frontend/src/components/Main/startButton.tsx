@@ -23,7 +23,7 @@ const buttonStyle = css`
 const StyledButton = styled(Button)`
   ${buttonStyle}
   margin-left: 20px;
-  height: auto;
+  height: 60px;
 `;
 
 const SectionContainer = styled(Grid)`
