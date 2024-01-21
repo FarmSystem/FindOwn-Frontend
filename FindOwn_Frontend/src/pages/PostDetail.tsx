@@ -216,7 +216,6 @@ export const PostDetail = () => {
     if (editingPostId !== null) {
       await patchPost(editingPostId);
     }
-
     setEditingPostId(null);
     setEditingContent("");
   };
@@ -331,6 +330,12 @@ export const PostDetail = () => {
 
   const getPost = async () => {
     const numericPostId = postId ? parseInt(postId, 10) : 0; // useParams로 받은 postId는 string이므로, number로 변환.
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      apiClient.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${storedToken}`;
+    }
     try {
       await apiClient
         .get(`/api/v2/users/community/post/?id=${numericPostId}`)
@@ -347,13 +352,6 @@ export const PostDetail = () => {
 
   useEffect(() => {
     getPost();
-
-    const storedToken = localStorage.getItem("token");
-    if (storedToken) {
-      apiClient.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${storedToken}`;
-    }
   }, []);
 
   return (

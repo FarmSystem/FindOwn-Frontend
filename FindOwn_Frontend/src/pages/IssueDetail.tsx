@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Link, useParams } from "react-router-dom";
 import styled from "@emotion/styled";
 import { apiClient } from "../apis/apiClient";
@@ -123,7 +123,7 @@ export const IssueDetail = () => {
     source: string;
   }
 
-  const postScrap = async () => {
+  const postScrap = useCallback(async () => {
     const numericId = id ? parseInt(id, 10) : 0; // useParams로 받은 postId는 string이므로, number로 변환.
     try {
       await apiClient
@@ -132,48 +132,53 @@ export const IssueDetail = () => {
         })
         .then((res) => {
           alert("스크랩이 완료되었습니다. 마이페이지에서 확인해보세요 !");
+          console.log("postScrap called");
           window.location.reload();
         });
     } catch (error) {
       console.log(error);
       alert("스크랩에 실패했습니다. 다시 시도해주세요.");
     }
-  };
+  }, []);
 
-  const deleteScrap = async () => {
+  const deleteScrap = useCallback(async () => {
     const numericId = id ? parseInt(id, 10) : 0;
     try {
       await apiClient
         .delete(`/api/v2/users/community/scrap/?id=${numericId}`)
         .then((res) => {
           alert("스크랩이 취소되었습니다!");
+
           window.location.reload();
         });
     } catch (error) {
       console.log(error);
       alert("스크랩 취소에 실패했습니다. 다시 시도해주세요.");
     }
-  };
+  }, []);
+
+  const getIssue = useCallback(async () => {
+    const numericId = id ? parseInt(id, 10) : 0; // useParams로 받은 postId는 string이므로, number로 변환.
+    try {
+      const storedToken = localStorage.getItem("token");
+      if (storedToken) {
+        apiClient.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${storedToken}`;
+      }
+      await apiClient
+        .get(`/api/v2/users/community/issue/?id=${numericId}`)
+        .then((res) => {
+          setIssue(res.data);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
 
   useEffect(() => {
-    const numericId = id ? parseInt(id, 10) : 0; // useParams로 받은 postId는 string이므로, number로 변환.
-    apiClient
-      .get(`/api/v2/users/community/issue/?id=${numericId}`)
-      .then((response) => {
-        setIssue(response.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    const storedToken = localStorage.getItem("token");
-    console.log(storedToken);
-    if (storedToken) {
-      apiClient.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${storedToken}`;
-    }
+    getIssue();
+    setLoading(false);
   }, []);
 
   return (
