@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { apiClient } from "../../apis/apiClient";
-import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { format } from "date-fns";
 import { ListPagination } from "../Pagination/ListPagination";
@@ -20,16 +19,6 @@ const BoardListContainer = styled.div`
   height: 80%;
   display: flex;
   flex-direction: column;
-`;
-
-const PageButtonContainer = styled.div`
-  width: 100%;
-  height: 10%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
 `;
 
 const BoardListTitle = styled.div`
@@ -129,8 +118,6 @@ export const BoardList = () => {
     scrapCnt: number;
   }
 
-  let board: Board;
-
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = boardList.slice(indexOfFirstPost, indexOfLastPost);
@@ -139,17 +126,17 @@ export const BoardList = () => {
     setCurrentPage(pageNumber);
   };
 
-  useEffect(() => {
-    const getBoardList = () => {
-      apiClient
-        .get("/api/v2/users/community/post")
-        .then((response) => {
-          const filteredBoardList = response.data;
-          setBoardList(filteredBoardList);
-        })
-        .catch(function (error) {});
-    };
+  const getBoardList = () => {
+    apiClient
+      .get("/api/v2/users/community/post")
+      .then((response) => {
+        const filteredBoardList = response.data;
+        setBoardList(filteredBoardList);
+      })
+      .catch(function (error) {});
+  };
 
+  useEffect(() => {
     getBoardList();
   }, []);
 

@@ -11,7 +11,7 @@ const buttonStyle = css`
   display: flex;
   border-radius: 40px;
   width: 10vw;
-  height: 5vh;
+  height: 15vh;
   font-weight: bold;
 
   @media (max-width: 1500px) {

@@ -132,14 +132,19 @@ export const Community = () => {
     if (selectedTag) {
       clickTab(0);
     }
+  }, [selectedTag]);
 
+  useEffect(() => {
     const storedToken = localStorage.getItem("token");
     if (storedToken) {
       apiClient.defaults.headers.common[
         "Authorization"
       ] = `Bearer ${storedToken}`;
+    } else {
+      alert("로그인이 필요한 서비스입니다.");
+      window.location.href = "/login";
     }
-  }, [selectedTag]);
+  }, []);
 
   return (
     <Container xs={12}>

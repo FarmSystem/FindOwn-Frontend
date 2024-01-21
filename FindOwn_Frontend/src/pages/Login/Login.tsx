@@ -8,9 +8,8 @@ import {
   Additional,
   SignUp,
 } from "./style";
-import React, { useState, FormEvent, useEffect } from "react";
+import React, { useState} from "react";
 import { useNavigate } from "react-router-dom";
-import { atom } from "jotai";
 import { apiClient } from "../../apis/apiClient";
 
 interface ApiResponse {
@@ -24,7 +23,6 @@ export const Login = () => {
   const [Password, setPassword] = useState<string>("");
 
   const [loading, setLoading] = useState<boolean>(false);
-  const [msg, setMsg] = useState<string>("");
 
   const onEmailHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.currentTarget.value);

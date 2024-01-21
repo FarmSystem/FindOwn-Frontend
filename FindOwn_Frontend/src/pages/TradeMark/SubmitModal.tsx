@@ -15,7 +15,6 @@ import { useNavigate } from "react-router-dom";
 import { apiClient } from "../../apis/apiClient";
 import { detailAtom, accessAtom } from "../../states/jotaiStates";
 import { useAtom } from "jotai";
-import { set } from "date-fns";
 
 interface ModalDefaultType {
   onClickToggleModal: () => void;

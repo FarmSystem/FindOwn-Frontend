@@ -1,15 +1,12 @@
 import {
   Container,
   Option,
-  LightCare,
   NavService,
   ListContainer,
   OriginalImage,
 } from "../List/style";
 import React, { useState, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import brightVersion from "../../assets/images/bright_version.svg";
-import darkVersion from "../../assets/images/night_version.svg";
 import { DetailBox, SimilarItem } from "../../components/ItemBox";
 import styled from "@emotion/styled";
 import alarm from "../../assets/images/alarm_table.svg";
@@ -69,12 +66,8 @@ export const MarkDetail = () => {
   const navigate = useNavigate();
   const [detail] = useAtom(detailAtom);
   const [access] = useAtom(accessAtom);
-  const [bright, setBright] = useState(true);
   const [currentImg, setCurrentImg] = useAtom(imgModalAtom);
   const [submitBtn, setSubmitBtn] = useAtom(submitModalAtom);
-  const toggleBright = () => {
-    setBright(!bright);
-  };
   const [imageURL, setImageURL] = useState<string | null>(null);
 
   //원본 이미지보기 모달

@@ -13,6 +13,14 @@ const ContainerWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @font-face {
+    font-family: "AppleBold";
+    src: url("https://cdn.jsdelivr.net/gh/cho1n/Apollo-Frontend@latest/src/assets/fonts/AppleSDGothicNeoB.ttf")
+      format("truetype");
+  }
+
+  font-family: "AppleBold";
 `;
 //eeffed
 const FormWrapper = styled.form`
@@ -257,13 +265,14 @@ export const Register = () => {
             />
             <Button
               sx={{
-                width: "16%",
+                width: "18%",
                 height: "85%",
                 marginRight: "10px",
                 background: "#52C07E",
                 color: "#ffffff",
                 fontSize: "14px",
                 borderRadius: "12px",
+                fontFamily: "AppleBold",
               }}
               onClick={handleIdCheck}
             >
@@ -291,6 +300,7 @@ export const Register = () => {
                   color: "#ffffff",
                   fontSize: "14px",
                   borderRadius: "12px",
+                  fontFamily: "AppleBold",
                 }}
                 onClick={handleSendVerificationCode}
               >
@@ -322,6 +332,7 @@ export const Register = () => {
                     color: "#ffffff",
                     fontSize: "14px",
                     borderRadius: "12px",
+                    fontFamily: "AppleBold",
                   }}
                   onClick={handleVerifyCode}
                 >
@@ -362,6 +373,7 @@ export const Register = () => {
             color: "#ffffff",
             fontSize: "20px",
             borderRadius: "12px",
+            fontFamily: "AppleBold",
           }}
         >
           회원가입

@@ -14,6 +14,14 @@ const Container = styled(Grid)`
   max-width: 1440px;
   padding: 50px 0;
   overflow: hidden;
+
+  @font-face {
+    font-family: "AppleBold";
+    src: url("https://cdn.jsdelivr.net/gh/cho1n/Apollo-Frontend@latest/src/assets/fonts/AppleSDGothicNeoB.ttf")
+      format("truetype");
+  }
+
+  font-family: "AppleBold";
 `;
 
 function Main() {

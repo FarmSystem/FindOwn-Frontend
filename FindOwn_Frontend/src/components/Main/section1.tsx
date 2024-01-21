@@ -51,9 +51,9 @@ function Section1() {
       <Grid container>
         <TextBox item xl={6} lg={6}>
           <Text>좀 더 빠르고, 좀 더 쉽게</Text>
-          <Text>나만의 상표권∙디자인 갖기</Text>
+          <Text>나만의 상표권 갖기</Text>
           <Text>
-            <span className="highlight">{"AI 상표권∙디자인 침해 판단"}</span>
+            <span className="highlight">{"AI 상표권 침해 판단 플랫폼"}</span>
           </Text>
           <StartButton />
         </TextBox>

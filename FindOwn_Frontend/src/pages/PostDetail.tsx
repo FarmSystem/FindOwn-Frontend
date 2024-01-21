@@ -329,18 +329,24 @@ export const PostDetail = () => {
     }
   };
 
-  useEffect(() => {
+  const getPost = async () => {
     const numericPostId = postId ? parseInt(postId, 10) : 0; // useParams로 받은 postId는 string이므로, number로 변환.
-    apiClient
-      .get(`/api/v2/users/community/post/?id=${numericPostId}`)
-      .then((response) => {
-        setBoard(response.data);
-        setLoading(false);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    try {
+      await apiClient
+        .get(`/api/v2/users/community/post/?id=${numericPostId}`)
+        .then((res) => {
+          setBoard(res.data);
+          setLoading(false);
+        });
+    } catch (error) {
+      console.log(error);
+      alert("게시글을 불러오는데 실패했습니다. 다시 시도해주세요.");
+      navigate("/community");
+    }
+  };
+
+  useEffect(() => {
+    getPost();
 
     const storedToken = localStorage.getItem("token");
     if (storedToken) {
