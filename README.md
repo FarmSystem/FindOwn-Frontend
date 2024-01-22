@@ -93,7 +93,7 @@ _노드버전은 최소 20이상으로 해주셔야 합니다._
 
 <b>AI & Backend</b>
 
-<img src="https://img.shields.io/badge/django-092E20?style=flat-square&logo=django&logoColor=white">
+<img src="https://img.shields.io/badge/django-092E20?style=flat-square&logo=django&logoColor=white"> <img src="https://img.shields.io/badge/pytorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white">
 
 <br/>
 
