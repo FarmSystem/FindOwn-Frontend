@@ -62,7 +62,7 @@ export const Written = () => {
             container
             spacing={2}
             columns={12}
-            style={{width: "100%", height: "100%"}}>
+            style={{width: "100%", height: "90%"}}>
           {data?.map((item: any, index: number) => (
             <Grid item xs={4} sm={4} md={4} key={index} style={{ width: 'auto', display: 'flex', justifyContent: 'center'}}>
               <div
