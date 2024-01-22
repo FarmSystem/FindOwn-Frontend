@@ -43,7 +43,7 @@ export const DetailList = () => {
 
   useEffect(() => {
     setDetail(listDetail);
-    console.log(detail);
+    // console.log(listDetail);
   }, [listDetail]);
 
   //원본 이미지보기 모달
@@ -69,8 +69,6 @@ export const DetailList = () => {
           <OriginalImage onClick={onClickToggleModal}>
             원본 이미지 보기
           </OriginalImage>
-          {/* <DetailBox data={listDetail}/>
-          <SimilarItem data={listDetail} /> */}
           <DetailBox items={listDetail} />
           <SimilarItem />
         </AdditionalContainer>

@@ -26,20 +26,27 @@ export const DetailBox = (props: any) => {
   const [num, setNum] = useState(0);
   let similarNum = 0;
 
-  // console.log(detail); // Add this line to log the received data
+  console.log(detail); // Add this line to log the received data
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDetailed(e.target.checked);
   };
 
-  //items중 tags 중 results 값이 != (안전, 주의, 위험) 중 안전 인 경우
-  // console.log(items?.trademark[0].result);
-  useEffect(() => {
+  const checkDuplicated = () => {
     for(let i=0; i<3; i++){
-      if(items?.trademark[i].result !== "안전" ){
+      if(items && items?.trademark[i].result !== "안전" ){
+        similarNum ++;
+      }
+      if(detail && detail?.trademark[i].result !== "안전"){
         similarNum ++;
       }
     }
+  }
+
+  //items중 tags 중 results 값이 != (안전, 주의, 위험) 중 안전 인 경우
+  // console.log(items?.trademark[0].result);
+  useEffect(() => {
+    checkDuplicated();
     setNum(similarNum);
   }, [items]);
   
