@@ -23,7 +23,7 @@ export const Written = () => {
   const { data: userWrite } = useQuery({
     queryKey: ["userWrite"],
     queryFn: ownResult,
-    refetchOnMount: false,
+    refetchOnMount: true,
     // refetchOnWindowFocus: true,
   });
 
