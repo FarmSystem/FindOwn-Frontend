@@ -10,7 +10,7 @@ FindOwn 프로젝트팀입니다.
 > 프로젝트명
 
 FindOwn, 상표권 침해 판단 웹플랫폼 <p>
-[FindOwn 사이트에 접속해보세요!](http://www.find-own.site/)
+[FindOwn 사이트에 접속해보세요!](https://www.find-own.site/)
 <br/> <br/>
 
 > 프로젝트 내용
