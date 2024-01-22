@@ -70,7 +70,7 @@ java -jar FindOwn-v2-0.0.1-SNAPSHOT.jar
 ```
 - frontend
 <br/> <br/>
-_노드버전은 최소 20이상으로 해주셔야 합니다_
+_노드버전은 최소 20이상으로 해주셔야 합니다._
 ```
 yarn install
 yarn start
