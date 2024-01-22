@@ -48,7 +48,7 @@ const PaddingText = styled(Text)`
 
 function Section1() {
   return (
-    <Container container xs>
+    <Container container xs={12}>
         <TextBox item xl={6} lg={6}>
           <PaddingText>
             <span className="highlight">

@@ -36,6 +36,7 @@ export const Scrap = () => {
     refetchOnMount: true,
     refetchOnWindowFocus: false
   });
+  
 
   //스크랩한 번호전송
   const exitScrap = (props: any) => {

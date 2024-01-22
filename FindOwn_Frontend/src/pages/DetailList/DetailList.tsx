@@ -16,6 +16,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { resultDetail } from "../../apis/comparison";
 import { detailAtom } from "../../states/jotaiStates";
+import { apiClient } from "../../apis/apiClient";
 
 export const DetailList = () => {
   const navigate = useNavigate();

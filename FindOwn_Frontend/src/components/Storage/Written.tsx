@@ -48,7 +48,7 @@ export const Written = () => {
     } else {
       setData(userWrite?.slice(6 * (page - 1), 6 * (page - 1) + 6));
     }
-  }, [page]);
+  }, [page, userWrite]);
   const handlePage = (e: React.MouseEvent<HTMLButtonElement>, page: number) => {
     const currentPage = Math.round(page);
     setPage(currentPage);
@@ -62,16 +62,33 @@ export const Written = () => {
             container
             spacing={2}
             columns={12}
-            style={{width: "100%", height: "90%"}}>
-          {data?.map((item: any, index: number) => (
-            <Grid item xs={4} sm={4} md={4} key={index} style={{ width: 'auto', display: 'flex', justifyContent: 'center'}}>
-              <div
-              //  onClick={()=>navigate(`/list/${item?.comparison_id}`)} 
-               style={{cursor: 'pointer'}}>
-                <WrittenBox listIndex={index} data={userWrite} itemIndex={item?.comparison_id}/>
-              </div>
-            </Grid>
-          ))}
+            style={{ width: "100%", height: "90%" }}
+          >
+            {data?.map((item: any, index: number) => (
+              <Grid
+                item
+                xs={4}
+                sm={4}
+                md={4}
+                key={index}
+                style={{
+                  width: "auto",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <div
+                  //  onClick={()=>navigate(`/list/${item?.comparison_id}`)}
+                  style={{ cursor: "pointer" }}
+                >
+                  <WrittenBox
+                    listIndex={index}
+                    data={userWrite}
+                    itemIndex={item?.comparison_id}
+                  />
+                </div>
+              </Grid>
+            ))}
           </Grid>
 
           <div style={{ alignItems: "center" }}>

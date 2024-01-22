@@ -352,7 +352,7 @@ export const PostDetail = () => {
 
   useEffect(() => {
     getPost();
-  });
+  }, []);
 
   return (
     <Container>
