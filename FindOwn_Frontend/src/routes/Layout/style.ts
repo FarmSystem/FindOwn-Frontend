@@ -10,7 +10,7 @@ export const Root = styled.div`
 
 export const Container = styled.div`
   width: 100%;
-  height: 105vh;
+  height: 100vh;
   display: flex;
   flex-direction: row;
   justify-content : center;
@@ -25,5 +25,5 @@ export const Container = styled.div`
     display: flex;
     position: fixed;
     flex-direction: column;
-    margin-right: 1400px;
+    margin-right: 1150px;
   `;

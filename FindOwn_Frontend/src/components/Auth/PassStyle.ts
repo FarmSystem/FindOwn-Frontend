@@ -15,7 +15,7 @@ export const Text = styled.div`
 `;
 
 export const ChangePassword = styled.button`
-  margin-left: 850px;
+  margin-left: 730px;
   font-size: 20px;
   width: 150px;
   height: 35px;

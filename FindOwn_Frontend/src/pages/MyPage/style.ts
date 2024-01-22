@@ -33,15 +33,16 @@ export const Theader = styled.div`
 `;
 
 export const InfoDiv = styled.div`
-  width: 1067px;
+  width: 900px;
   height: auto;
   display: flex;
   flex-direction: column;
+  // border: 1px solid black;
 `;
 
 export const InfoContainer = styled.div`
   margin-top: 9px;
-  width: 1067px;
+  width: 100%;
   height: 389px;
   display: flex;
   flex-direction: column;
