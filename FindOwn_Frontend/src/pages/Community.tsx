@@ -147,7 +147,7 @@ export const Community = () => {
 
   useEffect(() => {
     getToken();
-  });
+  }, []);
 
   return (
     <Container xs={12}>

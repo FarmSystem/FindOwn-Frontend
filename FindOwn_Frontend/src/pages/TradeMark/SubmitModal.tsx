@@ -75,7 +75,7 @@ PropsWithChildren<ModalDefaultType>) => {
     } else {
       apiClient.defaults.headers.common["Authorization"] = `Bearer ${storage}`;
     }
-  });
+  }, []);
 
   return (
     <ModalContainer>

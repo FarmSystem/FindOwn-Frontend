@@ -94,7 +94,7 @@ export const MarkDetail = () => {
 
   useEffect(() => {
     getAuth();
-  });
+  }, []);
 
   return (
     <Container>

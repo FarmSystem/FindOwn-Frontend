@@ -144,7 +144,7 @@ export const Write = () => {
         "Authorization"
       ] = `Bearer ${storedToken}`;
     }
-  });
+  }, []);
   
   return (
     <Container>
