@@ -1,7 +1,5 @@
 import styled from "@emotion/styled";
 import { Grid } from "@mui/material";
-import bright from '../../assets/images/bright_version.svg';
-import dark from '../../assets/images/night_version.svg';
 
 export const Container = styled(Grid)`
   width: 100vw;

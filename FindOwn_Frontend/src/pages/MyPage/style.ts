@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import profieImg from '../../assets/images/profile_img.svg';
 import { Grid } from "@mui/material";
 
 export const Container = styled(Grid)`
@@ -25,7 +24,7 @@ export const Text = styled.div`
 `;
 
 export const Theader = styled.div`
-  color: #52C07E;
+  color: #52c07e;
   justify-content: fit-content;
   font-size: 20px;
   margin-top: 30px;
@@ -48,9 +47,8 @@ export const InfoContainer = styled.div`
   flex-direction: column;
   align-items: center;
   border-radius: 8px;
-  border: 1px solid #BFBFBF;
+  border: 1px solid #bfbfbf;
 `;
-
 
 export const PasswordDiv = styled.div`
   margin-top: 20px;
@@ -59,7 +57,7 @@ export const PasswordDiv = styled.div`
 export const PasswordContainer = styled.div`
   margin-top: 11px;
   height: 175px;
-  border: 1px solid #BFBFBF;
+  border: 1px solid #bfbfbf;
   border-radius: 8px;
 `;
 
@@ -79,7 +77,7 @@ export const ExitContainer = styled.div`
 `;
 
 export const ExitText = styled.div`
-  color: #847B7B;
+  color: #847b7b;
   font-size: 18px;
   margin-top: 10px;
   margin-left: 15px;
@@ -92,7 +90,7 @@ export const ExitBtn = styled.button`
   justify-content: center;
   align-items: center;
   color: #494949;
-  background-color: #52C07E73;
+  background-color: #52c07e73;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
 `;

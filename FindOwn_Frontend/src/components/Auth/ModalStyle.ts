@@ -12,12 +12,12 @@ export const ModalContainer = styled.div`
 `;
 
 export const Backdrop = styled.div`
-  width : 100%;
+  width: 100%;
   height: 100%;
   position: fixed;
   top: 0;
   z-index: 10;
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(0, 0, 0, 0.2);
 `;
 
 export const DialogBox = styled.dialog`
@@ -36,12 +36,12 @@ export const Header = styled.div`
   height: 81px;
   width: 100%;
   border-radius: 10px 10px 0px 0px;
-  border-bottom: 1px solid #BFBFBF;
+  border-bottom: 1px solid #bfbfbf;
   display: flex;
   flex-direction: column;
   justify-content: center;
   font-size: 22px;
-  color: #000000C7;
+  color: #000000c7;
 `;
 
 export const Inputs = styled.div`
@@ -57,7 +57,7 @@ export const InputTitle = styled.div`
 export const InputBox = styled.input`
   width: 100%;
   height: 55px;
-  background-color: #D9D9D970;
+  background-color: #d9d9d970;
   border-radius: 5px;
   margin-top: 18px;
   padding: 10px;
@@ -65,7 +65,7 @@ export const InputBox = styled.input`
 `;
 
 export const AlertText = styled.div`
-  color: #DA0000;
+  color: #da0000;
   font-size: 15px;
 `;
 
@@ -90,7 +90,8 @@ export const PressButton = styled.button<BtnProps>`
   justify-content: center;
   align-items: center;
   font-size: 25px;
-  background-color: ${(props) => props.msg == "취소" ? "#D9D9D9C7" : "#3D85C6"};
-  color: ${(props) => props.msg == "취소" ? "#000" : "#FFF"};
+  background-color: ${(props) =>
+    props.msg === "취소" ? "#D9D9D9C7" : "#3D85C6"};
+  color: ${(props) => (props.msg === "취소" ? "#000" : "#FFF")};
   font-weight: 500;
 `;

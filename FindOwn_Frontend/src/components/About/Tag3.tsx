@@ -9,7 +9,6 @@ import issueImg5 from "../../assets/images/FindOwn_logo5.png";
 import issueImg6 from "../../assets/images/FindOwn_logo6.png";
 
 import unScrapImage from "../../assets/images/unscrapped.svg";
-import scrapImage from "../../assets/images/scrapped.svg";
 import { useEffect, useState } from "react";
 
 const Container = styled.div`

@@ -7,13 +7,12 @@ interface ApiResponse {
 }
 
 export const LoginPage = () => {
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const [Email, setEmail] = useState<string>("");
   const [Password, setPassword] = useState<string>("");
 
   const [loading, setLoading] = useState<boolean>(false);
-  const [msg, setMsg] = useState<string>("");
 
   const onEmailHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.currentTarget.value);
@@ -82,6 +81,6 @@ const dispatch = useDispatch();
       </form>
     </div>
   );
-}
+};
 
 // export default LoginPage;

@@ -1,15 +1,17 @@
-import { Global, css } from '@emotion/react';
+import { css } from "@emotion/react";
 
 export const GlobalStyle = css`
   :root {
     /* --rti-border: #e2e8f0; */
-    --rti-tag: #F1F5F9 !important;
+    --rti-tag: #f1f5f9 !important;
     --rti-radius: 50% !important;
     --rti-main: #fff !important;
     --rti-tag-remove: #7c3aed !important;
   }
 
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     box-sizing: border-box;
   }
 
@@ -36,7 +38,8 @@ export const GlobalStyle = css`
     background-color: transparent;
   }
 
-  a, table {
+  a,
+  table {
     all: unset;
   }
 
@@ -44,7 +47,8 @@ export const GlobalStyle = css`
     margin: 0;
   }
 
-  input, textarea {
+  input,
+  textarea {
     border: none;
     outline: none;
     font-family: "Noto Sans KR", "Inter", "sans-serif";
@@ -84,7 +88,7 @@ export const GlobalStyle = css`
     font-weight: 400 !important;
     padding-left: 10px;
     margin-left: 15px;
-    color: #64748B;
+    color: #64748b;
     &:focus {
       outline: none !important;
       border: 0 !important;
@@ -109,12 +113,12 @@ export const GlobalStyle = css`
     }
   }
   .css-1y1yng-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
-      background-color: #8B5CF6 !important;
-      color: white !important;
-      border: 1px solid #8B5CF6 !important;
-      &:hover {
-        background-color: #7c3aed !important;
-        border: 1px solid #7c3aed !important;
-      }
+    background-color: #8b5cf6 !important;
+    color: white !important;
+    border: 1px solid #8b5cf6 !important;
+    &:hover {
+      background-color: #7c3aed !important;
+      border: 1px solid #7c3aed !important;
+    }
   }
 `;

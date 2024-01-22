@@ -8,13 +8,9 @@ import {
   Additional,
   SignUp,
 } from "./style";
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { apiClient } from "../../apis/apiClient";
-
-interface ApiResponse {
-  code: number;
-}
 
 export const Login = () => {
   const navigate = useNavigate();

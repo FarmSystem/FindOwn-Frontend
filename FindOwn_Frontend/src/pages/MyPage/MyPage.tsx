@@ -1,4 +1,4 @@
-import { Fragment, useCallback } from "react";
+import { useCallback } from "react";
 import {
   Container,
   Text,
@@ -8,7 +8,6 @@ import {
   PasswordDiv,
   PasswordContainer,
   ExitDiv,
-  ExitContainer,
   ExitText,
   ExitBtn
  } from './style';

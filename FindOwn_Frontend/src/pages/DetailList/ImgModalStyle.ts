@@ -107,7 +107,7 @@ export const PressButton = styled.button<BtnProps>`
   align-items: center;
   font-size: 25px;
   background-color: ${(props) =>
-    props.msg == "취소" ? "#D9D9D9C7" : "#3D85C6"};
-  color: ${(props) => (props.msg == "취소" ? "#000" : "#FFF")};
+    props.msg === "취소" ? "#D9D9D9C7" : "#3D85C6"};
+  color: ${(props) => (props.msg === "취소" ? "#000" : "#FFF")};
   font-weight: 500;
 `;
