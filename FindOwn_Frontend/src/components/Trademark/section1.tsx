@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { detailAtom, accessAtom } from "../../states/jotaiStates";
 import { useAtom } from "jotai";
 import spinner from "../../assets/images/Spinner_2.svg";
+import axios from "axios";
 
 const Container = styled(Grid)`
   width: 100vw;
@@ -46,6 +47,10 @@ export const Section1: React.FC = () => {
   const [detail, setDetail] = useAtom(detailAtom);
 
   const postImage = async (file: File | null) => {
+    let timeoutId:any = null;
+    const CancelToken = axios.CancelToken;
+    const source = CancelToken.source();
+
     if (!file) {
       alert("파일을 선택해주세요.");
       return;
@@ -53,18 +58,33 @@ export const Section1: React.FC = () => {
     const formData = new FormData();
     formData.append("image", file);
     setLoading(true);
+
     try {
+      // setLoading(true);
+
+      //3분 후에 홈페이지로 이동하는 타이머 설정
+      timeoutId = setTimeout(() => {
+        alert("요청이 혼잡합니다. 다시 분석해주시길 바랍니다.");
+        source.cancel("요청이 취소되었습니다.");
+        navigate(`/`);
+      }, 180000);
+
       await apiClient
-        .post("/api/v2/users/comparison/result", formData)
+        .post("/api/v2/users/comparison/result", formData, {
+          cancelToken: source.token
+        })
         .then((res) => {
           setLoading(false);
           alert("정상적으로 전송되었습니다.");
+          clearTimeout(timeoutId);
           setDetail(res.data);
           setAccess(true);
           navigate("/trademark/detail");
         });
     } catch (e) {
       console.log(e);
+      setLoading(false);
+      clearTimeout(timeoutId);
     }
   };
 
