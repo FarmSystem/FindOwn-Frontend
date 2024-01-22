@@ -49,6 +49,7 @@ export const Written = () => {
       setData(userWrite?.slice(6 * (page - 1), 6 * (page - 1) + 6));
     }
   }, [page, userWrite]);
+  
   const handlePage = (e: React.MouseEvent<HTMLButtonElement>, page: number) => {
     const currentPage = Math.round(page);
     setPage(currentPage);
@@ -56,7 +57,9 @@ export const Written = () => {
 
   const WriteBlock = () => {
     return (
-      <Block>
+      <>
+      { data &&
+        <Block>
         <ColumnContainer>
           <Grid
             container
@@ -100,6 +103,9 @@ export const Written = () => {
           </div>
         </ColumnContainer>
       </Block>
+      }
+      </>
+      
     );
   };
 

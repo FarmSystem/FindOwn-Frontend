@@ -56,17 +56,17 @@ export const WrittenBox = (props: any) => {
       {data && (
         <ItemContainer>
           <LockContainer>
-            {data[listIndex].open === false ? (
+            {data[listIndex]?.open === false ? (
               <IconImg src={lock} onClick={Locked} />
             ) : (
               <IconImg src={unlock} onClick={Locked} />
             )}
           </LockContainer>
           <ImageContain onClick={navToItem}>
-            <ImageBox src={data[listIndex].image_path} />
+            <ImageBox src={data[listIndex]?.image_path} />
           </ImageContain>
           <LowerLayer>
-            <DateBox>{data[listIndex].created_at}</DateBox>
+            <DateBox>{data[listIndex]?.created_at}</DateBox>
             <IconImg style={{ margin: 0 }} src={trash} onClick={goTrash} />
           </LowerLayer>
         </ItemContainer>
