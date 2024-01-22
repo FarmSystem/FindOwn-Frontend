@@ -37,6 +37,9 @@ const BoardItem = styled.div`
   flex-direction: row;
   align-items: center;
   border-bottom: 1.5px solid rgb(232, 234, 237);
+  &:hover{
+    background-color: #EEFFED;
+  }
 `;
 
 const TitleItem = styled.div`
@@ -60,6 +63,7 @@ const SmallTitleItem = styled(TitleItem)`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  cursor: pointer;
 `;
 
 const CommentText = styled.div`
