@@ -47,7 +47,7 @@ const Image = styled.div`
 
 function Section1() {
   return (
-    <Container container xs>
+    <Container container xs={12}>
       <Grid container>
         <TextBox item xl={6} lg={6}>
           <Text>좀 더 빠르고, 좀 더 쉽게</Text>

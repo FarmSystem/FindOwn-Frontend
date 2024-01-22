@@ -1,6 +1,6 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { Root, Container, LeftWrapper } from "./style";
-import { Nav, MainNav, Footer, MainFooter } from "../../components/common";
+import { Nav, MainNav } from "../../components/common";
 import { FixedMenu } from "../../components/Auth";
 
 export const Layout = () => {

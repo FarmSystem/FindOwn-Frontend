@@ -58,7 +58,7 @@ export interface DetailProps {
 }
 
 export const DetailInput = styled.div<DetailProps>`
-  display: ${(props) => props.detailed == true ? 'flex' : 'none'};
+  display: ${(props) => props.detailed === true ? 'flex' : 'none'};
   background-color: #F7F7F7;
   width: 480px;
   height: 130px;

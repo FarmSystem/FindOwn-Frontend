@@ -1,7 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
-import { MainLogo } from "./MainLogo";
 
 const FooterContainer = styled.div`
   z-index: 10;
@@ -30,7 +28,10 @@ const Introduce = styled.div`
 export const MainFooter = () => {
   return (
     <FooterContainer>
-      <Introduce>동국대학교 Farm Team4 | &nbsp;&nbsp;&nbsp; 박서영 이지민 임정우 오현석 정영준 최재원</Introduce>
+      <Introduce>
+        동국대학교 Farm Team4 | &nbsp;&nbsp;&nbsp; 박서영 이지민 임정우 오현석
+        정영준 최재원
+      </Introduce>
       <Introduce>Copyright © 2024 FarmTeam4. All Rights Reserved </Introduce>
     </FooterContainer>
   );

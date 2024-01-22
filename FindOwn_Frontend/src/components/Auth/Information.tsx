@@ -1,4 +1,4 @@
-import { 
+import {
   NickName,
   EmailCon,
   EditBtn,
@@ -11,14 +11,13 @@ import {
   Rounded,
   SubRounded,
   AlertText,
-  AlertText2
-} from './InfoStyle';
-import edit from '../../assets/images/Edit_btn.svg';
-import React, { useState } from 'react';
-import styled from '@emotion/styled';
-import { apiClient } from '../../apis/apiClient';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { changeId, getInfo } from '../../apis/user';
+  AlertText2,
+} from "./InfoStyle";
+import edit from "../../assets/images/Edit_btn.svg";
+import React, { useState } from "react";
+import { apiClient } from "../../apis/apiClient";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { changeId, getInfo } from "../../apis/user";
 
 export const Information = () => {
   const [isEdited, setIsEdited] = useState<boolean>(false);
@@ -33,19 +32,19 @@ export const Information = () => {
 
   // 처음 기본정보를 보여주다가 변경된 사항을 fresh
   // 마이페이지 기본정보 가져오기
-  const { data: userInfo, isLoading } = useQuery({
+  const { data: userInfo } = useQuery({
     queryKey: ["userInfo"],
     queryFn: getInfo,
     refetchOnMount: false,
     refetchOnWindowFocus: false,
   });
-  
+
   const queryClient = useQueryClient();
   const { mutate } = useMutation({
     mutationFn: changeId,
     onSuccess: () => {
-      queryClient.invalidateQueries({queryKey: ["userInfo"]});
-    }
+      queryClient.invalidateQueries({ queryKey: ["userInfo"] });
+    },
   });
 
   type customProps = {
@@ -56,27 +55,27 @@ export const Information = () => {
   };
 
   const customBtn: React.FC<customProps> = (props) => {
-    const customFunc = () =>{
-      if(props.id){
+    const customFunc = () => {
+      if (props.id) {
         handleIdCheck();
-      }else if(props.email){
+      } else if (props.email) {
         handleSendVerificationCode();
-      }else if(props.code){
+      } else if (props.code) {
         handleVerifyCode();
       }
-    }
+    };
 
-    return(
+    return (
       <Rounded message={props.message} onClick={customFunc}>
         {props.message}
       </Rounded>
     );
   };
 
-  //초기에 수정완료 클릭할때 
-  const DefaultEditState = () =>{
+  //초기에 수정완료 클릭할때
+  const DefaultEditState = () => {
     setIsEdited(true);
-  }
+  };
 
   //수정한 결괏값 전송
   const EditState = () => {
@@ -84,26 +83,25 @@ export const Information = () => {
     setIsEdited(false);
   };
 
-  const handleSubmit = async() => {
-    try{
-      if(isCodeTrue == false){
+  const handleSubmit = async () => {
+    try {
+      if (isCodeTrue === false) {
         alert("이메일 인증이 제대로 되지 않았습니다.");
       }
-      if(nicknameCheck == false){
+      if (nicknameCheck === false) {
         alert("닉네임이 확인되지 않습니다.");
       }
       // const userId = localStorage.getItem("email") || undefined;
       const originMemberId = userInfo?.nickname;
       const newMemberId = nickname;
-      mutate({originNickname: originMemberId, newNickname: newMemberId});
-
-    }catch(error){
+      mutate({ originNickname: originMemberId, newNickname: newMemberId });
+    } catch (error) {
       console.log(error);
     }
   };
 
   //닉네임 변경
-  const handleNicknameChange = (e: React.ChangeEvent<HTMLInputElement>, ) => {
+  const handleNicknameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNickname(e.currentTarget.value);
   };
 
@@ -118,11 +116,13 @@ export const Information = () => {
     } else {
       setIsEmail(false);
       setIsEmailMessage("올바른 이메일 형식이 아닙니다.");
-    } 
-  }; 
+    }
+  };
 
   //인증번호 작성
-  const handleVerificationCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleVerificationCodeChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setVerificationCode(e.target.value);
   };
 
@@ -174,56 +174,66 @@ export const Information = () => {
     }
   };
 
-  return(
+  return (
     <>
-    { isEdited==false && userInfo ? (
-      <>
-        <NickName> {userInfo?.nickname || "팜 4조"}</NickName>  
-        <EmailCon>{userInfo?.email}</EmailCon>                    
-        <EditBtn onClick={DefaultEditState}>
-          <EditText>수정</EditText>
-          <EditIcon src={edit} />
-        </EditBtn>
-      </>
-    ) : (
-      <>
-        <Contained>
-          <InputContainer>
-            <Title>닉네임</Title>
-            <InputValue
-              onChange={handleNicknameChange}
-            />
-            {customBtn({message: "중복확인", id: nickname})}
-          </InputContainer>
-          <div style={{display: "flex", flexDirection: "column"}}>
+      {isEdited === false && userInfo ? (
+        <>
+          <NickName> {userInfo?.nickname || "팜 4조"}</NickName>
+          <EmailCon>{userInfo?.email}</EmailCon>
+          <EditBtn onClick={DefaultEditState}>
+            <EditText>수정</EditText>
+            <EditIcon src={edit} />
+          </EditBtn>
+        </>
+      ) : (
+        <>
+          <Contained>
             <InputContainer>
-              <Title>이메일</Title>
-              <InputValue
-                onChange={handleEmailChange}
-              />
-              {customBtn({message: "인증요청", email: email})}
+              <Title>닉네임</Title>
+              <InputValue onChange={handleNicknameChange} />
+              {customBtn({ message: "중복확인", id: nickname })}
             </InputContainer>
-            {!isEmail && <AlertText>{isEmailMessage}</AlertText>}
-            {isEmail && <AlertText2>{isEmailMessage}</AlertText2>}
-          </div>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <InputContainer>
+                <Title>이메일</Title>
+                <InputValue onChange={handleEmailChange} />
+                {customBtn({ message: "인증요청", email: email })}
+              </InputContainer>
+              {!isEmail && <AlertText>{isEmailMessage}</AlertText>}
+              {isEmail && <AlertText2>{isEmailMessage}</AlertText2>}
+            </div>
 
-          {isCodeSent && (
-            <InputContainer>
-              <Title>인증번호</Title>
-              <InputValue
-                onChange={handleVerificationCodeChange}
-                style={{opacity: isCodeSent ? 1 : 0}}
-              />
-              {customBtn({message: "인증확인", code: verificationCode})}
-            </InputContainer>
-          )}
-        </Contained>
-        <div style={{display: "flex", flexDirection: "row", marginTop: 70, marginLeft: 650, width: 200, justifyContent: "space-between"}}>
-        <SubRounded onClick={()=>window.location.reload()} style={{backgroundColor: "#959595", color: "white"}}>돌아가기</SubRounded>
-        <SubRounded onClick={EditState}>수정완료</SubRounded>
-        </div>
-      </>
-    )}
+            {isCodeSent && (
+              <InputContainer>
+                <Title>인증번호</Title>
+                <InputValue
+                  onChange={handleVerificationCodeChange}
+                  style={{ opacity: isCodeSent ? 1 : 0 }}
+                />
+                {customBtn({ message: "인증확인", code: verificationCode })}
+              </InputContainer>
+            )}
+          </Contained>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              marginTop: 70,
+              marginLeft: 650,
+              width: 200,
+              justifyContent: "space-between",
+            }}
+          >
+            <SubRounded
+              onClick={() => window.location.reload()}
+              style={{ backgroundColor: "#959595", color: "white" }}
+            >
+              돌아가기
+            </SubRounded>
+            <SubRounded onClick={EditState}>수정완료</SubRounded>
+          </div>
+        </>
+      )}
     </>
   );
 };

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "@emotion/styled";
 import { useAtom } from "jotai";
@@ -14,29 +14,33 @@ type navItems = navItem[];
 export const FixedMenu = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const change = location.pathname.includes(`/storage`);
 
   const [currentPage, setCurrentPage] = useAtom(menuAtom);
   const PageChange = (page: string) => {
     setCurrentPage(page);
     navigate(`${page}`);
-  }
-  useEffect(()=>{
+  };
+  useEffect(() => {
     PageChange(currentPage);
   }, [location.pathname]);
 
   const MenuItems = useMemo<navItems>(
     () => [
-      { name: "계정관리", src: "/mypage"},
-      { name: "스토리지", src: "/mypage/storage"}
+      { name: "계정관리", src: "/mypage" },
+      { name: "스토리지", src: "/mypage/storage" },
     ],
     []
   );
 
-  return(
+  return (
     <MenuContainer>
       {MenuItems.map((item, index) => (
-        <NavItem key={`${item.name}_${index}`}  onClick={()=>PageChange(item.src)} value={currentPage} link={item.src } >
+        <NavItem
+          key={`${item.name}_${index}`}
+          onClick={() => PageChange(item.src)}
+          value={currentPage}
+          link={item.src}
+        >
           {item.name}
         </NavItem>
       ))}
@@ -49,7 +53,7 @@ const MenuContainer = styled.div`
   height: 140px;
   border-radius: 8px;
   margin-top: 30px;
-  border: 1px solid #BFBFBF;
+  border: 1px solid #bfbfbf;
   background: rgba(255, 255, 255, 0.45);
   display: flex;
   flex-direction: column;
@@ -68,7 +72,8 @@ const NavItem = styled.div<pageProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${(props) => props.value == props.link ? "#EEFFED" : "#FFF"};
-  color: ${(props) => props.value == props.link ? "#838383" : "#000" };
+  background-color: ${(props) =>
+    props.value === props.link ? "#EEFFED" : "#FFF"};
+  color: ${(props) => (props.value === props.link ? "#838383" : "#000")};
   cursor: pointer;
 `;

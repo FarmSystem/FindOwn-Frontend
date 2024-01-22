@@ -31,7 +31,7 @@ export const About = () => {
 
   return (
     <div>
-      <Container container xs>
+      <Container container xs={12}>
         <Section1 />
       </Container>
       <Section2 />

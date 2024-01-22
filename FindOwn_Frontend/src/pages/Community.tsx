@@ -8,7 +8,6 @@ import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useAtom } from "jotai";
 import { selectedTagAtom } from "../states/jotaiStates";
-import { access } from "fs";
 
 const Container = styled(Grid)`
   width: 85vw;

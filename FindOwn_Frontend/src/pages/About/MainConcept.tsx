@@ -104,7 +104,7 @@ export const MainConcept = () => {
         <ButtonDiv>
           <Button
             sx={{
-              width: "80px",
+              width: "100px",
               height: "40px",
               backgroundColor: "#52C07E",
               color: "#ffffff",
@@ -112,6 +112,7 @@ export const MainConcept = () => {
               fontWeight: "bold",
               borderRadius: "10px",
               marginRight: "20px",
+              fontFamily: "AppleBold",
             }}
             onClick={() => window.history.back()}
           >

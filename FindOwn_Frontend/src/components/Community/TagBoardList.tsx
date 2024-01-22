@@ -129,8 +129,6 @@ export const TagBoardList = ({ tagName }: { tagName: string }) => {
     scrapCnt: number;
   }
 
-  let board: Board;
-
   return (
     <Container>
       <BoardListContainer>
