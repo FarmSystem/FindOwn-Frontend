@@ -68,13 +68,17 @@ export const Section1: React.FC = () => {
     }
   };
 
-  useEffect(() => {
+  const getToken = async () => {
     let storedToken = localStorage.getItem("token");
     if (storedToken) {
       apiClient.defaults.headers.common[
         "Authorization"
       ] = `Bearer ${storedToken}`;
     }
+  };
+
+  useEffect(() => {
+    getToken();
   }, []);
 
   const handleImageSelect = (file: File | null) => {

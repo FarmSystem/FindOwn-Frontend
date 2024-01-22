@@ -81,7 +81,7 @@ export const MarkDetail = () => {
     setSubmitBtn(!submitBtn);
   }, [submitBtn]);
 
-  useEffect(() => {
+  const getAuth = async () => {
     const accessAuth = access;
     const storage = localStorage.getItem("token");
     if (!storage || !accessAuth) {
@@ -90,6 +90,10 @@ export const MarkDetail = () => {
     } else {
       apiClient.defaults.headers.common["Authorization"] = `Bearer ${storage}`;
     }
+  };
+
+  useEffect(() => {
+    getAuth();
   }, []);
 
   return (

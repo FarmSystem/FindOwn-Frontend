@@ -68,7 +68,7 @@ export const DetailBox = () => {
                 <Description>
                   입력하신 상표와{" "}
                   <span style={{ color: "#F00" }}>
-                    {selectedItem.similarity} %
+                    {Math.ceil(parseFloat(selectedItem.similarity) * 100)} %
                   </span>{" "}
                   의 유사도로{" "}
                   <span style={{ color: "#F00" }}>
