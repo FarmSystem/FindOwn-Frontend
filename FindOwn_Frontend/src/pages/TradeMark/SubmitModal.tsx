@@ -44,7 +44,7 @@ PropsWithChildren<ModalDefaultType>) => {
       });
       setAccess(false);
       navigate(`/`);
-      alert("성공적으로 저장되었습니다!");
+      alert("성공적으로 저장되었습니다! 침해사례 반영까지 몇 초가 소요됩니다.");
     } catch (error) {
       console.log(error);
       alert("저장에 실패했습니다. 다시 시도해주세요.");
@@ -60,7 +60,7 @@ PropsWithChildren<ModalDefaultType>) => {
       });
       setAccess(false);
       navigate(`/`);
-      alert("성공적으로 저장되었습니다! 마이페이지에서 확인해주세요");
+      alert("성공적으로 저장되었습니다! 마이페이지에서 확인해주세요.");
     } catch (error) {
       console.log(error);
       alert("저장에 실패했습니다. 다시 시도해주세요.");
