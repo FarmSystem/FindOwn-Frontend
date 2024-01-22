@@ -18,6 +18,11 @@ export const ImageBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.15);
+  }
 `;
 
 export const WarningBlock = styled.div`

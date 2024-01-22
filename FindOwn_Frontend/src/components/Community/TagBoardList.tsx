@@ -56,6 +56,10 @@ const LargeTitleItem = styled(TitleItem)`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  cursor: pointer;
+  &:hover{
+    text-decoration: underline;
+  }
 `;
 
 const SmallTitleItem = styled(TitleItem)`

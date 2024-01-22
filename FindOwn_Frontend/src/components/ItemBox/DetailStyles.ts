@@ -66,6 +66,7 @@ export const DetailInput = styled.div<DetailProps>`
   padding-left: 10px;
   border-radius: 10px;
   flex-direction: column;
+  // border: 1px solid black;
 `;
 
 export const Description = styled.div`
@@ -79,4 +80,5 @@ export const DescriptionContainer = styled.div`
   display: flex;
   flex-direction: row;
   gap: 20px;
+  // border: 1px solid black;
 `;

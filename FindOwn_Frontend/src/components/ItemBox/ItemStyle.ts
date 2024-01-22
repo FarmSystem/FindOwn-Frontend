@@ -15,6 +15,11 @@ export const ImageContain = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.15);
+  }
 `;
 
 export const ImageBox = styled.img`

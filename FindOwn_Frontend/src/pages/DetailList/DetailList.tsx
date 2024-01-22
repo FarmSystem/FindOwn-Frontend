@@ -17,6 +17,8 @@ import { useQuery } from "@tanstack/react-query";
 import { resultDetail } from "../../apis/comparison";
 import { detailAtom } from "../../states/jotaiStates";
 import { apiClient } from "../../apis/apiClient";
+import { Button } from "@mui/material";
+
 
 export const DetailList = () => {
   const navigate = useNavigate();
@@ -41,6 +43,7 @@ export const DetailList = () => {
 
   useEffect(() => {
     setDetail(listDetail);
+    console.log(detail);
   }, [listDetail]);
 
   //원본 이미지보기 모달
@@ -68,13 +71,33 @@ export const DetailList = () => {
           </OriginalImage>
           {/* <DetailBox data={listDetail}/>
           <SimilarItem data={listDetail} /> */}
-          <DetailBox />
+          <DetailBox items={listDetail} />
           <SimilarItem />
         </AdditionalContainer>
         <AlarmContainer>
-          <AlarmText>침해도는 다음과 같이 구분됩니다.</AlarmText>
-          <AlarmImg src={alarm} />
+          <AlarmContain>
+            <AlarmText>침해도는 다음과 같이 구분됩니다.</AlarmText>
+            <AlarmImg src={alarm} />
+          </AlarmContain>
+          <ButtonDiv>
+            <Button
+              sx={{
+                width: "auto",
+                height: "40px",
+                backgroundColor: "#52C07E",
+                color: "#ffffff",
+                fontSize: "16px",
+                fontWeight: "bold",
+                borderRadius: "10px",
+                marginRight: "20px",
+              }}
+              onClick={() => window.history.back()}
+            >
+              목록으로
+            </Button>
+          </ButtonDiv>
         </AlarmContainer>
+        
       </ListContainer>
     </Container>
   );
@@ -88,8 +111,13 @@ const AdditionalContainer = styled.div`
 `;
 
 const AlarmContainer = styled.div`
+  // height: auto;
+  // width: auto;
+  width: 100%;
   height: auto;
-  width: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 const AlarmText = styled.div`
@@ -100,4 +128,15 @@ const AlarmText = styled.div`
 
 const AlarmImg = styled.img`
   margin-top: 9px;
+`;
+
+const AlarmContain = styled.div`
+  width: auto;
+  height: auto;
+`;
+
+const ButtonDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `;

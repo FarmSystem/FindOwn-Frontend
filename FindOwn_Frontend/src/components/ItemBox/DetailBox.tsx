@@ -1,5 +1,5 @@
 import { ImageBox } from "./ItemStyle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   BoxContainer,
   ImageContainer,
@@ -18,16 +18,31 @@ import { useAtom } from "jotai";
 import { similarAtom, detailAtom } from "../../states/jotaiStates";
 //
 
-export const DetailBox = () => {
+export const DetailBox = (props: any) => {
+  const { items } = props;
   const [detail] = useAtom(detailAtom);
   const [detailed, setDetailed] = useState(false);
   const [itemIndex] = useAtom(similarAtom);
+  const [num, setNum] = useState(0);
+  let similarNum = 0;
 
   // console.log(detail); // Add this line to log the received data
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDetailed(e.target.checked);
   };
+
+  //items중 tags 중 results 값이 != (안전, 주의, 위험) 중 안전 인 경우
+  // console.log(items?.trademark[0].result);
+  useEffect(() => {
+    for(let i=0; i<3; i++){
+      if(items?.trademark[i].result !== "안전" ){
+        similarNum ++;
+      }
+    }
+    setNum(similarNum);
+  }, [items]);
+  
 
   const selectedItem = detail?.trademark?.[itemIndex];
 
@@ -83,7 +98,7 @@ export const DetailBox = () => {
             >
               <TitleContent>유사디자인</TitleContent>
               <Content style={{ marginLeft: 20, color: "#494949" }}>
-                <span style={{ color: "#F00" }}>3</span> 개의 상표들과
+                <span style={{ color: "#F00" }}>{num}</span> 개의 상표들과
                 유사합니다.
               </Content>
             </LineContent>
