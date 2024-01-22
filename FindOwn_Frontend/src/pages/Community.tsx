@@ -111,6 +111,7 @@ const ButtonContainer = styled.div`
 export const Community = () => {
   const [currentTab, clickTab] = useState(0);
   const [selectedTag, setSelectedTag] = useAtom(selectedTagAtom);
+  const storedToken = localStorage.getItem("token");
 
   const menuArr = [{ name: "전체 게시글" }, { name: "태그별 게시판" }];
 
@@ -121,7 +122,7 @@ export const Community = () => {
   const navigate = useNavigate();
 
   const navigateTo = () => {
-    if (!localStorage.getItem("token")) {
+    if (!storedToken) {
       alert("로그인이 필요한 서비스입니다.");
       navigate("/login");
     } else navigate("/community/write");
@@ -133,8 +134,7 @@ export const Community = () => {
     }
   }, [selectedTag]);
 
-  useEffect(() => {
-    const storedToken = localStorage.getItem("token");
+  const getToken = async () => {
     if (storedToken) {
       apiClient.defaults.headers.common[
         "Authorization"
@@ -143,7 +143,11 @@ export const Community = () => {
       alert("로그인이 필요한 서비스입니다.");
       window.location.href = "/login";
     }
-  }, []);
+  };
+
+  useEffect(() => {
+    getToken();
+  });
 
   return (
     <Container xs={12}>

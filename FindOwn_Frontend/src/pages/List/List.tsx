@@ -15,7 +15,7 @@ export const List = () => {
   const { data: list } = useQuery({
     queryKey: ["list"],
     queryFn: resultList,
-    refetchOnWindowFocus: false,
+    refetchOnWindowFocus: true,
     refetchOnMount: true,
   });
 
@@ -29,12 +29,12 @@ export const List = () => {
           ? list?.length / 6
           : Math.floor(list?.length / 6) + 1;
       setLastPage(LAST_PAGE);
+      console.log(LAST_PAGE);
     } else {
       setLastPage(0);
     }
-    // console.log(list);
   }, [list]);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState<number>(1);
   const [data, setData] = useState<string[]>([]);
 
   useEffect(() => {
@@ -43,11 +43,7 @@ export const List = () => {
     } else {
       setData(list?.slice(6 * (page - 1), 6 * (page - 1) + 6));
     }
-  }, [page]);
-
-  useEffect(() => {
-    console.log(data);
-  }, [data, page]);
+  }, [page, list]);
 
   const handlePage = (e: React.MouseEvent<HTMLButtonElement>, page: number) => {
     const currentPage = Math.floor(page);

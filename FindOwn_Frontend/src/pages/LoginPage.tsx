@@ -7,7 +7,7 @@ interface ApiResponse {
 }
 
 export const LoginPage = () => {
-  const dispatch = useDispatch();
+const dispatch = useDispatch();
 
   const [Email, setEmail] = useState<string>("");
   const [Password, setPassword] = useState<string>("");
@@ -81,6 +81,6 @@ export const LoginPage = () => {
       </form>
     </div>
   );
-};
+}
 
 // export default LoginPage;

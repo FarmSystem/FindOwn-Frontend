@@ -74,7 +74,7 @@ export const Section2 = () => {
   };
 
   return (
-    <Container container xs>
+    <Container container xs={12}>
       <div>
         <TabMenu>
           {menuArr.map((el, index) => (

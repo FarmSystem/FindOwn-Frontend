@@ -102,8 +102,9 @@ const TagItem = styled.div<{ tagName: string }>`
 
 export const BoardList = () => {
   const [boardList, setBoardList] = useState<Board[]>([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState<number>(1);
   const navigate = useNavigate();
+  const token = localStorage.getItem("token");
 
   const postsPerPage = 10;
 
@@ -126,19 +127,32 @@ export const BoardList = () => {
     setCurrentPage(pageNumber);
   };
 
+  const getToken = async () => {
+    if (token) {
+      apiClient.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    } else {
+      alert("로그인이 필요한 서비스입니다.");
+      window.location.href = "/login";
+    }
+  };
+
   const getBoardList = () => {
     apiClient
       .get("/api/v2/users/community/post")
       .then((response) => {
         const filteredBoardList = response.data;
         setBoardList(filteredBoardList);
+        apiClient.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       })
-      .catch(function (error) {});
+      .catch(function (error) {
+        console.error("게시글을 불러오는 데 실패했습니다: ", error);
+      });
   };
 
   useEffect(() => {
+    getToken();
     getBoardList();
-  }, []);
+  }, [currentPage]);
 
   return (
     <Container>
