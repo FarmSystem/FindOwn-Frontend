@@ -2,9 +2,8 @@ import styled from "@emotion/styled";
 
 //scrap
 export const Wrapper = styled.div`
-  width: 100%;
+  width: 80%;
   height: 100%;
-  // border: 1px solid black;
 `;
 
 export const ScrapHeader = styled.div`
@@ -14,7 +13,6 @@ export const ScrapHeader = styled.div`
   margin-top: 20px;
   margin-left: 10px;
   align-items: center;
-  // border: 1px solid black;
 `;
 
 export const ScrapForIcon = styled.img`
@@ -35,23 +33,18 @@ export const ScrapTable = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  // border: 1px solid black;
 `;
 
 export const Block = styled.div`
   height: 100%;
-  width: 1060px;
+  width: 100%;
   position: relative;
-  border-top: 3px solid #E2E8F0;
   border-bottom: 3px solid #E2E8F0;
-  // align-items: space-evenly;
   display: flex;
-  // flex-direction: column;
 `;
 
 export const Scrapped = styled.img`
-  // position: absolute;
-  // top: 15px;
-  // left: 80px;
   margin-top: 15px;
   margin-left: 80px;
   width: 24px;
@@ -59,7 +52,7 @@ export const Scrapped = styled.img`
 `;
 
 export const TitleBlock = styled.div`
-  width: 745px;
+  width: 640px;
   height: 46px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -79,14 +72,15 @@ export const DetailBox = styled.div`
   flex-direction: column;
   padding-top: 50px;
   gap: 10px;
-  padding-left: 30px;
+  // padding-left: 30px;
 `;
 
 export const AddDiv = styled.div`
   display: flex;
   justify-content: flex-end;
-  padding-right: 60px;
+  // padding-right: 60px;
   height: 30px;
+  width: 100px;
   gap: 20px;
 `;
 
@@ -97,27 +91,29 @@ export const AddText = styled.div`
 export const ContentBlock = styled.div`
   display: flex;
   flex-direction: column;
+  
 `;
 
 export const Tagcontainer = styled.div`
   height: 100%;
   display: flex;
+  width: 100%;
   flex-direction: row;
   justify-content: flex-end;
-  gap: 40px;
+  // gap: 20px;
   align-items: center;
   // border: 1px solid black;
   position: relative;
 `;
 
 export const HashTag = styled.div`
-  width: 120px;
+  width: 100px;
   height: 40px;
   background-color: #F1F5F9EB;
   color: #64748B;
   border-radius: 5px;
   position: absolute;
-  right: 150px;
+  right: 180px;
   // left: 177px;
   display: flex;
   justify-content: center;

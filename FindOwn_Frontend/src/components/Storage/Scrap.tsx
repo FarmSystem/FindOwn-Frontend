@@ -33,7 +33,7 @@ export const Scrap = () => {
   const {data: scrapData, isLoading } = useQuery({
     queryKey: ["scrap-storage"],
     queryFn: getScrap,
-    refetchOnMount: false,
+    refetchOnMount: true,
     refetchOnWindowFocus: false
   });
 
@@ -141,12 +141,10 @@ export const Scrap = () => {
 
 const Block = styled.div`
   height: 150px;
-  width: 1060px;
-  // border: 1px solid black;
+  width: 851px;
   position: relative;
   border-top: 3px solid #E2E8F0;
-  // align-items: space-evenly;
   display: flex;
   flex-direction: row;
-  // flex-direction: column;
+  // border: 1px solid black;
 `;

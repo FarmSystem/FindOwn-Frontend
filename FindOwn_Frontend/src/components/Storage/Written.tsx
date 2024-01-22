@@ -26,8 +26,8 @@ export const Written = () => {
   const {data: userWrite, isLoading} = useQuery({
     queryKey: ["userWrite"],
     queryFn: ownResult,
-    refetchOnMount: false,
-    refetchOnWindowFocus: false,
+    refetchOnMount: true,
+    // refetchOnWindowFocus: true,
   });
 
   // 실제 데이터 연결하기
@@ -64,7 +64,7 @@ export const Written = () => {
             spacing={2}
             columns={12}
             style={{width: "100%", height: "100%"}}>
-          {userWrite?.map((item: any, index: number) => (
+          {data?.map((item: any, index: number) => (
             <Grid item xs={4} sm={4} md={4} key={index} style={{ width: 'auto', display: 'flex', justifyContent: 'center'}}>
               <div
               //  onClick={()=>navigate(`/list/${item?.comparison_id}`)} 

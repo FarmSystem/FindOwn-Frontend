@@ -31,7 +31,7 @@ export const List = () => {
     queryKey: ["list"],
     queryFn: resultList,
     refetchOnWindowFocus: false,
-    refetchOnMount: false,
+    refetchOnMount: true,
   });
 
   // console.log(lastPage);

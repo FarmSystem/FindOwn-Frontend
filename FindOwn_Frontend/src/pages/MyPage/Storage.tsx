@@ -45,7 +45,7 @@ export const Storage = () => {
 };
 
 const ButtonContainer = styled.div`
-  width: 100%;
+  width: 80%;
   height: 42px;
   border-bottom: 1px solid #F0F0F0;
   margin-top: 23px;
