@@ -48,6 +48,7 @@ FindOwn, 상표권 침해 판단 웹플랫폼 <p>
 
 ## 🎞️ 시연영상
 
+[시연영상보러가기](https://youtu.be/aiCQ1GBuDR4?si=es3hVhS8A-FpTbfD)
 <br/>
 
 ## ⚙️ 시스템 아키텍처
